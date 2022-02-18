@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- 父级信息 -->
+    <parent>
+        <artifactId>shutter-core</artifactId>
+        <groupId>cn.org.niubility</groupId>
+        <version>${revision}</version>
+    </parent>
+
+    <!-- 基础信息 -->
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>shutter-core-common</artifactId>
+    <packaging>jar</packaging>
+
+    <!-- 项目介绍 -->
+    <name>Shutter Core Common</name>
+    <description>Shutter Core Common封装了开发中常用的对象、配置、常量、异常、工具等</description>
+
+    <!-- 依赖配置 -->
+    <dependencies>
+        <!-- Log -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- JUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

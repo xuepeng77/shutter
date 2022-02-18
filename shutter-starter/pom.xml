@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- 父级信息 -->
+    <parent>
+        <artifactId>shutter</artifactId>
+        <groupId>cn.org.niubility</groupId>
+        <version>${revision}</version>
+    </parent>
+
+    <!-- 基础信息 -->
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>shutter-starter</artifactId>
+    <packaging>pom</packaging>
+
+    <!-- 项目介绍 -->
+    <name>Shutter Starter</name>
+    <description>Shutter框架的工具工程，提供开箱即用的工具</description>
+
+    <!-- 模块管理 -->
+    <modules>
+        <module>shutter-starter-authentication</module>
+        <module>shutter-starter-cache</module>
+        <module>shutter-starter-log</module>
+        <module>shutter-starter-mybatis</module>
+        <module>shutter-starter-redis</module>
+        <module>shutter-starter-oss</module>
+        <module>shutter-starter-sms</module>
+        <module>shutter-starter-dependency</module>
+    </modules>
+
+</project>
