@@ -5,39 +5,41 @@ package cn.org.niubility.shutter.core.common.consts;
  *
  * @author xuepeng
  */
-public interface FileConst {
+public final class FileConst {
+
+    private FileConst() {}
 
     /**
      * 文件后缀分割符。
      */
-    String SEPRATOR_FILE_SUFFIX = ".";
+    public static final String SEPRATOR_FILE_SUFFIX = ".";
     /**
      * 文件路径
      */
-    String FILE_SPLIT = "/";
+    public static final String FILE_SPLIT = "/";
     /**
      * KB大小的文件。
      */
-    String SIZE_KB = "KB";
+    public static final String SIZE_KB = "KB";
     /**
      * MB大小的文件。
      */
-    String SIZE_MB = "MB";
+    public static final String SIZE_MB = "MB";
     /**
      * GB大小的文件。
      */
-    String SIZE_GB = "GB";
+    public static final String SIZE_GB = "GB";
     /**
      * 定义KB的计算常量。
      */
-    int KB = 1024;
+    public static final int KB = 1024;
     /**
      * 定义MB的计算常量。
      */
-    int MB = 1024 * 1024;
+    public static final int MB = 1024 * 1024;
     /**
      * 定义GB的计算常量。
      */
-    int GB = 1024 * 1024 * 1024;
-    
+    public static final int GB = 1024 * 1024 * 1024;
+
 }

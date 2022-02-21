@@ -5,99 +5,102 @@ package cn.org.niubility.shutter.core.common.consts;
  *
  * @author xuepeng
  */
-public interface PunctuationConst {
+public final class PunctuationConst {
+
+    private PunctuationConst() {
+    }
 
     /**
      * 逗号。
      */
-    String COMMA = ",";
+    public static final String COMMA = ",";
     /**
      * 句号。
      */
-    String PERIOD = ".";
+    public static final String PERIOD = ".";
     /**
      * 问号。
      */
-    String QUESTION = "?";
+    public static final String QUESTION = "?";
     /**
      * 冒号。
      */
-    String COLON = ":";
+    public static final String COLON = ":";
     /**
      * 分号。
      */
-    String SEMICOLON = ";";
+    public static final String SEMICOLON = ";";
     /**
      * 叹号。
      */
-    String EXCLAMATION = "!";
+    public static final String EXCLAMATION = "!";
     /**
      * 中横线。
      */
-    String HORIZONTAL_LINE = "-";
+    public static final String HORIZONTAL_LINE = "-";
     /**
      * 下划线。
      */
-    String UNDER_LINE = "_";
+    public static final String UNDER_LINE = "_";
     /**
      * URL分割符。
      */
-    String URL = "/";
+    public static final String URL = "/";
     /**
      * HTTP分割符。
      */
-    String HTTP = "//";
+    public static final String HTTP = "//";
     /**
      * 竖线。
      */
-    String VERTICAL_LINE = "|";
+    public static final String VERTICAL_LINE = "|";
     /**
      * 等于号。
      */
-    String EQUAL = "=";
+    public static final String EQUAL = "=";
     /**
      * 与符号。
      */
-    String AND = "&";
+    public static final String AND = "&";
     /**
      * 刀乐符。
      */
-    String DOLLAR = "$";
+    public static final String DOLLAR = "$";
     /**
      * 百分号。
      */
-    String PERCENT = "%";
+    public static final String PERCENT = "%";
     /**
      * 左小括号。
      */
-    String LEFT_ROUND_BRACKETS = "(";
+    public static final String LEFT_ROUND_BRACKETS = "(";
     /**
      * 右小括号。
      */
-    String RIGHT_ROUND_BRACKETS = ")";
+    public static final String RIGHT_ROUND_BRACKETS = ")";
     /**
      * 左中括号。
      */
-    String LEFT_SQUARE_BRACKETS = "[";
+    public static final String LEFT_SQUARE_BRACKETS = "[";
     /**
      * 右中括号。
      */
-    String RIGHT_SQUARE_BRACKETS = "]";
+    public static final String RIGHT_SQUARE_BRACKETS = "]";
     /**
      * 左大括号。
      */
-    String LEFT_CURLY_BRACKETS = "{";
+    public static final String LEFT_CURLY_BRACKETS = "{";
     /**
      * 右大括号。
      */
-    String RIGHT_CURLY_BRACKETS = "}";
+    public static final String RIGHT_CURLY_BRACKETS = "}";
     /**
      * 左尖角号。
      */
-    String LEFT_ANGLE_BRACKETS = "<";
+    public static final String LEFT_ANGLE_BRACKETS = "<";
     /**
      * 右尖角号。
      */
-    String RIGHT_ANGLE_BRACKETS = ">";
+    public static final String RIGHT_ANGLE_BRACKETS = ">";
 
 }

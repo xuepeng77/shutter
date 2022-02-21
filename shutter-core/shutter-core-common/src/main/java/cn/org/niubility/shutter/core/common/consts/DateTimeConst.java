@@ -5,26 +5,28 @@ package cn.org.niubility.shutter.core.common.consts;
  *
  * @author xuepeng
  */
-public interface DateTimeConst {
+public final class DateTimeConst {
 
-    String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
+    private DateTimeConst() {}
 
-    String YYYY_MM_DD_HH_MM_SS_SSS = "yyyy-MM-dd HH:mm:ss.SSS";
+    public static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
 
-    String YYYY_MM_DD = "yyyy-MM-dd";
+    public static final String YYYY_MM_DD_HH_MM_SS_SSS = "yyyy-MM-dd HH:mm:ss.SSS";
 
-    String HH_MM_SS = "HH:mm:ss";
+    public static final String YYYY_MM_DD = "yyyy-MM-dd";
 
-    String YYYY_MM_DD_HH_MM_SS_FORMAT = "yyyy/MM/dd HH:mm:ss";
+    public static final String HH_MM_SS = "HH:mm:ss";
 
-    String YYYY_MM_DD_HH_MM_SS_SSS_FORMAT = "yyyy/MM/dd HH:mm:ss.SSS";
+    public static final String YYYY_MM_DD_HH_MM_SS_FORMAT = "yyyy/MM/dd HH:mm:ss";
 
-    String YYYY_MM_DD_FORMAT = "yyyy/MM/dd";
+    public static final String YYYY_MM_DD_HH_MM_SS_SSS_FORMAT = "yyyy/MM/dd HH:mm:ss.SSS";
 
-    String YYYYMMDD = "yyyyMMdd";
+    public static final String YYYY_MM_DD_FORMAT = "yyyy/MM/dd";
 
-    String YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
+    public static final String YYYYMMDD = "yyyyMMdd";
 
-    String YYYYMMDDHHMMSSSSS = "yyyyMMddHHmmssSSS";
+    public static final String YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
+
+    public static final String YYYYMMDDHHMMSSSSS = "yyyyMMddHHmmssSSS";
 
 }
