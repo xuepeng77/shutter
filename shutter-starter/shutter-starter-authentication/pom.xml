@@ -19,4 +19,12 @@
     <name>Shutter Starter Authentication</name>
     <description>Shutter Starter Authentication基于SaToken封装了的身份认证相关的功能</description>
 
+    <!-- 依赖配置 -->
+    <dependencies>
+        <dependency>
+            <groupId>cn.org.niubility</groupId>
+            <artifactId>shutter-core-common</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>
