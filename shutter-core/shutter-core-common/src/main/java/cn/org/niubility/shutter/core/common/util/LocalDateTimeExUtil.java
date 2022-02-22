@@ -1,10 +1,11 @@
 package cn.org.niubility.shutter.core.common.util;
 
 import cn.hutool.core.date.LocalDateTimeUtil;
-import lombok.extern.slf4j.Slf4j;
 
-import java.time.*;
-import java.time.format.DateTimeFormatter;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 /**
  * 日期时间工具类。
@@ -13,7 +14,6 @@ import java.time.format.DateTimeFormatter;
  *
  * @author xuepeng
  */
-@Slf4j
 public class LocalDateTimeExUtil extends LocalDateTimeUtil {
 
     /**
@@ -42,12 +42,6 @@ public class LocalDateTimeExUtil extends LocalDateTimeUtil {
         final LocalDateTime nextDay = LocalDate.now(zoneId)
                 .plusDays(1)
                 .atStartOfDay();
-        if (log.isDebugEnabled()) {
-            log.debug("now is {}, nextDay is {}",
-                    now.format(DateTimeFormatter.ISO_DATE_TIME),
-                    nextDay.format(DateTimeFormatter.ISO_DATE_TIME)
-            );
-        }
         // 距明天0点有多少秒。
         return Duration.between(now, nextDay);
     }
