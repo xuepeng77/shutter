@@ -1,8 +1,10 @@
-package cn.org.niubility.shutter.core.common.api;
+package cn.org.niubility.shutter.core.common.bean.api;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
+
+import java.io.Serializable;
 
 /**
  * 响应实体类。
@@ -12,9 +14,11 @@ import lombok.*;
  */
 @Data
 @ToString
-@ApiModel(description = "响应信息")
 @Builder
-public class Result<T> {
+@ApiModel(description = "响应信息")
+public class Result<T> implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * 构造函数。
@@ -50,7 +54,7 @@ public class Result<T> {
      * 返回数据。
      */
     @ApiModelProperty(value = "返回数据", position = 4)
-    private T data;
+    private transient T data;
 
     /**
      * Result的构造器。

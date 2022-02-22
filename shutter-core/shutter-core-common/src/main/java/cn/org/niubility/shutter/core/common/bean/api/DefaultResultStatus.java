@@ -1,4 +1,4 @@
-package cn.org.niubility.shutter.core.common.api;
+package cn.org.niubility.shutter.core.common.bean.api;
 
 /**
  * 提供的默认Result对象。

@@ -1,4 +1,4 @@
-package cn.org.niubility.shutter.core.common.api;
+package cn.org.niubility.shutter.core.common.bean.api;
 
 /**
  * Http请求的响应状态接口。

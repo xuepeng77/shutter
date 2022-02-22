@@ -1,4 +1,4 @@
-package cn.org.niubility.shutter.core.common.api;
+package cn.org.niubility.shutter.core.common.bean.api;
 
 import org.apache.commons.lang3.StringUtils;
 
