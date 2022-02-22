@@ -30,4 +30,35 @@
         <module>shutter-sdk-dependency</module>
     </modules>
 
+    <!-- 项目属性 -->
+    <properties>
+        <mybatis-plus.version>3.5.1</mybatis-plus.version>
+        <jsqlparser.version>4.3</jsqlparser.version>
+    </properties>
+
+    <!-- 依赖管理 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- Shutter Core -->
+            <dependency>
+                <groupId>cn.org.niubility</groupId>
+                <artifactId>shutter-core-dependency</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Mybatis Plus -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.jsqlparser</groupId>
+                <artifactId>jsqlparser</artifactId>
+                <version>${jsqlparser.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 </project>
