@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- 父级信息 -->
+    <parent>
+        <artifactId>shutter</artifactId>
+        <groupId>cn.org.niubility</groupId>
+        <version>${revision}</version>
+    </parent>
+
+    <!-- 基础信息 -->
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>shutter-sdk</artifactId>
+    <packaging>pom</packaging>
+
+    <!-- 项目介绍 -->
+    <name>Shutter SDK</name>
+    <description>Shutter SDK提供了开箱即用的开发工具</description>
+
+    <!-- 模块管理 -->
+    <modules>
+        <module>shutter-sdk-auth</module>
+        <module>shutter-sdk-log</module>
+        <module>shutter-sdk-orm</module>
+        <module>shutter-sdk-redis</module>
+        <module>shutter-sdk-oss</module>
+        <module>shutter-sdk-sms</module>
+        <module>shutter-sdk-dependency</module>
+    </modules>
+
+</project>

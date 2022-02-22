@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- 父级信息 -->
+    <parent>
+        <artifactId>shutter-sdk</artifactId>
+        <groupId>cn.org.niubility</groupId>
+        <version>${revision}</version>
+    </parent>
+
+    <!-- 基础信息 -->
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>shutter-sdk-redis</artifactId>
+    <packaging>jar</packaging>
+
+    <!-- 项目介绍 -->
+    <name>Shutter SDK Redis</name>
+    <description>Shutter SDK Redis提供了Redis相关的开发工具</description>
+
+</project>

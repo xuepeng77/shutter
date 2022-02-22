@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- 父级信息 -->
+    <parent>
+        <artifactId>shutter-sdk</artifactId>
+        <groupId>cn.org.niubility</groupId>
+        <version>${revision}</version>
+    </parent>
+
+    <!-- 基础信息 -->
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>shutter-sdk-dependency</artifactId>
+    <packaging>pom</packaging>
+
+    <!-- 项目介绍 -->
+    <name>Shutter SDK Dependency</name>
+    <description>Shutter SDK Dependency提供了Shutter SDK的依赖管理</description>
+
+    <!-- 依赖管理 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- 身份认证 -->
+            <dependency>
+                <groupId>cn.org.niubility</groupId>
+                <artifactId>shutter-sdk-auth</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- 日志 -->
+            <dependency>
+                <groupId>cn.org.niubility</groupId>
+                <artifactId>shutter-sdk-log</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- ORM -->
+            <dependency>
+                <groupId>cn.org.niubility</groupId>
+                <artifactId>shutter-sdk-orm</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- 对象存储 -->
+            <dependency>
+                <groupId>cn.org.niubility</groupId>
+                <artifactId>shutter-sdk-oss</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- Redis -->
+            <dependency>
+                <groupId>cn.org.niubility</groupId>
+                <artifactId>shutter-sdk-redis</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- 短信 -->
+            <dependency>
+                <groupId>cn.org.niubility</groupId>
+                <artifactId>shutter-sdk-sms</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

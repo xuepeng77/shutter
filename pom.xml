@@ -18,17 +18,9 @@
     <modules>
         <module>shutter-core</module>
         <module>shutter-generator</module>
+        <module>shutter-sdk</module>
+        <module>shutter-module</module>
     </modules>
-
-    <!-- 开源协议 apache 2.0 -->
-    <licenses>
-        <license>
-            <name>Apache 2</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-            <comments>A business-friendly OSS license</comments>
-        </license>
-    </licenses>
 
     <!-- 项目属性 -->
     <properties>
