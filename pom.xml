@@ -17,10 +17,7 @@
     <!-- 模块管理 -->
     <modules>
         <module>shutter-core</module>
-        <module>shutter-starter</module>
         <module>shutter-generator</module>
-        <module>shutter-service</module>
-        <module>shutter-api</module>
     </modules>
 
     <!-- 开源协议 apache 2.0 -->

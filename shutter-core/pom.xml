@@ -41,6 +41,8 @@
         <jackson.version>2.13.1</jackson.version>
         <knife4j.version>3.0.3</knife4j.version>
         <jsoup.version>1.11.3</jsoup.version>
+        <bitwalker.version>1.21</bitwalker.version>
+        <ip2region.version>1.7.2</ip2region.version>
     </properties>
 
     <!-- 依赖管理 -->
@@ -124,6 +126,18 @@
                 <groupId>org.jsoup</groupId>
                 <artifactId>jsoup</artifactId>
                 <version>${jsoup.version}</version>
+            </dependency>
+            <!-- Bitwalker -->
+            <dependency>
+                <groupId>eu.bitwalker</groupId>
+                <artifactId>UserAgentUtils</artifactId>
+                <version>${bitwalker.version}</version>
+            </dependency>
+            <!-- IP Region -->
+            <dependency>
+                <groupId>org.lionsoul</groupId>
+                <artifactId>ip2region</artifactId>
+                <version>${ip2region.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

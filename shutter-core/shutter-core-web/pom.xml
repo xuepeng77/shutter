@@ -17,7 +17,7 @@
 
     <!-- 项目介绍 -->
     <name>Shutter Core Web</name>
-    <description>Shutter Core Web封装了Web开发中常用的对象、配置、常量、异常、工具等</description>
+    <description>Shutter Core Web封装了Web开发中常用的对象、常量、异常、过滤器、拦截器、工具等</description>
 
     <!-- 依赖配置 -->
     <dependencies>
@@ -26,6 +26,43 @@
             <groupId>cn.org.niubility</groupId>
             <artifactId>shutter-core-common</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <!-- SpringBoot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- JUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <!-- Bitwalker -->
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+        </dependency>
+        <!-- IP Region -->
+        <dependency>
+            <groupId>org.lionsoul</groupId>
+            <artifactId>ip2region</artifactId>
         </dependency>
     </dependencies>
 
