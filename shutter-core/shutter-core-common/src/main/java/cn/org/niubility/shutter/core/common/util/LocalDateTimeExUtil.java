@@ -23,17 +23,17 @@ public class LocalDateTimeExUtil extends LocalDateTimeUtil {
     }
 
     /**
-     * @return 获取从现在到明天0点的秒数（系统默认时区）。
+     * @return 获取从现在到明天0点的时间差（系统默认时区）。
      */
     public static Duration nowToMidnight() {
         return nowToMidnight(ZoneId.systemDefault());
     }
 
     /**
-     * 获取从现在到明天0点的秒数。
+     * 获取从现在到明天0点的时间差。
      *
      * @param zoneId 时区。
-     * @return 从现在到明天的秒数。
+     * @return 从现在到明天的时间差。
      */
     public static Duration nowToMidnight(final ZoneId zoneId) {
         // 当前时间
