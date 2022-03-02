@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- 父级信息 -->
+    <parent>
+        <artifactId>shutter-module</artifactId>
+        <groupId>cn.org.niubility</groupId>
+        <version>${revision}</version>
+    </parent>
+
+    <!-- 基础信息 -->
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>shutter-module-system</artifactId>
+    <packaging>jar</packaging>
+
+    <!-- 项目介绍 -->
+    <name>Shutter Module System</name>
+    <description>Shutter Module System提供了系统管理的全部业务</description>
+
+    <!-- 依赖配置 -->
+    <dependencies>
+        <!-- 下面的依赖不会传递 -->
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- JUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+
+        <!-- 下面的依赖会传递，多个Module由Maven自动解决依赖冲突 -->
+
+        <!-- Shutter Core Common -->
+        <dependency>
+            <groupId>cn.org.niubility</groupId>
+            <artifactId>shutter-core-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- Shutter Core Web -->
+        <dependency>
+            <groupId>cn.org.niubility</groupId>
+            <artifactId>shutter-core-web</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- Shutter SDK ORM -->
+        <dependency>
+            <groupId>cn.org.niubility</groupId>
+            <artifactId>shutter-sdk-orm</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- SpringBoot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -21,6 +21,9 @@
 
     <!-- 依赖配置 -->
     <dependencies>
+
+        <!-- 下面的依赖不会传递 -->
+
         <!-- SpringBoot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -59,6 +62,9 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
+
+        <!-- 下面的依赖会传递 -->
+
         <!-- Guava -->
         <dependency>
             <groupId>com.google.guava</groupId>

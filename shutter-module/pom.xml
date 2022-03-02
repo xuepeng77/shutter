@@ -19,4 +19,31 @@
     <name>Shutter Module</name>
     <description>Shutter Module提供了业务模块</description>
 
+    <!-- 模块管理 -->
+    <modules>
+        <module>shutter-module-system</module>
+    </modules>
+
+    <!-- 依赖管理 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- Shutter Core -->
+            <dependency>
+                <groupId>cn.org.niubility</groupId>
+                <artifactId>shutter-core-dependency</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Shutter SDK -->
+            <dependency>
+                <groupId>cn.org.niubility</groupId>
+                <artifactId>shutter-sdk-dependency</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 </project>

@@ -21,6 +21,9 @@
 
     <!-- 依赖配置 -->
     <dependencies>
+
+        <!-- 下面的依赖不会传递 -->
+
         <!-- Shutter Core Common -->
         <dependency>
             <groupId>cn.org.niubility</groupId>
@@ -54,6 +57,9 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
+
+        <!-- 下面的依赖会传递 -->
+
         <!-- Bitwalker -->
         <dependency>
             <groupId>eu.bitwalker</groupId>
