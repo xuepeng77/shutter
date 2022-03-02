@@ -21,9 +21,7 @@
 
     <!-- 依赖配置 -->
     <dependencies>
-
         <!-- 下面的依赖不会传递 -->
-
         <!-- Shutter Core Common -->
         <dependency>
             <groupId>cn.org.niubility</groupId>
@@ -70,7 +68,6 @@
         </dependency>
 
         <!-- 下面的依赖会传递 -->
-
         <!-- Mybatis Plus -->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -81,5 +78,5 @@
             <artifactId>jsqlparser</artifactId>
         </dependency>
     </dependencies>
-    
+
 </project>

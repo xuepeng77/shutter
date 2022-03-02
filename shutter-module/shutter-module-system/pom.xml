@@ -22,7 +22,48 @@
     <!-- 依赖配置 -->
     <dependencies>
         <!-- 下面的依赖不会传递 -->
-
+        <!-- Shutter Core Common -->
+        <dependency>
+            <groupId>cn.org.niubility</groupId>
+            <artifactId>shutter-core-common</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Shutter Core Web -->
+        <dependency>
+            <groupId>cn.org.niubility</groupId>
+            <artifactId>shutter-core-web</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- SpringBoot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <scope>provided</scope>
+            <exclusions>
+                <!--排除logback-->
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -35,29 +76,11 @@
         </dependency>
 
         <!-- 下面的依赖会传递，多个Module由Maven自动解决依赖冲突 -->
-
-        <!-- Shutter Core Common -->
-        <dependency>
-            <groupId>cn.org.niubility</groupId>
-            <artifactId>shutter-core-common</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <!-- Shutter Core Web -->
-        <dependency>
-            <groupId>cn.org.niubility</groupId>
-            <artifactId>shutter-core-web</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         <!-- Shutter SDK ORM -->
         <dependency>
             <groupId>cn.org.niubility</groupId>
             <artifactId>shutter-sdk-orm</artifactId>
             <version>${project.version}</version>
-        </dependency>
-        <!-- SpringBoot -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
 
