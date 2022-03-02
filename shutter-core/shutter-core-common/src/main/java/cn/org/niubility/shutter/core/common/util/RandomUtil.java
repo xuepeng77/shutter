@@ -122,14 +122,14 @@ public class RandomUtil {
     }
 
     /**
-     * 获取12位的字符串。
+     * 获取随机字符串。
      *
-     * @return 12位字符串。
+     * @return 随机字符串。
      */
-    public static String get12String() {
+    public static String getRandomString(final int length) {
         final String str = "0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ";
-        final StringBuilder sb = new StringBuilder(12);
-        for (int i = 0; i < 12; i++) {
+        final StringBuilder sb = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
             char ch = str.charAt(new Random().nextInt(str.length()));
             sb.append(ch);
         }
