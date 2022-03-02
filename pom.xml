@@ -20,6 +20,7 @@
         <module>shutter-generator</module>
         <module>shutter-sdk</module>
         <module>shutter-module</module>
+        <module>shutter-app</module>
     </modules>
 
     <!-- 项目属性 -->
