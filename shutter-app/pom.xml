@@ -26,4 +26,26 @@
         <module>shutter-app-wechat</module>
     </modules>
 
+    <!-- 依赖管理 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- Shutter Core -->
+            <dependency>
+                <groupId>cn.org.niubility</groupId>
+                <artifactId>shutter-core-dependency</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Shutter Module -->
+            <dependency>
+                <groupId>cn.org.niubility</groupId>
+                <artifactId>shutter-module-dependency</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 </project>

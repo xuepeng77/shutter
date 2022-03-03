@@ -22,6 +22,7 @@
     <!-- 模块管理 -->
     <modules>
         <module>shutter-module-system</module>
+        <module>shutter-module-dependency</module>
     </modules>
 
     <!-- 依赖管理 -->

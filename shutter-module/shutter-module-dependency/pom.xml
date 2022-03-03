@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- 父级信息 -->
+    <parent>
+        <artifactId>shutter-module</artifactId>
+        <groupId>cn.org.niubility</groupId>
+        <version>${revision}</version>
+    </parent>
+
+    <!-- 基础信息 -->
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>shutter-module-dependency</artifactId>
+    <packaging>pom</packaging>
+
+    <!-- 项目介绍 -->
+    <name>Shutter Module Dependency</name>
+    <description>Shutter Module Dependency提供了Shutter Module的依赖管理</description>
+
+    <!-- 依赖管理 -->
+    <dependencyManagement>
+        <!-- 系统管理模块 -->
+        <dependencies>
+            <dependency>
+                <groupId>cn.org.niubility</groupId>
+                <artifactId>shutter-module-system</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>
