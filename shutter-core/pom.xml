@@ -38,6 +38,7 @@
         <reflectasm.version>1.11.9</reflectasm.version>
         <jackson.version>2.13.1</jackson.version>
         <jsoup.version>1.11.3</jsoup.version>
+        <knife4j.version>3.0.3</knife4j.version>
         <!-- Shutter Core Web -->
         <bitwalker.version>1.21</bitwalker.version>
         <ip2region.version>1.7.2</ip2region.version>

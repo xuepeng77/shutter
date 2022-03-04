@@ -28,6 +28,12 @@
                 <artifactId>shutter-sdk-auth</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <!-- 身份认证 -->
+            <dependency>
+                <groupId>cn.org.niubility</groupId>
+                <artifactId>shutter-sdk-knife4j</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <!-- 日志 -->
             <dependency>
                 <groupId>cn.org.niubility</groupId>

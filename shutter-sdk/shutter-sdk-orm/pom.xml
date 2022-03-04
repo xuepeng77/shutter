@@ -21,12 +21,10 @@
 
     <!-- 依赖配置 -->
     <dependencies>
-        <!-- 下面的依赖不会传递 -->
         <!-- Shutter Core Common -->
         <dependency>
             <groupId>cn.org.niubility</groupId>
             <artifactId>shutter-core-common</artifactId>
-            <scope>provided</scope>
         </dependency>
         <!-- SpringBoot -->
         <dependency>
@@ -34,8 +32,6 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-
-        <!-- 下面的依赖会传递 -->
         <!-- Mybatis Plus -->
         <dependency>
             <groupId>com.baomidou</groupId>

@@ -28,6 +28,7 @@
         <module>shutter-sdk-oss</module>
         <module>shutter-sdk-sms</module>
         <module>shutter-sdk-dependency</module>
+        <module>shutter-sdk-knife4j</module>
     </modules>
 
     <!-- 项目属性 -->
