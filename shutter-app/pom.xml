@@ -29,10 +29,10 @@
     <!-- 依赖管理 -->
     <dependencyManagement>
         <dependencies>
-            <!-- Shutter Core -->
+            <!-- Shutter SDK -->
             <dependency>
                 <groupId>cn.org.niubility</groupId>
-                <artifactId>shutter-core-dependency</artifactId>
+                <artifactId>shutter-sdk-dependency</artifactId>
                 <version>${project.version}</version>
                 <type>pom</type>
                 <scope>import</scope>

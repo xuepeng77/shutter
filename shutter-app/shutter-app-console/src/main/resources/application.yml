@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: Shutter Console
+  # 时间正反序列化格式
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  # 兼容Knife4j
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+shutter:
+  knife4j:
+    title: Shutter Console API
+    version: 1.0.0
+    description: Shutter Console API
+    author: xuepeng
+    website: https://gitee.com/xzr0710/shutter
+    email: 100103081@qq.com

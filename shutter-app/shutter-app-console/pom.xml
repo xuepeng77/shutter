@@ -21,27 +21,16 @@
 
     <!-- 依赖配置 -->
     <dependencies>
-        <!-- Shutter Core Common -->
+        <!-- Shutter SDK Knife4j -->
         <dependency>
             <groupId>cn.org.niubility</groupId>
-            <artifactId>shutter-core-common</artifactId>
-        </dependency>
-        <!-- Shutter Core Web -->
-        <dependency>
-            <groupId>cn.org.niubility</groupId>
-            <artifactId>shutter-core-web</artifactId>
+            <artifactId>shutter-sdk-knife4j</artifactId>
         </dependency>
         <!-- Shutter Module System -->
         <dependency>
             <groupId>cn.org.niubility</groupId>
             <artifactId>shutter-module-system</artifactId>
         </dependency>
-        <!-- SpringBoot -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
     </dependencies>
 
 </project>
