@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  cn.org.niubility.shutter.sdk.knife4j.config.Knife4jConfiguration
