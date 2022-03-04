@@ -34,6 +34,7 @@ public class MybatisPlusConfiguration {
             GlobalConfig globalConfig = properties.getGlobalConfig();
             globalConfig.setBanner(false);
             MybatisConfiguration configuration = new MybatisConfiguration();
+            // 配置枚举处理
             configuration.setDefaultEnumTypeHandler(MybatisEnumTypeHandler.class);
             properties.setConfiguration(configuration);
         };
@@ -43,7 +44,7 @@ public class MybatisPlusConfiguration {
      * @return 添加插件。
      */
     @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor(MybatisPlusProperties mybatisPlusProperties) {
+    public MybatisPlusInterceptor mybatisPlusInterceptor(final MybatisPlusProperties mybatisPlusProperties) {
         final MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         // 添加分页插件
         interceptor.addInnerInterceptor(paginationInnerInterceptor(mybatisPlusProperties));

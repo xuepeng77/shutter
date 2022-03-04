@@ -7,9 +7,9 @@ import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * MybatisPlus配置类
+ * MybatisPlus自定义属性类。
  *
- * @author Chill
+ * @author xuepeng
  */
 @Data
 @ToString
@@ -18,19 +18,19 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "shutter.orm")
 public class MybatisPlusProperties {
 
-	/**
-	 * 分页最大数
-	 */
-	private Long pageLimit = 100L;
+    /**
+     * 分页最大数
+     */
+    private Long pageLimit = 100L;
 
-	/**
-	 * 溢出总页数后是否进行处理
-	 */
-	protected Boolean overflow = false;
+    /**
+     * 溢出总页数后是否进行处理
+     */
+    protected Boolean overflow = false;
 
-	/**
-	 * join优化
-	 */
-	private Boolean optimizeJoin = false;
+    /**
+     * join优化
+     */
+    private Boolean optimizeJoin = false;
 
 }
