@@ -22,8 +22,8 @@
     <!-- 模块管理 -->
     <modules>
         <module>shutter-sdk-auth</module>
-        <module>shutter-sdk-log</module>
-        <module>shutter-sdk-orm</module>
+        <module>shutter-sdk-log4j2</module>
+        <module>shutter-sdk-mybatis</module>
         <module>shutter-sdk-redis</module>
         <module>shutter-sdk-oss</module>
         <module>shutter-sdk-sms</module>

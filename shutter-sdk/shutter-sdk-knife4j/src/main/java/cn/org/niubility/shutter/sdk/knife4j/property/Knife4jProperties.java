@@ -1,4 +1,4 @@
-package cn.org.niubility.shutter.sdk.knife4j.config;
+package cn.org.niubility.shutter.sdk.knife4j.property;
 
 
 import lombok.AllArgsConstructor;

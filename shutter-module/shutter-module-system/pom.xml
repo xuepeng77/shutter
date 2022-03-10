@@ -42,7 +42,7 @@
         <!-- Shutter SDK ORM -->
         <dependency>
             <groupId>cn.org.niubility</groupId>
-            <artifactId>shutter-sdk-orm</artifactId>
+            <artifactId>shutter-sdk-mybatis</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

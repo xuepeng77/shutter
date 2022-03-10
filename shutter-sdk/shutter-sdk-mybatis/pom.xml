@@ -12,12 +12,12 @@
 
     <!-- 基础信息 -->
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>shutter-sdk-orm</artifactId>
+    <artifactId>shutter-sdk-mybatis</artifactId>
     <packaging>jar</packaging>
 
     <!-- 项目介绍 -->
     <name>Shutter SDK ORM</name>
-    <description>Shutter SDK ORM提供了MyBatis、MyBatis Plus相关的开发工具</description>
+    <description>Shutter SDK Myabtis提供了MyBatis、MyBatis Plus相关的开发工具</description>
 
     <!-- 依赖配置 -->
     <dependencies>
