@@ -13,6 +13,11 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan("cn.org.niubility.*")
 public class ConsoleApplication {
 
+    /**
+     * 启动Shutter Console工程。
+     *
+     * @param args 启动参数。
+     */
     public static void main(String[] args) {
         SpringApplication.run(ConsoleApplication.class, args);
     }
