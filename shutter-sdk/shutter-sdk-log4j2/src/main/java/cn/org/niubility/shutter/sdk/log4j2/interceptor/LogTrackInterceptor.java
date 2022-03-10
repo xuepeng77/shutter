@@ -3,7 +3,6 @@ package cn.org.niubility.shutter.sdk.log4j2.interceptor;
 import cn.org.niubility.shutter.core.common.util.RandomUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.MDC;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author xuepeng
  */
-@Configuration
 public class LogTrackInterceptor implements HandlerInterceptor {
 
     /**
