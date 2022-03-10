@@ -1,4 +1,4 @@
-package cn.org.niubility.shutter.sdk.orm.bean;
+package cn.org.niubility.shutter.sdk.mybatis.bean;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;

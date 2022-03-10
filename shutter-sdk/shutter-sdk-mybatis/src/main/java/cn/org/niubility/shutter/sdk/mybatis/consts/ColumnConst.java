@@ -1,4 +1,4 @@
-package cn.org.niubility.shutter.sdk.orm.consts;
+package cn.org.niubility.shutter.sdk.mybatis.consts;
 
 /**
  * ORM的常量类。

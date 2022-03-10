@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  cn.org.niubility.shutter.sdk.orm.config.MybatisPlusConfiguration
+  cn.org.niubility.shutter.sdk.mybatis.config.MybatisPlusConfiguration

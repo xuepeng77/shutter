@@ -1,6 +1,6 @@
-package cn.org.niubility.shutter.sdk.orm.handler;
+package cn.org.niubility.shutter.sdk.mybatis.handler;
 
-import cn.org.niubility.shutter.sdk.orm.consts.ColumnConst;
+import cn.org.niubility.shutter.sdk.mybatis.consts.ColumnConst;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.stereotype.Component;

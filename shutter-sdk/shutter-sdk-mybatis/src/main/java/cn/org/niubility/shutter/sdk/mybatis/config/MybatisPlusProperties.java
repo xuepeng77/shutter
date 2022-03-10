@@ -1,4 +1,4 @@
-package cn.org.niubility.shutter.sdk.orm.config;
+package cn.org.niubility.shutter.sdk.mybatis.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
