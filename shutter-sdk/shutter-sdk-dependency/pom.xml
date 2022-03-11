@@ -37,13 +37,13 @@
             <!-- 日志 -->
             <dependency>
                 <groupId>cn.org.niubility</groupId>
-                <artifactId>shutter-sdk-log</artifactId>
+                <artifactId>shutter-sdk-log4j2</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <!-- ORM -->
             <dependency>
                 <groupId>cn.org.niubility</groupId>
-                <artifactId>shutter-sdk-orm</artifactId>
+                <artifactId>shutter-sdk-mybatis</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <!-- 对象存储 -->

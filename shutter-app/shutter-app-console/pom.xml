@@ -26,6 +26,11 @@
             <groupId>cn.org.niubility</groupId>
             <artifactId>shutter-sdk-knife4j</artifactId>
         </dependency>
+        <!-- Shutter SDK Log4j2  -->
+        <dependency>
+            <groupId>cn.org.niubility</groupId>
+            <artifactId>shutter-sdk-log4j2</artifactId>
+        </dependency>
         <!-- Shutter Module System -->
         <dependency>
             <groupId>cn.org.niubility</groupId>

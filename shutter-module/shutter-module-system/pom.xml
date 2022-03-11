@@ -39,7 +39,7 @@
             <artifactId>shutter-core-web</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <!-- Shutter SDK ORM -->
+        <!-- Shutter SDK Mybatis -->
         <dependency>
             <groupId>cn.org.niubility</groupId>
             <artifactId>shutter-sdk-mybatis</artifactId>
