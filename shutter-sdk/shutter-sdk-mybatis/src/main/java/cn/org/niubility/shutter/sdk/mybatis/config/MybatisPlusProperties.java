@@ -15,7 +15,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@ConfigurationProperties(prefix = "shutter.orm")
+@ConfigurationProperties(prefix = "shutter.mybatis")
 public class MybatisPlusProperties {
 
     /**
