@@ -19,4 +19,22 @@
     <name>Shutter SDK Redis</name>
     <description>Shutter SDK Redis提供了Redis相关的开发工具</description>
 
+    <!-- 依赖配置 -->
+    <dependencies>
+        <!-- Shutter Core Common -->
+        <dependency>
+            <groupId>cn.org.niubility</groupId>
+            <artifactId>shutter-core-common</artifactId>
+        </dependency>
+        <!-- SpringBoot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+    </dependencies>
 </project>
