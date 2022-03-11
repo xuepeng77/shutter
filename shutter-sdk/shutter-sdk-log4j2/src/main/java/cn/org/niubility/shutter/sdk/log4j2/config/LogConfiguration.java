@@ -14,6 +14,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class LogConfiguration implements WebMvcConfigurer {
 
+    // TODO 加入异步日志功能
+
     /**
      * 注册日志拦截器。
      * 对所有API(/**)生效。

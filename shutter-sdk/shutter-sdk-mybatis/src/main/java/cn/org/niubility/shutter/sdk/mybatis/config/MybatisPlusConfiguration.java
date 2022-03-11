@@ -26,6 +26,8 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(MybatisPlusProperties.class)
 public class MybatisPlusConfiguration {
 
+    // TODO 加入租户、逻辑删除、数据权限功能
+
     /**
      * @return 配置MybaitsPlus属性。
      */

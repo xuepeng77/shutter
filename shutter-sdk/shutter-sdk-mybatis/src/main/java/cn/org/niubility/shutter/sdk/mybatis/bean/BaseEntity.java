@@ -22,6 +22,11 @@ public class BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
+     * 租户主键。
+     */
+    private Long tenantId;
+
+    /**
      * 是否删除。
      */
     private Boolean deleted;

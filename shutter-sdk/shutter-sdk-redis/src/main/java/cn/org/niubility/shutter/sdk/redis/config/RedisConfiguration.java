@@ -22,6 +22,8 @@ import javax.annotation.Resource;
 @Configuration
 public class RedisConfiguration {
 
+    // TODO 加入分布式锁、SpringCache等功能
+
     /**
      * 创建一个RedisTemplate对象。
      *
