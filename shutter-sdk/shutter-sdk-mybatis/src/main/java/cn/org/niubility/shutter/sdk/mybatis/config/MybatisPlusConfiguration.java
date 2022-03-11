@@ -1,5 +1,6 @@
 package cn.org.niubility.shutter.sdk.mybatis.config;
 
+import cn.org.niubility.shutter.sdk.mybatis.property.MybatisPlusProperties;
 import com.baomidou.mybatisplus.autoconfigure.MybatisPlusPropertiesCustomizer;
 import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import com.baomidou.mybatisplus.core.config.GlobalConfig;
