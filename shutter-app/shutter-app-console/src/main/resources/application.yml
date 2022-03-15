@@ -1,6 +1,11 @@
 spring:
   application:
     name: Shutter Console
+  # 上传文件大小
+  servlet:
+    multipart:
+      max-request-size: 100MB
+      max-file-size: 100MB
   # 时间正反序列化格式
   jackson:
     time-zone: GMT+8
@@ -17,3 +22,4 @@ shutter:
     author: xuepeng
     website: https://gitee.com/xzr0710/shutter
     email: 100103081@qq.com
+
