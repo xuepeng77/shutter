@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import org.apache.ibatis.logging.stdout.StdOutImpl;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -16,13 +17,15 @@ import org.springframework.context.annotation.Configuration;
 /**
  * MyBaits Plus的配置类。
  * 自动扫描cn.org.niubility.shutter.**.dao.**下的Dao类。
+ * 配置MyBatis Plus和MyBatis。
  * 配置枚举处理。
- * 配置分页拦截器。
+ * 配置分页插件。
+ * 配置乐观锁插件。
  *
  * @author xuepeng
  */
 @Configuration
-@MapperScan("cn.org.niubility.shutter.**.dao.**")
+@MapperScan(basePackages = {"cn.org.niubility.shutter.**.dao.**"})
 @EnableConfigurationProperties(MybatisPlusProperties.class)
 public class MybatisPlusConfiguration {
 
@@ -34,11 +37,15 @@ public class MybatisPlusConfiguration {
     @Bean
     public MybatisPlusPropertiesCustomizer mybatisPlusPropertiesCustomizer() {
         return properties -> {
+            // MyBatis Plus的配置
             GlobalConfig globalConfig = properties.getGlobalConfig();
             globalConfig.setBanner(false);
+            properties.setMapperLocations(new String[]{"classpath*:mapper/*.xml"});
+
+            // MyBatis的配置
             MybatisConfiguration configuration = new MybatisConfiguration();
-            // 配置枚举处理
             configuration.setDefaultEnumTypeHandler(MybatisEnumTypeHandler.class);
+            configuration.setLogImpl(StdOutImpl.class);
             properties.setConfiguration(configuration);
         };
     }
