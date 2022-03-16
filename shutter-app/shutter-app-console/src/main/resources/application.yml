@@ -14,6 +14,8 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+knife4j:
+  enable: true
 shutter:
   knife4j:
     title: Shutter Console API
@@ -22,4 +24,3 @@ shutter:
     author: xuepeng
     website: https://gitee.com/xzr0710/shutter
     email: 100103081@qq.com
-
