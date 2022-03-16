@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * 系统管理的业务处理实现类。
+ * 系统用户的业务处理实现类。
  *
  * @author xuepeng
  */
@@ -34,9 +34,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
         if (ObjectUtils.isEmpty(sysUser)) {
             throw new SysUserNotFoundException("根据主键[" + id + "]未能查询到系统用户。");
         }
-        final SysUserDto result = sysUserMapper.toDto(sysUser);
+        final SysUserDto result = sysUserMapper.entityToDto(sysUser);
         if (log.isDebugEnabled()) {
-            log.debug("根据主键：{}查询用户：{}", id, result.toString());
+            log.debug("根据主键：{}，查询用户：{}", id, result.toString());
         }
         return result;
     }
@@ -46,7 +46,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
      *
      * @param sysUserMapper 系统用户对象转换接口。
      */
-    @Autowired(required = false)
+    @Autowired
     public void setSysUserMapper(SysUserMapper sysUserMapper) {
         this.sysUserMapper = sysUserMapper;
     }
