@@ -1,5 +1,7 @@
 package cn.org.niubility.shutter.core.common.bean.page;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import java.io.Serializable;
@@ -14,10 +16,11 @@ import java.util.List;
  * @author xuepeng
  */
 @Data
+@Builder
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@ApiModel(description = "分页响应信息")
 public class PageResult<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,22 +45,31 @@ public class PageResult<T> implements Serializable {
     /**
      * 当前页数。
      */
+    @ApiModelProperty(value = "当前页数")
     private long currentPage;
+
     /**
      * 每页显示多少条。
      */
+    @ApiModelProperty(value = "每页显示多少条")
     private long pageSize;
-    /**
-     * 总记录数。
-     */
-    private long totalCount;
+
     /**
      * 总页数。
      */
+    @ApiModelProperty(value = "总页数")
     private long pageCount;
+
     /**
-     * 本页的数据列表。
+     * 总记录数。
      */
+    @ApiModelProperty(value = "总记录数")
+    private long totalCount;
+
+    /**
+     * 本页的数据。
+     */
+    @ApiModelProperty(value = "本页的数据")
     private transient List<T> record = new ArrayList<>();
 
 }

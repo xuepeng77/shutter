@@ -2,7 +2,9 @@ package cn.org.niubility.shutter.core.common.bean.api;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
+import lombok.ToString;
 
 import java.io.Serializable;
 
@@ -13,8 +15,8 @@ import java.io.Serializable;
  * @author xuepeng
  */
 @Data
-@ToString
 @Builder
+@ToString
 @ApiModel(description = "响应信息")
 public class Result<T> implements Serializable {
 
@@ -35,25 +37,25 @@ public class Result<T> implements Serializable {
     /**
      * 状态码。
      */
-    @ApiModelProperty(value = "状态码", required = true, position = 1)
+    @ApiModelProperty(value = "状态码")
     private int code;
 
     /**
      * 状态码描述。
      */
-    @ApiModelProperty(value = "状态码", required = true, position = 2)
+    @ApiModelProperty(value = "状态码描述")
     private String desc;
 
     /**
      * 返回消息。
      */
-    @ApiModelProperty(value = "返回消息", required = true, position = 3)
+    @ApiModelProperty(value = "返回消息")
     private String msg;
 
     /**
      * 返回数据。
      */
-    @ApiModelProperty(value = "返回数据", position = 4)
+    @ApiModelProperty(value = "返回数据")
     private transient T data;
 
     /**

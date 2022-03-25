@@ -15,10 +15,10 @@ import java.util.List;
  * @author xuepeng
  */
 @Data
+@Builder
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @ApiModel(description = "分页查询信息")
 public class PageParam implements Serializable {
 
