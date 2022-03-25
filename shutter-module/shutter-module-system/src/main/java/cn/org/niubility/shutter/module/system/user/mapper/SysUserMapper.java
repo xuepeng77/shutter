@@ -2,6 +2,7 @@ package cn.org.niubility.shutter.module.system.user.mapper;
 
 import cn.org.niubility.shutter.module.system.user.dto.SysUserDto;
 import cn.org.niubility.shutter.module.system.user.entity.SysUser;
+import cn.org.niubility.shutter.module.system.user.vo.SysUserRequest;
 import cn.org.niubility.shutter.module.system.user.vo.SysUserResponse;
 import org.mapstruct.Mapper;
 
@@ -12,6 +13,14 @@ import org.mapstruct.Mapper;
  */
 @Mapper(componentModel = "spring")
 public interface SysUserMapper {
+
+    /**
+     * Request转换成Dto。
+     *
+     * @param sysUserRequest 系统用户的请求对象。
+     * @return 系统用户数据传输对象。
+     */
+    SysUserDto requestToDto(final SysUserRequest sysUserRequest);
 
     /**
      * Dto转换成Entity。
@@ -33,7 +42,7 @@ public interface SysUserMapper {
      * Dto转换成Response。
      *
      * @param sysUserDto 系统用户数据传输对象。
-     * @return 系统用户的响应类。
+     * @return 系统用户的响应对象。
      */
     SysUserResponse dtoToResponse(final SysUserDto sysUserDto);
 

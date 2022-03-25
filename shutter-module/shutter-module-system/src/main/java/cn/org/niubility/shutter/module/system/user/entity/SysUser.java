@@ -1,5 +1,6 @@
 package cn.org.niubility.shutter.module.system.user.entity;
 
+import cn.org.niubility.shutter.module.system.user.enums.SysUserStatus;
 import cn.org.niubility.shutter.sdk.mybatis.entity.BaseEntity;
 import lombok.*;
 
@@ -84,7 +85,7 @@ public class SysUser extends BaseEntity {
      * 状态：0=禁用；1=启用。
      * 数据库字段：status，tinyint(2)。
      */
-    private Integer status;
+    private SysUserStatus status;
 
     /**
      * 注册IP。

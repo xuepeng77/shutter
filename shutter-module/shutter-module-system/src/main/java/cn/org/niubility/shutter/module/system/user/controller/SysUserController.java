@@ -6,6 +6,7 @@ import cn.org.niubility.shutter.core.web.bean.BaseController;
 import cn.org.niubility.shutter.module.system.user.dto.SysUserDto;
 import cn.org.niubility.shutter.module.system.user.mapper.SysUserMapper;
 import cn.org.niubility.shutter.module.system.user.service.SysUserService;
+import cn.org.niubility.shutter.module.system.user.vo.SysUserRequest;
 import cn.org.niubility.shutter.module.system.user.vo.SysUserResponse;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
@@ -15,10 +16,9 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * 系统用户的API。
@@ -32,6 +32,18 @@ import org.springframework.web.bind.annotation.RestController;
 @ApiSupport(order = 1)
 public class SysUserController extends BaseController {
 
+    @PostMapping("/v1")
+    @ApiOperation(value = "创建系统用户")
+    @ApiOperationSupport(order = 1)
+    public Result<Boolean> create(@Valid @RequestBody final SysUserRequest sysUserRequest) {
+        final SysUserDto sysUserDto = sysUserMapper.requestToDto(sysUserRequest);
+        final boolean result = sysUserService.create(sysUserDto);
+        if (result) {
+            return DefaultResultFactory.success("创建系统用户成功。", Boolean.TRUE);
+        }
+        return DefaultResultFactory.fail("创建系统用户失败。", Boolean.TRUE);
+    }
+
     /**
      * 根据主键查询系统用户。
      *
@@ -40,7 +52,7 @@ public class SysUserController extends BaseController {
      */
     @GetMapping("/v1/{id}")
     @ApiOperation(value = "根据主键查询系统用户")
-    @ApiOperationSupport(order = 1)
+    @ApiOperationSupport(order = 2)
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "path", name = "id", value = "系统主键", dataTypeClass = Long.class, required = true)
     })

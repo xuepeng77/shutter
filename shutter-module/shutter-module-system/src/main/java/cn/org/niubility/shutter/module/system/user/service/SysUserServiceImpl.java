@@ -21,6 +21,17 @@ import org.springframework.stereotype.Service;
 public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> implements SysUserService {
 
     /**
+     * 创建系统用户。
+     *
+     * @param sysUserDto 系统用户的数据传输对象。
+     * @return 是否创建成功。
+     */
+    public boolean create(final SysUserDto sysUserDto) {
+        final SysUser sysUser = sysUserMapper.dtoToEntity(sysUserDto);
+        return super.save(sysUser);
+    }
+
+    /**
      * 根据主键查询系统用户。
      * 当根据主键查询不到用户时，抛出SysUserNotFoundException异常对象。
      *

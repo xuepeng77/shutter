@@ -1,6 +1,7 @@
 package cn.org.niubility.shutter.module.system.user.dto;
 
 import cn.org.niubility.shutter.core.common.bean.dto.BaseDto;
+import cn.org.niubility.shutter.module.system.user.enums.SysUserStatus;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -72,7 +73,7 @@ public class SysUserDto extends BaseDto {
     /**
      * 状态：0=禁用；1=启用。
      */
-    private Integer status;
+    private SysUserStatus status;
 
     /**
      * 注册IP。

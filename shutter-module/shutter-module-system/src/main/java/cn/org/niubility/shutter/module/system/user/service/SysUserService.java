@@ -12,6 +12,14 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface SysUserService extends IService<SysUser> {
 
     /**
+     * 创建系统用户。
+     *
+     * @param sysUserDto 系统用户的数据传输对象。
+     * @return 是否创建成功。
+     */
+    boolean create(final SysUserDto sysUserDto);
+
+    /**
      * 根据主键查询系统用户。
      * 当根据主键查询不到用户时，抛出SysUserNotFoundException异常对象。
      *
