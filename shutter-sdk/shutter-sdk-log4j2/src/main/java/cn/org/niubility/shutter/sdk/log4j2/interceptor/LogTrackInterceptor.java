@@ -1,6 +1,7 @@
 package cn.org.niubility.shutter.sdk.log4j2.interceptor;
 
 import cn.org.niubility.shutter.core.common.util.RandomUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.MDC;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author xuepeng
  */
+@Slf4j
 public class LogTrackInterceptor implements HandlerInterceptor {
 
     /**
@@ -39,6 +41,9 @@ public class LogTrackInterceptor implements HandlerInterceptor {
         }
         MDC.put(TRACE_ID, traceId);
         response.addHeader(HEADER_KEY, traceId);
+        if (log.isDebugEnabled()) {
+            log.debug("生成日志的TraceId：{}，设置到请求头{}中。", traceId, HEADER_KEY);
+        }
         return true;
     }
 
