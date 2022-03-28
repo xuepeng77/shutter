@@ -32,6 +32,12 @@ import javax.validation.Valid;
 @ApiSupport(order = 1)
 public class SysUserController extends BaseController {
 
+    /**
+     * 创建系统用户。
+     *
+     * @param sysUserRequest 系统用户的请求类。
+     * @return 是否创建成功。
+     */
     @PostMapping("/v1")
     @ApiOperation(value = "创建系统用户")
     @ApiOperationSupport(order = 1)
