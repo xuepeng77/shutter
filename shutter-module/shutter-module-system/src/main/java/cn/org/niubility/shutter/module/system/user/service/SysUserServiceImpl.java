@@ -1,10 +1,12 @@
 package cn.org.niubility.shutter.module.system.user.service;
 
+import cn.org.niubility.shutter.module.system.config.SystemConfig;
 import cn.org.niubility.shutter.module.system.user.dao.SysUserDao;
 import cn.org.niubility.shutter.module.system.user.dto.SysUserDto;
 import cn.org.niubility.shutter.module.system.user.entity.SysUser;
 import cn.org.niubility.shutter.module.system.user.exception.SysUserNotFoundException;
 import cn.org.niubility.shutter.module.system.user.mapper.SysUserMapper;
+import cn.org.niubility.shutter.module.system.user.service.password.PasswordStrategyFactory;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
@@ -28,6 +30,11 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
      */
     public boolean create(final SysUserDto sysUserDto) {
         final SysUser sysUser = sysUserMapper.dtoToEntity(sysUserDto);
+        // 创建默认密码
+        final String password = passwordStrategyFactory
+                .getInstance(systemConfig.getSysUserConfig().getPasswordStrategyType())
+                .generate();
+        sysUser.setPassword(password);
         return super.save(sysUser);
     }
 
@@ -63,8 +70,39 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     }
 
     /**
+     * 自动装配系统用户登录密码策略的工厂类。
+     *
+     * @param passwordStrategyFactory 系统用户登录密码策略的工厂类。
+     */
+    @Autowired
+    public void setPasswordStrategyFactory(PasswordStrategyFactory passwordStrategyFactory) {
+        this.passwordStrategyFactory = passwordStrategyFactory;
+    }
+
+    /**
+     * 自动装配系统管理的自定义配置类。
+     *
+     * @param systemConfig 系统管理的自定义配置类。
+     */
+    @Autowired
+    public void setSystemConfig(SystemConfig systemConfig) {
+        this.systemConfig = systemConfig;
+    }
+
+
+    /**
      * 系统用户对象转换接口。
      */
     private SysUserMapper sysUserMapper;
+
+    /**
+     * 系统用户登录密码策略的工厂类。
+     */
+    private PasswordStrategyFactory passwordStrategyFactory;
+
+    /**
+     * 系统管理的自定义配置类。
+     */
+    private SystemConfig systemConfig;
 
 }
