@@ -1,4 +1,4 @@
-package cn.org.niubility.shutter.module.system.config.status;
+package cn.org.niubility.shutter.module.system.exception;
 
 import cn.org.niubility.shutter.core.common.bean.api.ResultStatus;
 
@@ -7,7 +7,7 @@ import cn.org.niubility.shutter.core.common.bean.api.ResultStatus;
  *
  * @author xuepeng
  */
-public enum UserResultStatus implements ResultStatus {
+public enum SysUserResultStatus implements ResultStatus {
 
     /**
      * 用户不存在。
@@ -20,7 +20,7 @@ public enum UserResultStatus implements ResultStatus {
      * @param code 状态编码。
      * @param desc 状态描述。
      */
-    UserResultStatus(
+    SysUserResultStatus(
             final int code, final String desc) {
         this.code = code;
         this.desc = desc;
