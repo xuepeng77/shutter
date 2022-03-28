@@ -1,10 +1,11 @@
 spring:
   application:
     name: Shutter Console
-  # 上传文件大小
   servlet:
     multipart:
+      # 请求数据大小
       max-request-size: 100MB
+      # 上传文件大小
       max-file-size: 100MB
   # 时间正反序列化格式
   jackson:
@@ -17,6 +18,7 @@ spring:
 knife4j:
   enable: true
 shutter:
+  # Knife4j配置
   knife4j:
     title: Shutter Console API
     version: 1.0.0
@@ -24,3 +26,9 @@ shutter:
     author: xuepeng
     website: https://gitee.com/xzr0710/shutter
     email: 100103081@qq.com
+  # 业务模块配置
+  module:
+    system:
+      sys-user-config:
+        random-password-length: 8
+        password-strategy-type: bcrypt
