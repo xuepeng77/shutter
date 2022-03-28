@@ -1,4 +1,4 @@
-package cn.org.niubility.shutter.core.web.config;
+package cn.org.niubility.shutter.core.web.exception;
 
 import cn.org.niubility.shutter.core.common.bean.api.DefaultResultFactory;
 import cn.org.niubility.shutter.core.common.bean.api.Result;
