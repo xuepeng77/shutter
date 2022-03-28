@@ -2,7 +2,6 @@ package cn.org.niubility.shutter.core.common.bean.api;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
@@ -15,7 +14,6 @@ import java.io.Serializable;
  * @author xuepeng
  */
 @Data
-@Builder
 @ToString
 @ApiModel(description = "响应信息")
 public class Result<T> implements Serializable {
