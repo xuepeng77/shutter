@@ -1,6 +1,7 @@
 package cn.org.niubility.shutter.core.web.security.xss;
 
 import cn.org.niubility.shutter.core.common.util.JsoupUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ReadListener;
@@ -18,6 +19,7 @@ import java.util.Map;
  *
  * @author xuepeng
  */
+@Slf4j
 public class XSSHttpServletRequestWrapper extends HttpServletRequestWrapper {
 
     /**
@@ -50,6 +52,9 @@ public class XSSHttpServletRequestWrapper extends HttpServletRequestWrapper {
             if (StringUtils.isNotBlank(result)) {
                 result = jsoupUtil.clean(result);
             }
+            if (log.isDebugEnabled()) {
+                log.debug("对RequestBody进行XSS清洗，清洗后的body内容是：{}", result);
+            }
             return new WrappedServletInputStream(new ByteArrayInputStream(result.getBytes(StandardCharsets.UTF_8.displayName())));
         }
     }
@@ -70,6 +75,9 @@ public class XSSHttpServletRequestWrapper extends HttpServletRequestWrapper {
         if (StringUtils.isNotBlank(value)) {
             value = jsoupUtil.clean(value);
         }
+        if (log.isDebugEnabled()) {
+            log.debug("对RequestParam进行XSS清洗，清洗后的Param是：{}", value);
+        }
         return value;
     }
 
@@ -86,6 +94,9 @@ public class XSSHttpServletRequestWrapper extends HttpServletRequestWrapper {
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = jsoupUtil.clean(arr[i]);
             }
+        }
+        if (log.isDebugEnabled()) {
+            log.debug("对RequestParams进行XSS清洗，清洗后的Params是：{}", arr);
         }
         return arr;
     }
@@ -116,6 +127,9 @@ public class XSSHttpServletRequestWrapper extends HttpServletRequestWrapper {
             }
             returnMap.put(name, new String[]{jsoupUtil.clean(value).trim()});
         }
+        if (log.isDebugEnabled()) {
+            log.debug("对RequestParamMap进行XSS清洗，清洗后的ParamMap是：{}", returnMap);
+        }
         return returnMap;
     }
 
@@ -130,6 +144,9 @@ public class XSSHttpServletRequestWrapper extends HttpServletRequestWrapper {
         String value = super.getHeader(jsoupUtil.clean(name));
         if (value != null) {
             value = jsoupUtil.clean(value);
+        }
+        if (log.isDebugEnabled()) {
+            log.debug("对RequestHeader进行XSS清洗，清洗后的Header是：{}", value);
         }
         return value;
     }
