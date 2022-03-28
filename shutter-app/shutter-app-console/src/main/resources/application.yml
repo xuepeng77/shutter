@@ -30,5 +30,7 @@ shutter:
   module:
     system:
       sys-user-config:
+        # 随机密码的长度
         random-password-length: 8
+        # 密码加密策略
         password-strategy-type: bcrypt
