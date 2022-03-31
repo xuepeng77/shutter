@@ -40,7 +40,6 @@
         <jsoup.version>1.11.3</jsoup.version>
         <knife4j.version>3.0.3</knife4j.version>
         <!-- Shutter Core Web -->
-        <bitwalker.version>1.21</bitwalker.version>
         <ip2region.version>1.7.2</ip2region.version>
     </properties>
 
@@ -103,12 +102,6 @@
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
-            </dependency>
-            <!-- Bitwalker -->
-            <dependency>
-                <groupId>eu.bitwalker</groupId>
-                <artifactId>UserAgentUtils</artifactId>
-                <version>${bitwalker.version}</version>
             </dependency>
             <!-- IP Region -->
             <dependency>
