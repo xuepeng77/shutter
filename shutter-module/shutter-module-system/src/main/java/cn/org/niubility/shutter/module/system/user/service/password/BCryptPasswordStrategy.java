@@ -2,7 +2,7 @@ package cn.org.niubility.shutter.module.system.user.service.password;
 
 import cn.hutool.crypto.digest.BCrypt;
 import cn.org.niubility.shutter.core.common.util.RandomUtil;
-import cn.org.niubility.shutter.module.system.config.SystemConfig;
+import cn.org.niubility.shutter.module.system.property.SystemProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,7 +24,7 @@ public class BCryptPasswordStrategy extends AbstractPasswordStrategy {
     @Override
     public String random() {
         // 生成默认的登录密码。
-        return RandomUtil.getRandomString(systemConfig.getSysUserConfig().getRandomPasswordLength());
+        return RandomUtil.getRandomString(systemConfig.getSysUserProperty().getRandomPasswordLength());
     }
 
     /**
@@ -65,13 +65,13 @@ public class BCryptPasswordStrategy extends AbstractPasswordStrategy {
      * @param systemConfig 系统管理的自定义配置类。
      */
     @Autowired
-    public void setSystemConfig(SystemConfig systemConfig) {
+    public void setSystemConfig(SystemProperty systemConfig) {
         this.systemConfig = systemConfig;
     }
 
     /**
      * 系统管理的自定义配置类。
      */
-    private SystemConfig systemConfig;
+    private SystemProperty systemConfig;
 
 }

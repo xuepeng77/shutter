@@ -1,6 +1,6 @@
 package cn.org.niubility.shutter.sdk.mybatis.config;
 
-import cn.org.niubility.shutter.sdk.mybatis.property.MybatisPlusProperties;
+import cn.org.niubility.shutter.sdk.mybatis.property.MybatisPlusProperty;
 import com.baomidou.mybatisplus.autoconfigure.MybatisPlusPropertiesCustomizer;
 import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import com.baomidou.mybatisplus.core.config.GlobalConfig;
@@ -26,7 +26,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @MapperScan(basePackages = {"cn.org.niubility.shutter.**.dao.**"})
-@EnableConfigurationProperties(MybatisPlusProperties.class)
+@EnableConfigurationProperties(MybatisPlusProperty.class)
 public class MybatisPlusConfiguration {
 
     // TODO 加入租户、逻辑删除、数据权限功能
@@ -54,7 +54,7 @@ public class MybatisPlusConfiguration {
      * @return 添加插件。
      */
     @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor(final MybatisPlusProperties mybatisPlusProperties) {
+    public MybatisPlusInterceptor mybatisPlusInterceptor(final MybatisPlusProperty mybatisPlusProperties) {
         final MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         // 添加分页插件
         interceptor.addInnerInterceptor(paginationInnerInterceptor(mybatisPlusProperties));
@@ -67,7 +67,7 @@ public class MybatisPlusConfiguration {
      * @return 配置分页插件。
      */
     @Bean
-    public PaginationInnerInterceptor paginationInnerInterceptor(MybatisPlusProperties mybatisPlusProperties) {
+    public PaginationInnerInterceptor paginationInnerInterceptor(MybatisPlusProperty mybatisPlusProperties) {
         PaginationInnerInterceptor paginationInterceptor = new PaginationInnerInterceptor();
         paginationInterceptor.setMaxLimit(mybatisPlusProperties.getPageLimit());
         paginationInterceptor.setOverflow(mybatisPlusProperties.getOverflow());

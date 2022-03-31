@@ -16,7 +16,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @NoArgsConstructor
 @AllArgsConstructor
 @ConfigurationProperties(prefix = "shutter.mybatis")
-public class MybatisPlusProperties {
+public class MybatisPlusProperty {
 
     /**
      * 分页最大数

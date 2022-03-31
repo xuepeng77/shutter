@@ -1,6 +1,6 @@
 package cn.org.niubility.shutter.sdk.knife4j.config;
 
-import cn.org.niubility.shutter.sdk.knife4j.property.Knife4jProperties;
+import cn.org.niubility.shutter.sdk.knife4j.property.Knife4jProperty;
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -28,7 +28,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @EnableKnife4j
 @Import(BeanValidatorPluginsConfiguration.class)
-@EnableConfigurationProperties(Knife4jProperties.class)
+@EnableConfigurationProperties(Knife4jProperty.class)
 public class Knife4jConfiguration {
 
 
@@ -36,7 +36,7 @@ public class Knife4jConfiguration {
      * @return 创建API文档。
      */
     @Bean
-    public Docket createRestApi(final Knife4jProperties knife4jProperties) {
+    public Docket createRestApi(final Knife4jProperty knife4jProperties) {
         // 设置显示的swagger环境信息
         Profiles profiles = Profiles.of(knife4jProperties.getProfiles().toArray(new String[0]));
         // 判断是否处在自己设定的环境当中
@@ -54,7 +54,7 @@ public class Knife4jConfiguration {
     /**
      * @return 创建API信息。
      */
-    private ApiInfo apiInfo(final Knife4jProperties knife4jProperties) {
+    private ApiInfo apiInfo(final Knife4jProperty knife4jProperties) {
         return new ApiInfoBuilder()
                 .description(knife4jProperties.getDescription())
                 .contact(new Contact(

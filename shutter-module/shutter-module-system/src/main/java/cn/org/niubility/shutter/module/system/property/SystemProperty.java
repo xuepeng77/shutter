@@ -1,4 +1,4 @@
-package cn.org.niubility.shutter.module.system.config;
+package cn.org.niubility.shutter.module.system.property;
 
 import cn.org.niubility.shutter.module.system.user.service.password.PasswordStrategyType;
 import lombok.Data;
@@ -15,12 +15,12 @@ import org.springframework.context.annotation.Configuration;
 @ToString
 @Configuration
 @ConfigurationProperties(prefix = "shutter.module.system")
-public class SystemConfig {
+public class SystemProperty {
 
     /**
      * 系统用户的自定义配置类。
      */
-    private SysUserConfig sysUserConfig;
+    private SysUserProperty sysUserProperty;
 
     /**
      * 系统用户的自定义配置类。
@@ -29,7 +29,7 @@ public class SystemConfig {
      */
     @Data
     @ToString
-    public static class SysUserConfig {
+    public static class SysUserProperty {
 
         /**
          * 随机密码的长度。

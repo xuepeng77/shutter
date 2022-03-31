@@ -3,6 +3,8 @@ package cn.org.niubility.shutter.module.system.user.controller;
 import cn.org.niubility.shutter.core.common.bean.api.DefaultResultFactory;
 import cn.org.niubility.shutter.core.common.bean.api.Result;
 import cn.org.niubility.shutter.core.web.bean.BaseController;
+import cn.org.niubility.shutter.core.web.log.ApiLog;
+import cn.org.niubility.shutter.core.web.log.ApiLogAction;
 import cn.org.niubility.shutter.module.system.user.dto.SysUserDto;
 import cn.org.niubility.shutter.module.system.user.mapper.SysUserMapper;
 import cn.org.niubility.shutter.module.system.user.service.SysUserService;
@@ -41,6 +43,7 @@ public class SysUserController extends BaseController {
     @PostMapping("/v1")
     @ApiOperation(value = "创建系统用户")
     @ApiOperationSupport(order = 1)
+    @ApiLog(module = "系统管理", func = "系统用户管理", remark = "创建系统用户", action = ApiLogAction.CREATE)
     public Result<Boolean> create(@Valid @RequestBody final SysUserRequest sysUserRequest) {
         final SysUserDto sysUserDto = sysUserMapper.requestToDto(sysUserRequest);
         final boolean result = sysUserService.create(sysUserDto);
@@ -62,6 +65,7 @@ public class SysUserController extends BaseController {
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "path", name = "id", value = "系统主键", dataTypeClass = Long.class, required = true)
     })
+    @ApiLog(module = "系统管理", func = "系统用户管理", remark = "根据主键查询系统用户", action = ApiLogAction.QUERY)
     public Result<SysUserResponse> findById(@PathVariable(value = "id") final long id) {
         final SysUserDto sysUserDto = sysUserService.findById(id);
         final SysUserResponse result = sysUserMapper.dtoToResponse(sysUserDto);

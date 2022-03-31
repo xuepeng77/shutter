@@ -11,6 +11,11 @@ public final class HttpHeaderConst {
     }
 
     /**
+     * UserAgent。
+     */
+    public static final String USER_AGENT = "User-Agent";
+
+    /**
      * 程序构建号。
      */
     public static final String BUILD_NUMBER = "X-Build-Number";

@@ -1,16 +1,14 @@
 package cn.org.niubility.shutter.sdk.mybatis.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.*;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 /**
  * ORM实体类的父类。
+ * 定义了主键和租户主键字段。
  *
  * @author xuepeng
  */
@@ -35,37 +33,5 @@ public class BaseEntity implements Serializable {
      * 数据库字段：tenant_id，bigint(20)。
      */
     private Long tenantId;
-
-    /**
-     * 是否删除。
-     * 数据库字段：deleted，tinyint(1)。
-     */
-    private Boolean deleted;
-
-    /**
-     * 创建人。
-     * 数据库字段：create_user，bigint(20)。
-     */
-    private Long createUser;
-
-    /**
-     * 创建时间。
-     * 数据库字段：create_time，timestamp。
-     */
-    @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
-
-    /**
-     * 修改人。
-     * 数据库字段：modify_user，bigint(20)。
-     */
-    private Long modifyUser;
-
-    /**
-     * 修改时间。
-     * 数据库字段：modify_time，timestamp。
-     */
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime modifyTime;
 
 }

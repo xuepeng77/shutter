@@ -1,6 +1,6 @@
 package cn.org.niubility.shutter.module.system.user.service;
 
-import cn.org.niubility.shutter.module.system.config.SystemConfig;
+import cn.org.niubility.shutter.module.system.property.SystemProperty;
 import cn.org.niubility.shutter.module.system.user.dao.SysUserDao;
 import cn.org.niubility.shutter.module.system.user.dto.SysUserDto;
 import cn.org.niubility.shutter.module.system.user.entity.SysUser;
@@ -32,7 +32,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
         final SysUser sysUser = sysUserMapper.dtoToEntity(sysUserDto);
         // 创建默认密码
         final String password = passwordStrategyFactory
-                .getInstance(systemConfig.getSysUserConfig().getPasswordStrategyType())
+                .getInstance(systemConfig.getSysUserProperty().getPasswordStrategyType())
                 .generate();
         sysUser.setPassword(password);
         return super.save(sysUser);
@@ -85,7 +85,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
      * @param systemConfig 系统管理的自定义配置类。
      */
     @Autowired
-    public void setSystemConfig(SystemConfig systemConfig) {
+    public void setSystemConfig(SystemProperty systemConfig) {
         this.systemConfig = systemConfig;
     }
 
@@ -103,6 +103,6 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     /**
      * 系统管理的自定义配置类。
      */
-    private SystemConfig systemConfig;
+    private SystemProperty systemConfig;
 
 }

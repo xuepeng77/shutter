@@ -20,7 +20,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ConfigurationProperties(prefix = "shutter.knife4j")
-public class Knife4jProperties {
+public class Knife4jProperty {
 
     /**
      * 在以下环境下，会启动Knife4j。

@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  cn.org.niubility.shutter.module.system.config.SystemConfig
+  cn.org.niubility.shutter.module.system.property.SystemProperty

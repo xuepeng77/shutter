@@ -16,7 +16,7 @@ import java.time.Duration;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class CorsConfiguration {
+public class CorsProperty {
 
     /**
      * 配置允许跨域的路由。

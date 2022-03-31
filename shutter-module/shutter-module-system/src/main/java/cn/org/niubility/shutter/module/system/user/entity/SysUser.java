@@ -1,7 +1,7 @@
 package cn.org.niubility.shutter.module.system.user.entity;
 
 import cn.org.niubility.shutter.module.system.user.enums.SysUserStatus;
-import cn.org.niubility.shutter.sdk.mybatis.entity.BaseEntity;
+import cn.org.niubility.shutter.sdk.mybatis.entity.BizEntity;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -18,18 +18,17 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class SysUser extends BaseEntity {
+public class SysUser extends BizEntity {
 
     /**
      * 帐号。
-     * 数据库字段：account，varchar(64)。
+     * 数据库字段：account，varchar(32)。
      */
     private String account;
 
     /**
      * 密码。
-     * 数据库字段：password，varchar(128)。
+     * 数据库字段：password，varchar(60)。
      */
     private String password;
 
@@ -41,13 +40,13 @@ public class SysUser extends BaseEntity {
 
     /**
      * 邮箱。
-     * 数据库字段：email，varchar(32)。
+     * 数据库字段：email，varchar(128)。
      */
     private String email;
 
     /**
      * 中文名。
-     * 数据库字段：chinese_name，varchar(32)。
+     * 数据库字段：chinese_name，varchar(8)。
      */
     private String chineseName;
 
@@ -89,13 +88,13 @@ public class SysUser extends BaseEntity {
 
     /**
      * 注册IP。
-     * 数据库字段：regedit_ip，varchar(32)。
+     * 数据库字段：regedit_ip，varchar(16)。
      */
     private String regeditIp;
 
     /**
      * 登录IP。
-     * 数据库字段：login_ip，varchar(32)。
+     * 数据库字段：login_ip，varchar(16)。
      */
     private String loginIp;
 

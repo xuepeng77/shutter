@@ -1,24 +1,35 @@
 package cn.org.niubility.shutter.core.web.util;
 
+import cn.hutool.http.useragent.UserAgent;
+import cn.hutool.http.useragent.UserAgentUtil;
 import cn.org.niubility.shutter.core.common.consts.PunctuationConst;
+import cn.org.niubility.shutter.core.web.consts.HttpHeaderConst;
 import cn.org.niubility.shutter.core.web.consts.IPConst;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 /**
  * Web的工具类。
  *
  * @author xuepeng
  */
-public class IPUtil {
+public class WebUtil {
 
     /**
      * 构造函数。
      */
-    private IPUtil() {
+    private WebUtil() {
+    }
+
+    /**
+     * @return 获取当前请求的HttpServletRequest对象。
+     */
+    public static HttpServletRequest getHttpServletRequest() {
+        final RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+        return (HttpServletRequest) requestAttributes.resolveReference(RequestAttributes.REFERENCE_REQUEST);
     }
 
     /**
@@ -35,6 +46,16 @@ public class IPUtil {
             ip = ip.split(PunctuationConst.COMMA)[0].split(PunctuationConst.COLON)[0];
         }
         return doGetIPAddress(ip, request);
+    }
+
+    /**
+     * 获取UserAgent信息。
+     *
+     * @param request HttpServletRequest
+     * @return UserAgent信息。
+     */
+    public static UserAgent getUserAgent(final HttpServletRequest request) {
+        return UserAgentUtil.parse(request.getHeader(HttpHeaderConst.USER_AGENT));
     }
 
     /**
@@ -62,18 +83,6 @@ public class IPUtil {
         }
         if (StringUtils.isEmpty(ip) || IPConst.UNKNOWN.equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
-        }
-        if (StringUtils.equalsAny(
-                ip,
-                IPConst.LOCALHOST,
-                IPConst.LOCALHOST_IP,
-                IPConst.LOCALHOST_IPV6)
-        ) {
-            try {
-                ip = InetAddress.getLocalHost().getHostAddress();
-            } catch (UnknownHostException e) {
-                return ip;
-            }
         }
         return ip;
     }
