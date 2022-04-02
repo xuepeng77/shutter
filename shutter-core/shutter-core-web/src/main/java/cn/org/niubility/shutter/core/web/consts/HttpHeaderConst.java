@@ -1,7 +1,7 @@
 package cn.org.niubility.shutter.core.web.consts;
 
 /**
- * 定义HttpHeader的常量。
+ * HttpHeader的常量。
  *
  * @author xuepeng
  */

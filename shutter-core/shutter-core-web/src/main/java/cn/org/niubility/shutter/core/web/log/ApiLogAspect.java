@@ -1,5 +1,6 @@
 package cn.org.niubility.shutter.core.web.log;
 
+import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.date.LocalDateTimeUtil;
 import cn.hutool.http.useragent.UserAgent;
 import cn.org.niubility.shutter.core.common.consts.PunctuationConst;
@@ -11,6 +12,7 @@ import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
@@ -72,6 +74,10 @@ public class ApiLogAspect {
     @AfterReturning(value = "operation()", returning = "result")
     public void doAfterReturning(JoinPoint joinPoint, Object result) {
         final ApiLogInfo apiLogInfo = (ApiLogInfo) ThreadLocalUtil.getAndRemove(THREAD_LOCAL_KEY);
+        // 当前登录人主键
+        if (StpUtil.isLogin() && ObjectUtils.isEmpty(apiLogInfo.getUserId())) {
+            apiLogInfo.setUserId(Long.valueOf((String) StpUtil.getLoginId()));
+        }
         apiLogInfo.setResult(result.toString());
         apiLogInfo.setExeTime(exeTime(apiLogInfo.getStartTime()));
         if (log.isDebugEnabled()) {
@@ -93,6 +99,10 @@ public class ApiLogAspect {
     @AfterThrowing(pointcut = "operation()", throwing = "throwable")
     public void doAfterThrowing(JoinPoint joinPoint, Throwable throwable) {
         final ApiLogInfo apiLogInfo = (ApiLogInfo) ThreadLocalUtil.getAndRemove(THREAD_LOCAL_KEY);
+        // 当前登录人主键
+        if (StpUtil.isLogin() && ObjectUtils.isEmpty(apiLogInfo.getUserId())) {
+            apiLogInfo.setUserId(Long.valueOf((String) StpUtil.getLoginId()));
+        }
         apiLogInfo.setError(throwable.getMessage());
         apiLogInfo.setExeTime(exeTime(apiLogInfo.getStartTime()));
         log.error(apiLogInfo.toString(), throwable);
@@ -114,6 +124,11 @@ public class ApiLogAspect {
                                 final HttpServletRequest request,
                                 final JoinPoint joinPoint,
                                 final Method method) {
+        // 当前登录人主键
+        if (StpUtil.isLogin()) {
+            apiLogInfo.setUserId(Long.valueOf((String) StpUtil.getLoginId()));
+        }
+        // 请求信息
         apiLogInfo.setStartTime(LocalDateTime.now());
         apiLogInfo.setUrl(request.getRequestURL().toString());
         apiLogInfo.setUri(request.getRequestURI());
@@ -205,6 +220,7 @@ public class ApiLogAspect {
     /**
      * API日志持久化接口。
      */
+    // TODO 同步、异步两种方式
     private ApiLogPersistent apiLogPersistent;
 
 }

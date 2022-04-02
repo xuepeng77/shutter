@@ -8,7 +8,7 @@ import lombok.ToString;
 import java.io.Serializable;
 
 /**
- * 响应实体类。
+ * Result实体类。
  *
  * @param <T> 返回数据。
  * @author xuepeng

@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Result的简单工厂。
+ * Result的简单工厂类。
  * 提供常用的返回Result的方法。
  *
  * @author xuepeng

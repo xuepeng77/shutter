@@ -1,12 +1,13 @@
 package cn.org.niubility.shutter.core.web.bean;
 
+import cn.org.niubility.shutter.core.web.util.WebUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Controller的基类。
+ * Controller的父类。
  * 封装了Controller中常用的方法。
  *
  * @author xuepeng
@@ -19,6 +20,13 @@ public class BaseController {
      */
     public HttpServletRequest getHttpServletRequest() {
         return httpServletRequest;
+    }
+
+    /**
+     * @return 获取请求IP地址。
+     */
+    public String getRequestIp() {
+        return WebUtil.getIPAddress(httpServletRequest);
     }
 
     /**

@@ -1,7 +1,7 @@
 package cn.org.niubility.shutter.core.common.bean.api;
 
 /**
- * 提供的默认Result对象。
+ * Result默认状态。
  * 包括成功、超时、参数错误、操作失败、授权失败、系统异常等错误。
  *
  * @author xuepeng

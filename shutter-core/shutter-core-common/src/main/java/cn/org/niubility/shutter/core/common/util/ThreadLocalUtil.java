@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * ThreadLocal的工具类。
+ * ThreadLocal工具类。
  *
  * @author xuepeng
  */

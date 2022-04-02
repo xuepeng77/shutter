@@ -9,15 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 分页查询的的查询结果信息。
+ * 分页响应类。
  * 包括：当前页数、每页显示的条数、总条数、总页数和查询的数据。
  *
  * @param <T> 查询出的数据的类型。
  * @author xuepeng
  */
 @Data
-@Builder
 @ToString
+@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel(description = "分页响应信息")

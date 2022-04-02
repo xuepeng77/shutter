@@ -12,7 +12,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Web的工具类。
+ * Web工具类。
  *
  * @author xuepeng
  */

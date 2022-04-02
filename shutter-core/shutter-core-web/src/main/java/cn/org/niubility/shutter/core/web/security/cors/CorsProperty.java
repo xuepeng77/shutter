@@ -1,19 +1,17 @@
 package cn.org.niubility.shutter.core.web.security.cors;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.Duration;
 
 /**
- * 跨域配置信息。
+ * 跨域配置的自定义属性类。
  *
  * @author xuepeng
  */
 @Data
 @ToString
+@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
 public class CorsProperty {

@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 分页查询时的分页参数。
+ * 分页参数类。
  * 包括查询的页数，每页记录数，和排序信息。
  *
  * @author xuepeng
  */
 @Data
-@Builder
 @ToString
+@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel(description = "分页查询信息")

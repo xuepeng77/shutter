@@ -6,7 +6,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.safety.Whitelist;
 
 /**
- * Jsoup的通用类。
+ * Jsoup工具类。
  *
  * @author xuepeng
  */

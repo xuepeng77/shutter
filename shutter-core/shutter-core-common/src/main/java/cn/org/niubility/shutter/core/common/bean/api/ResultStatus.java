@@ -1,7 +1,7 @@
 package cn.org.niubility.shutter.core.common.bean.api;
 
 /**
- * Http请求的响应状态接口。
+ * Result状态接口。
  *
  * @author xuepeng
  */

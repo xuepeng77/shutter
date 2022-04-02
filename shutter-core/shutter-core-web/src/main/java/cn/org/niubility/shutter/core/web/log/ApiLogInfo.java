@@ -20,6 +20,11 @@ public class ApiLogInfo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
+     * 用户主键。
+     */
+    private Long userId;
+    
+    /**
      * 请求开始时间。
      */
     private LocalDateTime startTime;

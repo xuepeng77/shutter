@@ -38,6 +38,17 @@ public class RandomUtil {
     }
 
     /**
+     * 返回指定范围内的随机数。
+     *
+     * @param min 最小。
+     * @param max 最大。
+     * @return 随机数。
+     */
+    public static int getRandomNumber(final int min, final int max) {
+        return random.nextInt(max + min) + min;
+    }
+
+    /**
      * @return 获取一个UUID。
      */
     public static String getUUID() {
