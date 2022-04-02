@@ -6,8 +6,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * Log4j2 SDK配置类。
- * 注册日志拦截器。
+ * Log4j2的配置类。
+ * 提供日志级别的热转换，提供日志追踪功能。
  *
  * @author xuepeng
  */

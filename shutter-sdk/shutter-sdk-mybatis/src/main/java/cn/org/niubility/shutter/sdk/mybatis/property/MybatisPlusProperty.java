@@ -1,18 +1,16 @@
 package cn.org.niubility.shutter.sdk.mybatis.property;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * MybatisPlus自定义属性类。
+ * MybatisPlus的自定义属性类。
  *
  * @author xuepeng
  */
 @Data
 @ToString
+@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
 @ConfigurationProperties(prefix = "shutter.mybatis")

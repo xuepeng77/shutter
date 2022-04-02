@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Log4j2 SDK API。
+ * Log4j2的API。
  *
  * @author xuepeng
  */

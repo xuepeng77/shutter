@@ -21,6 +21,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Knife4j的配置类。
+ * 配置Knife4j的文档信息，关闭Prod环境的文档访问。
  *
  * @author xuepeng
  */
@@ -30,7 +31,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Import(BeanValidatorPluginsConfiguration.class)
 @EnableConfigurationProperties(Knife4jProperty.class)
 public class Knife4jConfiguration {
-
 
     /**
      * @return 创建API文档。

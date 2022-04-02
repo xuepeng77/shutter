@@ -1,7 +1,7 @@
 package cn.org.niubility.shutter.sdk.mybatis.consts;
 
 /**
- * ORM的常量类。
+ * ORM字段使用的常量类。
  *
  * @author xuepeng
  */

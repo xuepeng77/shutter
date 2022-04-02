@@ -22,13 +22,13 @@
     <!-- 依赖管理 -->
     <dependencyManagement>
         <dependencies>
-            <!-- 身份认证 -->
+            <!-- 验证码 -->
             <dependency>
                 <groupId>cn.org.niubility</groupId>
-                <artifactId>shutter-sdk-auth</artifactId>
+                <artifactId>shutter-sdk-verifycode</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <!-- 身份认证 -->
+            <!-- API文档 -->
             <dependency>
                 <groupId>cn.org.niubility</groupId>
                 <artifactId>shutter-sdk-knife4j</artifactId>
@@ -40,7 +40,7 @@
                 <artifactId>shutter-sdk-log4j2</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <!-- ORM -->
+            <!-- Mybatis -->
             <dependency>
                 <groupId>cn.org.niubility</groupId>
                 <artifactId>shutter-sdk-mybatis</artifactId>

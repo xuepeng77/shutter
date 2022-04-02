@@ -1,22 +1,20 @@
 package cn.org.niubility.shutter.sdk.knife4j.property;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.Arrays;
 import java.util.List;
 
 /**
- * Knife4j自定义属性类。
+ * Knife4j的自定义属性类。
  *
  * @author xuepeng
  */
 @Data
 @ToString
+@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
 @ConfigurationProperties(prefix = "shutter.knife4j")
