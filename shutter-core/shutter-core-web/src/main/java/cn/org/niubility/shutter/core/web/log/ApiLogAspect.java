@@ -1,10 +1,10 @@
 package cn.org.niubility.shutter.core.web.log;
 
-import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.date.LocalDateTimeUtil;
 import cn.hutool.http.useragent.UserAgent;
 import cn.org.niubility.shutter.core.common.consts.PunctuationConst;
 import cn.org.niubility.shutter.core.common.util.ThreadLocalUtil;
+import cn.org.niubility.shutter.core.web.auth.AuthService;
 import cn.org.niubility.shutter.core.web.util.WebUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -75,8 +75,8 @@ public class ApiLogAspect {
     public void doAfterReturning(JoinPoint joinPoint, Object result) {
         final ApiLogInfo apiLogInfo = (ApiLogInfo) ThreadLocalUtil.getAndRemove(THREAD_LOCAL_KEY);
         // 当前登录人主键
-        if (StpUtil.isLogin() && ObjectUtils.isEmpty(apiLogInfo.getUserId())) {
-            apiLogInfo.setUserId(Long.valueOf((String) StpUtil.getLoginId()));
+        if (authService.isLogin() && ObjectUtils.isEmpty(apiLogInfo.getUserId())) {
+            apiLogInfo.setUserId(authService.getCurrentUserId());
         }
         apiLogInfo.setResult(result.toString());
         apiLogInfo.setExeTime(exeTime(apiLogInfo.getStartTime()));
@@ -100,8 +100,8 @@ public class ApiLogAspect {
     public void doAfterThrowing(JoinPoint joinPoint, Throwable throwable) {
         final ApiLogInfo apiLogInfo = (ApiLogInfo) ThreadLocalUtil.getAndRemove(THREAD_LOCAL_KEY);
         // 当前登录人主键
-        if (StpUtil.isLogin() && ObjectUtils.isEmpty(apiLogInfo.getUserId())) {
-            apiLogInfo.setUserId(Long.valueOf((String) StpUtil.getLoginId()));
+        if (authService.isLogin() && ObjectUtils.isEmpty(apiLogInfo.getUserId())) {
+            apiLogInfo.setUserId(authService.getCurrentUserId());
         }
         apiLogInfo.setError(throwable.getMessage());
         apiLogInfo.setExeTime(exeTime(apiLogInfo.getStartTime()));
@@ -125,8 +125,8 @@ public class ApiLogAspect {
                                 final JoinPoint joinPoint,
                                 final Method method) {
         // 当前登录人主键
-        if (StpUtil.isLogin()) {
-            apiLogInfo.setUserId(Long.valueOf((String) StpUtil.getLoginId()));
+        if (authService.isLogin()) {
+            apiLogInfo.setUserId(authService.getCurrentUserId());
         }
         // 请求信息
         apiLogInfo.setStartTime(LocalDateTime.now());
@@ -208,6 +208,16 @@ public class ApiLogAspect {
     }
 
     /**
+     * 自动装配身份认证业务处理接口。
+     *
+     * @param authService 身份认证业务处理接口。
+     */
+    @Autowired(required = false)
+    public void setAuthService(AuthService authService) {
+        this.authService = authService;
+    }
+
+    /**
      * 自动装配API日志持久化接口。
      *
      * @param apiLogPersistent ApiLog持久化接口。
@@ -216,6 +226,11 @@ public class ApiLogAspect {
     public void setApiLogPersistent(ApiLogPersistent apiLogPersistent) {
         this.apiLogPersistent = apiLogPersistent;
     }
+
+    /**
+     * 身份认证业务处理接口。
+     */
+    private AuthService authService;
 
     /**
      * API日志持久化接口。

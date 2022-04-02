@@ -60,70 +60,35 @@ public class DefaultResultFactory {
     }
 
     /**
-     * 创建超时的Result对象。
+     * 认证鉴权错误的Result对象。
      *
-     * @return 超时的Result对象。
+     * @return 认证鉴权错误的Result对象。
      */
-    public static Result<Map<String, String>> timeout() {
-        return timeout(StringUtils.EMPTY);
+    public static Result<Map<String, String>> auth() {
+        return auth(StringUtils.EMPTY);
     }
 
     /**
-     * 创建超时的Result对象。
+     * 认证鉴权错误的Result对象。
      *
      * @param msg 返回的消息。
-     * @return 超时的Result对象。
+     * @return 认证鉴权错误的Result对象。
      */
-    public static Result<Map<String, String>> timeout(final String msg) {
-        return new Result.Builder<Map<String, String>>(DefaultResultStatus.TIMEOUT)
+    public static Result<Map<String, String>> auth(final String msg) {
+        return new Result.Builder<Map<String, String>>(DefaultResultStatus.AUTH)
                 .msg(msg)
                 .data(DEFAULT_DATA).build();
     }
 
     /**
-     * 创建超时的Result对象。
+     * 认证鉴权错误的Result对象。
      *
      * @param msg  返回的消息。
      * @param data 返回的数据。
-     * @return 超时的Result对象。
+     * @return 认证鉴权错误的Result对象。
      */
-    public static <T> Result<T> timeout(final String msg, final T data) {
-        return new Result.Builder<T>(DefaultResultStatus.TIMEOUT)
-                .msg(msg)
-                .data(data)
-                .build();
-    }
-
-    /**
-     * 创建参数错误的Result对象。
-     *
-     * @return 参数错误的Result对象。
-     */
-    public static Result<Map<String, String>> param() {
-        return param(StringUtils.EMPTY);
-    }
-
-    /**
-     * 创建参数错误的Result对象。
-     *
-     * @param msg 返回的消息。
-     * @return 参数错误的Result对象。
-     */
-    public static Result<Map<String, String>> param(final String msg) {
-        return new Result.Builder<Map<String, String>>(DefaultResultStatus.PARAM)
-                .msg(msg)
-                .data(DEFAULT_DATA).build();
-    }
-
-    /**
-     * 创建参数错误的Result对象。
-     *
-     * @param msg  返回的消息。
-     * @param data 返回的数据。
-     * @return 参数错误的Result对象。
-     */
-    public static <T> Result<T> param(final String msg, final T data) {
-        return new Result.Builder<T>(DefaultResultStatus.PARAM)
+    public static <T> Result<T> auth(final String msg, final T data) {
+        return new Result.Builder<T>(DefaultResultStatus.AUTH)
                 .msg(msg)
                 .data(data)
                 .build();
@@ -160,41 +125,6 @@ public class DefaultResultFactory {
      */
     public static <T> Result<T> fail(final String msg, final T data) {
         return new Result.Builder<T>(DefaultResultStatus.FAIL)
-                .msg(msg)
-                .data(data)
-                .build();
-    }
-
-    /**
-     * 创建授权失败的Result对象。
-     *
-     * @return 授权失败的Result对象。
-     */
-    public static Result<Map<String, String>> permissions() {
-        return permissions(StringUtils.EMPTY);
-    }
-
-    /**
-     * 创建授权失败的Result对象。
-     *
-     * @param msg 返回的消息。
-     * @return 授权失败的Result对象。
-     */
-    public static Result<Map<String, String>> permissions(final String msg) {
-        return new Result.Builder<Map<String, String>>(DefaultResultStatus.PERMISSIONS)
-                .msg(msg)
-                .data(DEFAULT_DATA).build();
-    }
-
-    /**
-     * 创建授权失败的Result对象。
-     *
-     * @param msg  返回的消息。
-     * @param data 返回的数据。
-     * @return 授权失败的Result对象。
-     */
-    public static <T> Result<T> permissions(final String msg, final T data) {
-        return new Result.Builder<T>(DefaultResultStatus.PERMISSIONS)
                 .msg(msg)
                 .data(data)
                 .build();

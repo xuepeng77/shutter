@@ -22,14 +22,14 @@ import java.util.Map;
 public class GlobalExceptionHandlerConfig {
 
     /**
-     * SpringBoot接口参数验证失败的异常处理。
+     * API参数验证失败的异常处理。
      *
-     * @param e MethodArgumentNotValidException。
+     * @param e API参数验证失败的异常对象。
      * @return 错误信息。
      */
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     @ResponseBody
-    public Result<Map<String, String>> methodArgumentNotValidExceptionHandler(MethodArgumentNotValidException e) {
+    public Result<Map<String, String>> methodArgumentNotValidException(MethodArgumentNotValidException e) {
         log.error(e.getMessage());
         final Map<String, String> errors = new HashMap<>();
         e.getBindingResult().getAllErrors().forEach(error -> {
@@ -37,7 +37,7 @@ public class GlobalExceptionHandlerConfig {
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
-        return DefaultResultFactory.param("接口参数验证失败。", errors);
+        return DefaultResultFactory.error("接口参数验证失败。", errors);
     }
 
 }

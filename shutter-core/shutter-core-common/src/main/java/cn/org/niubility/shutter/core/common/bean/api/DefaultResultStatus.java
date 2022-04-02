@@ -13,21 +13,13 @@ public enum DefaultResultStatus implements ResultStatus {
      */
     SUCCESS(20000, "成功"),
     /**
-     * 超时。
-     */
-    TIMEOUT(30000, "超时"),
-    /**
      * 参数非法。
      */
-    PARAM(40000, "参数错误"),
+    AUTH(40000, "认证鉴权异常"),
     /**
      * 失败。
      */
-    FAIL(50000, "操作失败"),
-    /**
-     * 授权失败。
-     */
-    PERMISSIONS(60000, "授权失败"),
+    FAIL(50000, "业务异常"),
     /**
      * 系统异常。
      */
