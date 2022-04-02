@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  cn.org.niubility.shutter.sdk.satoken.config.SaTokenConfiguration

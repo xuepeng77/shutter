@@ -3,7 +3,7 @@ package cn.org.niubility.shutter.sdk.verifycode.exception;
 import cn.org.niubility.shutter.core.common.exception.BaseException;
 
 /**
- * 验证码过期或不存在异常。
+ * 验证码过期或不存在的异常类。
  *
  * @author xuepeng
  */

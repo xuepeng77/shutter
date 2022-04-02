@@ -22,12 +22,6 @@
     <!-- 依赖管理 -->
     <dependencyManagement>
         <dependencies>
-            <!-- 验证码 -->
-            <dependency>
-                <groupId>cn.org.niubility</groupId>
-                <artifactId>shutter-sdk-verifycode</artifactId>
-                <version>${project.version}</version>
-            </dependency>
             <!-- API文档 -->
             <dependency>
                 <groupId>cn.org.niubility</groupId>
@@ -58,10 +52,22 @@
                 <artifactId>shutter-sdk-redis</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <!-- SaToken -->
+            <dependency>
+                <groupId>cn.org.niubility</groupId>
+                <artifactId>shutter-sdk-satoken</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <!-- 短信 -->
             <dependency>
                 <groupId>cn.org.niubility</groupId>
                 <artifactId>shutter-sdk-sms</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- 验证码 -->
+            <dependency>
+                <groupId>cn.org.niubility</groupId>
+                <artifactId>shutter-sdk-verifycode</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
