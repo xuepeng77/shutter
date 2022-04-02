@@ -1,5 +1,6 @@
-package cn.org.niubility.shutter.module.system.config;
+package cn.org.niubility.shutter.module.config;
 
+import cn.org.niubility.shutter.module.property.SystemProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 

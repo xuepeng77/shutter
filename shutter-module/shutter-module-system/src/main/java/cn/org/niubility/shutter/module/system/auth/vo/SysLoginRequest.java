@@ -32,14 +32,14 @@ public class SysLoginRequest implements Serializable {
     private String account;
 
     /**
-     * 帐号。
+     * 密码。
      */
-    @ApiModelProperty(value = "帐号", required = true)
+    @ApiModelProperty(value = "密码", required = true)
     @NotBlank(message = "密码不能为空")
     private String password;
 
     /**
-     * 验证码编号
+     * 验证码编号。
      */
     @ApiModelProperty(value = "验证码编号", required = true)
     @NotBlank(message = "验证码编号不能为空")
@@ -47,7 +47,7 @@ public class SysLoginRequest implements Serializable {
     private String uuid;
 
     /**
-     * 验证码
+     * 验证码。
      */
     @ApiModelProperty(value = "验证码", required = true)
     @NotBlank(message = "验证码不能为空")

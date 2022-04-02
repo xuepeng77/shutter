@@ -1,15 +1,20 @@
 package cn.org.niubility.shutter.module.system.auth.service;
 
 import cn.dev33.satoken.stp.StpUtil;
+import cn.org.niubility.shutter.module.property.SystemProperty;
+import cn.org.niubility.shutter.module.system.auth.dto.SysLoginDto;
 import cn.org.niubility.shutter.module.system.auth.exception.LoginFailedException;
-import cn.org.niubility.shutter.module.system.config.SystemProperty;
+import cn.org.niubility.shutter.module.system.auth.exception.VerifyCodeIncorrectException;
 import cn.org.niubility.shutter.module.system.user.dto.SysUserDto;
 import cn.org.niubility.shutter.module.system.user.enums.SysUserStatus;
 import cn.org.niubility.shutter.module.system.user.service.SysUserService;
 import cn.org.niubility.shutter.module.system.user.service.password.PasswordStrategy;
 import cn.org.niubility.shutter.module.system.user.service.password.PasswordStrategyFactory;
+import cn.org.niubility.shutter.sdk.verifycode.entity.VerifyCode;
+import cn.org.niubility.shutter.sdk.verifycode.service.VerifyCodeService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,18 +30,34 @@ import java.time.LocalDateTime;
 public class AuthServiceImpl implements AuthService {
 
     /**
+     * @return 创建登录验证码。
+     */
+    @Override
+    public VerifyCode createLoginVerifyCode() {
+        return imageVerifyCodeService.send(StringUtils.EMPTY);
+    }
+
+    /**
      * 系统登录。
      * 当用户名密码不正确时，或当用户状态不可用时，抛出LoginFailedException异常对象。
      *
-     * @param account  用户名。
-     * @param password 密码。
-     * @param ip       IP地址。
+     * @param sysLoginDto 系统登录的数据传输对象。
      */
     @Override
-    public void login(final String account, final String password, final String ip) {
-        final SysUserDto sysUserDto = sysUserService.findByAccount(account);
-        // 验证登录是否成功
-        if (ObjectUtils.isEmpty(sysUserDto) || !getPasswordStrategy().verify(password, sysUserDto.getPassword())) {
+    public void login(final SysLoginDto sysLoginDto) {
+        // 判断验证码是否正确
+        final VerifyCode verifyCode = VerifyCode.builder()
+                .uuid(sysLoginDto.getUuid())
+                .code(sysLoginDto.getCode())
+                .build();
+        if (!imageVerifyCodeService.validate(verifyCode)) {
+            throw new VerifyCodeIncorrectException("验证码不正确。");
+        }
+        // 判断是否可登录
+        final SysUserDto sysUserDto = sysUserService.findByAccount(sysLoginDto.getAccount());
+        if (ObjectUtils.isEmpty(sysUserDto) ||
+                !getPasswordStrategy().verify(sysLoginDto.getPassword(), sysUserDto.getPassword())
+        ) {
             throw new LoginFailedException("用户名或密码不正确。");
         }
         if (sysUserDto.getStatus() == SysUserStatus.DISABLE) {
@@ -49,7 +70,7 @@ public class AuthServiceImpl implements AuthService {
         // 更新用户登录信息
         final SysUserDto sysUserDtoForUpdate = new SysUserDto();
         sysUserDtoForUpdate.setId(sysUserDto.getId());
-        sysUserDtoForUpdate.setLoginIp(ip);
+        sysUserDtoForUpdate.setLoginIp(sysLoginDto.getIp());
         sysUserDtoForUpdate.setLoginTime(LocalDateTime.now());
         sysUserService.update(sysUserDtoForUpdate);
     }
@@ -67,6 +88,16 @@ public class AuthServiceImpl implements AuthService {
      */
     private PasswordStrategy getPasswordStrategy() {
         return passwordStrategyFactory.getInstance(systemProperty.getSysUserProperty().getPasswordStrategyType());
+    }
+
+    /**
+     * 自动装配验证码的业务处理接口。
+     *
+     * @param imageVerifyCodeService 验证码的业务处理接口。
+     */
+    @Autowired
+    public void setImageVerifyCodeService(VerifyCodeService imageVerifyCodeService) {
+        this.imageVerifyCodeService = imageVerifyCodeService;
     }
 
     /**
@@ -98,6 +129,11 @@ public class AuthServiceImpl implements AuthService {
     public void setSystemProperty(SystemProperty systemProperty) {
         this.systemProperty = systemProperty;
     }
+
+    /**
+     * 验证码的业务处理接口。
+     */
+    private VerifyCodeService imageVerifyCodeService;
 
     /**
      * 系统用户的业务处理接口。

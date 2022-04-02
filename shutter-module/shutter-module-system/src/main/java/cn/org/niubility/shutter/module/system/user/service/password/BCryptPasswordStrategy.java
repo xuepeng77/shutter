@@ -2,7 +2,7 @@ package cn.org.niubility.shutter.module.system.user.service.password;
 
 import cn.hutool.crypto.digest.BCrypt;
 import cn.org.niubility.shutter.core.common.util.RandomUtil;
-import cn.org.niubility.shutter.module.system.config.SystemProperty;
+import cn.org.niubility.shutter.module.property.SystemProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

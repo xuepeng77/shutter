@@ -1,5 +1,6 @@
 package cn.org.niubility.shutter.module.system.user.controller;
 
+import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.org.niubility.shutter.core.common.bean.api.DefaultResultFactory;
 import cn.org.niubility.shutter.core.common.bean.api.Result;
 import cn.org.niubility.shutter.core.web.bean.BaseController;
@@ -30,6 +31,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/v1/users")
 @Slf4j
+@SaCheckLogin
 @Api(tags = "系统用户的API")
 @ApiSupport(order = 2)
 public class SysUserController extends BaseController {

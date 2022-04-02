@@ -1,8 +1,7 @@
-package cn.org.niubility.shutter.module.system.config;
+package cn.org.niubility.shutter.module.property;
 
 import cn.org.niubility.shutter.module.system.user.service.password.PasswordStrategyType;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -12,6 +11,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @Data
 @ToString
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 @ConfigurationProperties(prefix = "shutter.module.system")
 public class SystemProperty {
 
@@ -27,6 +29,9 @@ public class SystemProperty {
      */
     @Data
     @ToString
+    @EqualsAndHashCode
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class SysUserProperty {
 
         /**

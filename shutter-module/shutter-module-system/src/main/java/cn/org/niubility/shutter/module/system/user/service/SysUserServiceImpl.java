@@ -1,6 +1,6 @@
 package cn.org.niubility.shutter.module.system.user.service;
 
-import cn.org.niubility.shutter.module.system.config.SystemProperty;
+import cn.org.niubility.shutter.module.property.SystemProperty;
 import cn.org.niubility.shutter.module.system.user.dao.SysUserDao;
 import cn.org.niubility.shutter.module.system.user.dto.SysUserDto;
 import cn.org.niubility.shutter.module.system.user.entity.SysUser;

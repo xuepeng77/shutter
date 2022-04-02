@@ -41,6 +41,11 @@
             <groupId>cn.org.niubility</groupId>
             <artifactId>shutter-sdk-mybatis</artifactId>
         </dependency>
+        <!-- Shutter SDK SaToken -->
+        <dependency>
+            <groupId>cn.org.niubility</groupId>
+            <artifactId>shutter-sdk-satoken</artifactId>
+        </dependency>
         <!-- Shutter SDK VerifyCode -->
         <dependency>
             <groupId>cn.org.niubility</groupId>

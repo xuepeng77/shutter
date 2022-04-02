@@ -1,18 +1,23 @@
-package cn.org.niubility.shutter.module.system.exception;
+package cn.org.niubility.shutter.module.enums;
 
 import cn.org.niubility.shutter.core.common.bean.api.ResultStatus;
 
 /**
- * 系统用户的返回状态类。
+ * 系统登录的响应状态类。
  *
  * @author xuepeng
  */
-public enum SysUserResultStatus implements ResultStatus {
+public enum VerifyCodeResultStatus implements ResultStatus {
 
     /**
-     * 用户不存在。
+     * 验证码已过期。
      */
-    USER_NOT_FOUND(50201, "用户不存在。");
+    EXPIRED(50101, "验证码已过期。"),
+
+    /**
+     * 验证码不正确
+     */
+    INCORRECT(50102, "验证码不正确。");
 
     /**
      * 构造函数。
@@ -20,7 +25,7 @@ public enum SysUserResultStatus implements ResultStatus {
      * @param code 状态编码。
      * @param desc 状态描述。
      */
-    SysUserResultStatus(
+    VerifyCodeResultStatus(
             final int code, final String desc) {
         this.code = code;
         this.desc = desc;
