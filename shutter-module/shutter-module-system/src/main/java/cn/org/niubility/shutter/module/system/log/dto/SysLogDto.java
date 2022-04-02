@@ -18,6 +18,11 @@ import java.time.LocalDateTime;
 public class SysLogDto extends BaseDto {
 
     /**
+     * 用户主键。
+     */
+    private Long userId;
+
+    /**
      * 请求开始时间。
      */
     private LocalDateTime startTime;

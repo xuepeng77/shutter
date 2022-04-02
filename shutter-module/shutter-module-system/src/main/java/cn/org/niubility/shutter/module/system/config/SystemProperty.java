@@ -1,19 +1,17 @@
-package cn.org.niubility.shutter.module.system.property;
+package cn.org.niubility.shutter.module.system.config;
 
 import cn.org.niubility.shutter.module.system.user.service.password.PasswordStrategyType;
 import lombok.Data;
 import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
 
 /**
- * 系统管理的自定义配置类。
+ * 系统管理的自定义属性类。
  *
  * @author xuepeng
  */
 @Data
 @ToString
-@Configuration
 @ConfigurationProperties(prefix = "shutter.module.system")
 public class SystemProperty {
 

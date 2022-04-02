@@ -34,14 +34,6 @@ public class SysUserRequest implements Serializable {
     private String account;
 
     /**
-     * 帐号。
-     */
-    @ApiModelProperty(value = "密码", required = true)
-    @NotBlank(message = "密码不能为空")
-    @Length(max = 32, message = "密码长度不能大于32个字符")
-    private String password;
-
-    /**
      * 手机号。
      */
     @ApiModelProperty(value = "手机号", required = true)

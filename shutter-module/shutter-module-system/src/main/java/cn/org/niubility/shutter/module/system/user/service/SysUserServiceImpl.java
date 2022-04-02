@@ -1,12 +1,15 @@
 package cn.org.niubility.shutter.module.system.user.service;
 
-import cn.org.niubility.shutter.module.system.property.SystemProperty;
+import cn.org.niubility.shutter.module.system.config.SystemProperty;
 import cn.org.niubility.shutter.module.system.user.dao.SysUserDao;
 import cn.org.niubility.shutter.module.system.user.dto.SysUserDto;
 import cn.org.niubility.shutter.module.system.user.entity.SysUser;
 import cn.org.niubility.shutter.module.system.user.exception.SysUserNotFoundException;
 import cn.org.niubility.shutter.module.system.user.mapper.SysUserMapper;
+import cn.org.niubility.shutter.module.system.user.service.password.PasswordStrategy;
 import cn.org.niubility.shutter.module.system.user.service.password.PasswordStrategyFactory;
+import cn.org.niubility.shutter.sdk.mybatis.consts.QueryConst;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
@@ -31,11 +34,20 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     public boolean create(final SysUserDto sysUserDto) {
         final SysUser sysUser = sysUserMapper.dtoToEntity(sysUserDto);
         // 创建默认密码
-        final String password = passwordStrategyFactory
-                .getInstance(systemConfig.getSysUserProperty().getPasswordStrategyType())
-                .generate();
+        final String password = getPasswordStrategy().generate();
         sysUser.setPassword(password);
         return super.save(sysUser);
+    }
+
+    /**
+     * 更新系统用户。
+     *
+     * @param sysUserDto 系统用户的数据传输对象。
+     * @return 是否更新成功。
+     */
+    public boolean update(final SysUserDto sysUserDto) {
+        final SysUser sysUser = sysUserMapper.dtoToEntity(sysUserDto);
+        return super.updateById(sysUser);
     }
 
     /**
@@ -60,6 +72,39 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     }
 
     /**
+     * 根据帐号查询系统用户。
+     *
+     * @param account 帐号。
+     * @return 系统用户的数据传输对象。
+     */
+    @Override
+    public SysUserDto findByAccount(final String account) {
+        final SysUser sysUser = super.getOne(
+                createQueryWrapper().lambda().eq(SysUser::getAccount, account),
+                QueryConst.DO_NOT_THROW_EX
+        );
+        final SysUserDto result = sysUserMapper.entityToDto(sysUser);
+        if (log.isDebugEnabled()) {
+            log.debug("根据帐号：{}，查询用户：{}", account, result.toString());
+        }
+        return result;
+    }
+
+    /**
+     * @return 创建QueryWrapper。
+     */
+    private QueryWrapper<SysUser> createQueryWrapper() {
+        return new QueryWrapper<>();
+    }
+
+    /**
+     * @return 获取登录密码策略的接口。
+     */
+    private PasswordStrategy getPasswordStrategy() {
+        return passwordStrategyFactory.getInstance(systemProperty.getSysUserProperty().getPasswordStrategyType());
+    }
+
+    /**
      * 自动装配系统用户对象转换接口。
      *
      * @param sysUserMapper 系统用户对象转换接口。
@@ -70,9 +115,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     }
 
     /**
-     * 自动装配系统用户登录密码策略的工厂类。
+     * 自动装配登录密码策略的工厂类
      *
-     * @param passwordStrategyFactory 系统用户登录密码策略的工厂类。
+     * @param passwordStrategyFactory 登录密码策略的工厂类
      */
     @Autowired
     public void setPasswordStrategyFactory(PasswordStrategyFactory passwordStrategyFactory) {
@@ -82,11 +127,11 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     /**
      * 自动装配系统管理的自定义配置类。
      *
-     * @param systemConfig 系统管理的自定义配置类。
+     * @param systemProperty 系统管理的自定义配置类。
      */
     @Autowired
-    public void setSystemConfig(SystemProperty systemConfig) {
-        this.systemConfig = systemConfig;
+    public void setSystemProperty(SystemProperty systemProperty) {
+        this.systemProperty = systemProperty;
     }
 
 
@@ -96,13 +141,13 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     private SysUserMapper sysUserMapper;
 
     /**
-     * 系统用户登录密码策略的工厂类。
+     * 登录密码策略的工厂类。
      */
     private PasswordStrategyFactory passwordStrategyFactory;
 
     /**
      * 系统管理的自定义配置类。
      */
-    private SystemProperty systemConfig;
+    private SystemProperty systemProperty;
 
 }

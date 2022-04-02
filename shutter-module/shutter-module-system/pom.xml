@@ -25,25 +25,26 @@
         <dependency>
             <groupId>cn.org.niubility</groupId>
             <artifactId>shutter-core-common</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <!-- Shutter Core Database -->
         <dependency>
             <groupId>cn.org.niubility</groupId>
             <artifactId>shutter-core-database</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <!-- Shutter Core Web -->
         <dependency>
             <groupId>cn.org.niubility</groupId>
             <artifactId>shutter-core-web</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <!-- Shutter SDK Mybatis -->
         <dependency>
             <groupId>cn.org.niubility</groupId>
             <artifactId>shutter-sdk-mybatis</artifactId>
-            <version>${project.version}</version>
+        </dependency>
+        <!-- Shutter SDK VerifyCode -->
+        <dependency>
+            <groupId>cn.org.niubility</groupId>
+            <artifactId>shutter-sdk-verifycode</artifactId>
         </dependency>
         <!-- SpringBoot -->
         <dependency>

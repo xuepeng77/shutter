@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * 系统用户登录密码策略的工厂类。
+ * 登录密码策略的工厂类。
  *
  * @author xuepeng
  */

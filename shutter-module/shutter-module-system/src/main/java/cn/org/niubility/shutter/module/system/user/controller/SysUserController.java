@@ -31,7 +31,7 @@ import javax.validation.Valid;
 @RequestMapping("/v1/users")
 @Slf4j
 @Api(tags = "系统用户的API")
-@ApiSupport(order = 1)
+@ApiSupport(order = 2)
 public class SysUserController extends BaseController {
 
     /**
@@ -46,6 +46,7 @@ public class SysUserController extends BaseController {
     @ApiLog(module = "系统管理", func = "系统用户管理", remark = "创建系统用户", action = ApiLogAction.CREATE)
     public Result<Boolean> create(@Valid @RequestBody final SysUserRequest sysUserRequest) {
         final SysUserDto sysUserDto = sysUserMapper.requestToDto(sysUserRequest);
+        sysUserDto.setRegeditIp(getRequestIp());
         final boolean result = sysUserService.create(sysUserDto);
         if (result) {
             return DefaultResultFactory.success("创建系统用户成功。", Boolean.TRUE);

@@ -5,6 +5,7 @@ import cn.org.niubility.shutter.module.system.user.entity.SysUser;
 import cn.org.niubility.shutter.module.system.user.vo.SysUserRequest;
 import cn.org.niubility.shutter.module.system.user.vo.SysUserResponse;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 /**
  * 系统用户对象转换接口。
@@ -20,6 +21,7 @@ public interface SysUserMapper {
      * @param sysUserRequest 系统用户的请求对象。
      * @return 系统用户数据传输对象。
      */
+    @Mapping(target = "password", ignore = true)
     SysUserDto requestToDto(final SysUserRequest sysUserRequest);
 
     /**

@@ -25,6 +25,7 @@ CREATE TABLE `sys_log`
 (
     `id`              bigint(20)   NOT NULL AUTO_INCREMENT COMMENT '主键',
     `tenant_id`       bigint(20)   NOT NULL DEFAULT '0' COMMENT '租户主键',
+    `user_id`         bigint(20)   NOT NULL DEFAULT '未登录' COMMENT '用户主键',
     `start_time`      timestamp    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '开始时间',
     `url`             varchar(128) NOT NULL COMMENT '请求地址',
     `uri`             varchar(128) NOT NULL COMMENT '请求资源',

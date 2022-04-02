@@ -88,13 +88,13 @@ public class SysUser extends BizEntity {
 
     /**
      * 注册IP。
-     * 数据库字段：regedit_ip，varchar(16)。
+     * 数据库字段：regedit_ip，varchar(32)。
      */
     private String regeditIp;
 
     /**
      * 登录IP。
-     * 数据库字段：login_ip，varchar(16)。
+     * 数据库字段：login_ip，varchar(32)。
      */
     private String loginIp;
 

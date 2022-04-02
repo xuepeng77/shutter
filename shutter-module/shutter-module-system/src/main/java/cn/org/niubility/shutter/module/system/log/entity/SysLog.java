@@ -1,5 +1,6 @@
 package cn.org.niubility.shutter.module.system.log.entity;
 
+import cn.org.niubility.shutter.module.system.log.enums.SysLogType;
 import cn.org.niubility.shutter.sdk.mybatis.entity.BaseEntity;
 import lombok.*;
 
@@ -16,6 +17,18 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SysLog extends BaseEntity {
+
+    /**
+     * 用户主键。
+     * 数据库字段：user_id，bigint(20)。
+     */
+    private Long userId;
+
+    /**
+     * 日志类型。
+     * 数据库字段：type，tinyint(2)。
+     */
+    private SysLogType type;
 
     /**
      * 请求开始时间。
