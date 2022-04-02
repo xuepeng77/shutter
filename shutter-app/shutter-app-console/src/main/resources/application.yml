@@ -45,3 +45,9 @@ shutter:
         random-password-length: 8
         # 密码加密策略
         password-strategy-type: bcrypt
+  # 权限配置
+  auth:
+    include-path: /**
+    exclude-paths:
+      - /v1/auth/v1/verify-code
+      - /v1/auth/v1/login
