@@ -1,5 +1,6 @@
 package cn.org.niubility.shutter.module.system.user.vo;
 
+import cn.org.niubility.shutter.core.common.bean.vo.BaseRequestVo;
 import cn.org.niubility.shutter.module.system.user.enums.SysUserStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -7,7 +8,6 @@ import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -17,13 +17,11 @@ import java.time.LocalDate;
  */
 @Data
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel(value = "系统用户的请求对象")
-public class SysUserRequest implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class SysUserRequestVo extends BaseRequestVo {
 
     /**
      * 帐号。

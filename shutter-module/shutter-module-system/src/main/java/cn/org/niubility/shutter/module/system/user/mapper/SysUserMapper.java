@@ -2,8 +2,8 @@ package cn.org.niubility.shutter.module.system.user.mapper;
 
 import cn.org.niubility.shutter.module.system.user.dto.SysUserDto;
 import cn.org.niubility.shutter.module.system.user.entity.SysUser;
-import cn.org.niubility.shutter.module.system.user.vo.SysUserRequest;
-import cn.org.niubility.shutter.module.system.user.vo.SysUserResponse;
+import cn.org.niubility.shutter.module.system.user.vo.SysUserRequestVo;
+import cn.org.niubility.shutter.module.system.user.vo.SysUserResponseVo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -16,13 +16,13 @@ import org.mapstruct.Mapping;
 public interface SysUserMapper {
 
     /**
-     * Request转换成Dto。
+     * Vo转换成Dto。
      *
-     * @param sysUserRequest 系统用户的请求对象。
+     * @param sysUserRequestVo 系统用户的请求对象。
      * @return 系统用户数据传输对象。
      */
     @Mapping(target = "password", ignore = true)
-    SysUserDto requestToDto(final SysUserRequest sysUserRequest);
+    SysUserDto voToDto(final SysUserRequestVo sysUserRequestVo);
 
     /**
      * Dto转换成Entity。
@@ -41,11 +41,11 @@ public interface SysUserMapper {
     SysUserDto entityToDto(final SysUser sysUser);
 
     /**
-     * Dto转换成Response。
+     * Dto转换成Vo。
      *
      * @param sysUserDto 系统用户数据传输对象。
      * @return 系统用户的响应对象。
      */
-    SysUserResponse dtoToResponse(final SysUserDto sysUserDto);
+    SysUserResponseVo dtoToVo(final SysUserDto sysUserDto);
 
 }

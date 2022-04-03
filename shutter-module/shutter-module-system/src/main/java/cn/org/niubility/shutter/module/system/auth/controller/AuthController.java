@@ -9,7 +9,7 @@ import cn.org.niubility.shutter.core.web.log.ApiLogAction;
 import cn.org.niubility.shutter.module.system.auth.dto.SysLoginDto;
 import cn.org.niubility.shutter.module.system.auth.mapper.SysLoginMapper;
 import cn.org.niubility.shutter.module.system.auth.service.AuthService;
-import cn.org.niubility.shutter.module.system.auth.vo.SysLoginRequest;
+import cn.org.niubility.shutter.module.system.auth.vo.SysLoginRequestVo;
 import cn.org.niubility.shutter.sdk.verifycode.entity.VerifyCode;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
@@ -51,15 +51,15 @@ public class AuthController extends BaseController {
     /**
      * 系统登录。
      *
-     * @param sysLoginRequest 系统登录的请求对象。
+     * @param sysLoginRequestVo 系统登录的请求对象。
      * @return 是否登录成功。
      */
     @PostMapping("/v1/login")
     @ApiOperation(value = "系统登录")
     @ApiOperationSupport(order = 2)
     @ApiLog(module = "身份认证", func = "系统登录", remark = "用户名密码登录", action = ApiLogAction.LOGIN)
-    public Result<Boolean> login(@Valid @RequestBody final SysLoginRequest sysLoginRequest) {
-        final SysLoginDto sysLoginDto = sysLoginMapper.requestToDto(sysLoginRequest);
+    public Result<Boolean> login(@Valid @RequestBody final SysLoginRequestVo sysLoginRequestVo) {
+        final SysLoginDto sysLoginDto = sysLoginMapper.voToDto(sysLoginRequestVo);
         sysLoginDto.setIp(getRequestIp());
         authService.login(sysLoginDto);
         return DefaultResultFactory.success("登录成功。", Boolean.TRUE);

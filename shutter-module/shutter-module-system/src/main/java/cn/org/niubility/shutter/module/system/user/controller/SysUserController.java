@@ -3,14 +3,16 @@ package cn.org.niubility.shutter.module.system.user.controller;
 import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.org.niubility.shutter.core.common.bean.api.DefaultResultFactory;
 import cn.org.niubility.shutter.core.common.bean.api.Result;
+import cn.org.niubility.shutter.core.web.auth.CreateUser;
+import cn.org.niubility.shutter.core.web.auth.ModifyUser;
 import cn.org.niubility.shutter.core.web.bean.BaseController;
 import cn.org.niubility.shutter.core.web.log.ApiLog;
 import cn.org.niubility.shutter.core.web.log.ApiLogAction;
 import cn.org.niubility.shutter.module.system.user.dto.SysUserDto;
 import cn.org.niubility.shutter.module.system.user.mapper.SysUserMapper;
 import cn.org.niubility.shutter.module.system.user.service.SysUserService;
-import cn.org.niubility.shutter.module.system.user.vo.SysUserRequest;
-import cn.org.niubility.shutter.module.system.user.vo.SysUserResponse;
+import cn.org.niubility.shutter.module.system.user.vo.SysUserRequestVo;
+import cn.org.niubility.shutter.module.system.user.vo.SysUserResponseVo;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import io.swagger.annotations.Api;
@@ -39,21 +41,50 @@ public class SysUserController extends BaseController {
     /**
      * 创建系统用户。
      *
-     * @param sysUserRequest 系统用户的请求类。
+     * @param sysUserRequestVo 系统用户的请求对象。
      * @return 是否创建成功。
      */
     @PostMapping("/v1")
     @ApiOperation(value = "创建系统用户")
     @ApiOperationSupport(order = 1)
     @ApiLog(module = "系统管理", func = "系统用户管理", remark = "创建系统用户", action = ApiLogAction.CREATE)
-    public Result<Boolean> create(@Valid @RequestBody final SysUserRequest sysUserRequest) {
-        final SysUserDto sysUserDto = sysUserMapper.requestToDto(sysUserRequest);
+    @CreateUser
+    public Result<Boolean> create(@Valid @RequestBody final SysUserRequestVo sysUserRequestVo) {
+        final SysUserDto sysUserDto = sysUserMapper.voToDto(sysUserRequestVo);
         sysUserDto.setRegeditIp(getRequestIp());
         final boolean result = sysUserService.create(sysUserDto);
         if (result) {
             return DefaultResultFactory.success("创建系统用户成功。", Boolean.TRUE);
         }
-        return DefaultResultFactory.fail("创建系统用户失败。", Boolean.TRUE);
+        return DefaultResultFactory.fail("创建系统用户失败。", Boolean.FALSE);
+    }
+
+    /**
+     * 修改系统用户。
+     *
+     * @param id               主键。
+     * @param sysUserRequestVo 系统用户的请求对象。
+     * @return 是否修改成功。
+     */
+    @PutMapping("/v1/{id}")
+    @ApiOperation(value = "修改系统用户")
+    @ApiOperationSupport(order = 2)
+    @ApiImplicitParams(
+            @ApiImplicitParam(paramType = "path", name = "id", value = "主键", dataTypeClass = Long.class, required = true)
+    )
+    @ApiLog(module = "系统管理", func = "系统用户管理", remark = "编辑系统用户", action = ApiLogAction.UPDATE)
+    @ModifyUser
+    public Result<Boolean> update(
+            @PathVariable(value = "id") final long id,
+            @Valid @RequestBody final SysUserRequestVo sysUserRequestVo
+    ) {
+        final SysUserDto sysUserDto = sysUserMapper.voToDto(sysUserRequestVo);
+        sysUserDto.setId(id);
+        final boolean result = sysUserService.update(sysUserDto);
+        if (result) {
+            return DefaultResultFactory.success("修改系统用户成功。", Boolean.TRUE);
+        }
+        return DefaultResultFactory.fail("修改系统用户失败。", Boolean.FALSE);
     }
 
     /**
@@ -64,14 +95,14 @@ public class SysUserController extends BaseController {
      */
     @GetMapping("/v1/{id}")
     @ApiOperation(value = "根据主键查询系统用户")
-    @ApiOperationSupport(order = 2)
+    @ApiOperationSupport(order = 3)
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "path", name = "id", value = "系统主键", dataTypeClass = Long.class, required = true)
     })
     @ApiLog(module = "系统管理", func = "系统用户管理", remark = "根据主键查询系统用户", action = ApiLogAction.QUERY)
-    public Result<SysUserResponse> findById(@PathVariable(value = "id") final long id) {
+    public Result<SysUserResponseVo> findById(@PathVariable(value = "id") final long id) {
         final SysUserDto sysUserDto = sysUserService.findById(id);
-        final SysUserResponse result = sysUserMapper.dtoToResponse(sysUserDto);
+        final SysUserResponseVo result = sysUserMapper.dtoToVo(sysUserDto);
         return DefaultResultFactory.success("根据主键查询系统用户。", result);
     }
 

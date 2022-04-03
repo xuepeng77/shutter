@@ -1,7 +1,7 @@
 package cn.org.niubility.shutter.module.system.auth.mapper;
 
 import cn.org.niubility.shutter.module.system.auth.dto.SysLoginDto;
-import cn.org.niubility.shutter.module.system.auth.vo.SysLoginRequest;
+import cn.org.niubility.shutter.module.system.auth.vo.SysLoginRequestVo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -16,10 +16,10 @@ public interface SysLoginMapper {
     /**
      * Request转换成Dto。
      *
-     * @param sysLoginRequest 系统登录的请求对象。
+     * @param sysLoginRequestVo 系统登录的请求对象。
      * @return 系统登录数据传输对象。
      */
     @Mapping(target = "ip", ignore = true)
-    SysLoginDto requestToDto(final SysLoginRequest sysLoginRequest);
+    SysLoginDto voToDto(final SysLoginRequestVo sysLoginRequestVo);
 
 }

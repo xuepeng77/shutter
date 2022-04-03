@@ -19,7 +19,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel(value = "系统登录的请求对象")
-public class SysLoginRequest implements Serializable {
+public class SysLoginRequestVo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
