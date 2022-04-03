@@ -2,6 +2,7 @@ package cn.org.niubility.shutter.sdk.mybatis.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -23,6 +24,7 @@ public class BizEntity extends BaseEntity {
      * 是否删除。
      * 数据库字段：deleted，tinyint(1)。
      */
+    @TableLogic
     private Boolean deleted;
 
     /**

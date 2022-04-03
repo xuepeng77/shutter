@@ -29,7 +29,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(MybatisPlusProperty.class)
 public class MybatisPlusConfiguration {
 
-    // TODO 加入租户、逻辑删除、数据权限功能
+    // TODO 加入租户、数据权限功能
 
     /**
      * @return 配置MybaitsPlus属性。
@@ -38,9 +38,14 @@ public class MybatisPlusConfiguration {
     public MybatisPlusPropertiesCustomizer mybatisPlusPropertiesCustomizer() {
         return properties -> {
             // MyBatis Plus的配置
-            GlobalConfig globalConfig = properties.getGlobalConfig();
-            globalConfig.setBanner(false);
             properties.setMapperLocations(new String[]{"classpath*:mapper/*.xml"});
+
+            // 设置逻辑删除
+            final GlobalConfig globalConfig = properties.getGlobalConfig();
+            globalConfig.setBanner(false);
+            globalConfig.getDbConfig().setLogicDeleteField("deleted");
+            globalConfig.getDbConfig().setLogicDeleteValue("1");
+            globalConfig.getDbConfig().setLogicNotDeleteValue("0");
 
             // MyBatis的配置
             MybatisConfiguration configuration = new MybatisConfiguration();

@@ -1,5 +1,6 @@
 package cn.org.niubility.shutter.core.common.bean.vo;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import java.io.Serializable;
@@ -21,11 +22,13 @@ public class BaseRequestVo implements Serializable {
     /**
      * 创建人。
      */
+    @ApiModelProperty(value = "创建人")
     private Long createUser;
 
     /**
      * 修改人。
      */
+    @ApiModelProperty(value = "修改人")
     private Long modifyUser;
 
 }

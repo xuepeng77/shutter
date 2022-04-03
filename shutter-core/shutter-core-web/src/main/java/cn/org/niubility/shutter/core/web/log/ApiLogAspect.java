@@ -83,7 +83,6 @@ public class ApiLogAspect {
         if (log.isDebugEnabled()) {
             log.debug("ApiLog请求: {}", apiLogInfo);
         }
-        log.info("ApiLog请求: {}", apiLogInfo);
         // 持久化访问日志
         if (isPersistent(joinPoint)) {
             apiLogPersistent.saveAccessLog(apiLogInfo);
