@@ -45,9 +45,21 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
      * @param sysUserDto 系统用户的数据传输对象。
      * @return 是否更新成功。
      */
+    @Override
     public boolean update(final SysUserDto sysUserDto) {
         final SysUser sysUser = sysUserMapper.dtoToEntity(sysUserDto);
         return super.updateById(sysUser);
+    }
+
+    /**
+     * 根据主键删除系统用户。
+     *
+     * @param id 系统用户主键。
+     * @return 是否删除成功。
+     */
+    @Override
+    public boolean deleteById(final long id) {
+        return super.removeById(id);
     }
 
     /**

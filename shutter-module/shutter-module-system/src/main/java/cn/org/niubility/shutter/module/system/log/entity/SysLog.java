@@ -25,7 +25,7 @@ public class SysLog extends BaseEntity {
     private Long userId;
 
     /**
-     * 日志类型。
+     * 日志类型：0=访问日志；1=错误日志；
      * 数据库字段：type，tinyint(2)。
      */
     private SysLogType type;

@@ -28,6 +28,14 @@ public interface SysUserService extends IService<SysUser> {
     boolean update(final SysUserDto sysUserDto);
 
     /**
+     * 根据主键删除系统用户。
+     *
+     * @param id 系统用户主键。
+     * @return 是否删除成功。
+     */
+    boolean deleteById(final long id);
+
+    /**
      * 根据主键查询系统用户。
      * 当根据主键查询不到用户时，抛出SysUserNotFoundException异常对象。
      *

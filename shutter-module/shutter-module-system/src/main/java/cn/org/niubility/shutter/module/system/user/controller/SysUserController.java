@@ -62,7 +62,7 @@ public class SysUserController extends BaseController {
     /**
      * 修改系统用户。
      *
-     * @param id               主键。
+     * @param id               系统用户主键。
      * @param sysUserRequestVo 系统用户的请求对象。
      * @return 是否修改成功。
      */
@@ -85,6 +85,22 @@ public class SysUserController extends BaseController {
             return DefaultResultFactory.success("修改系统用户成功。", Boolean.TRUE);
         }
         return DefaultResultFactory.fail("修改系统用户失败。", Boolean.FALSE);
+    }
+
+    @DeleteMapping("/v1/{id}")
+    @ApiOperation(value = "删除系统用户")
+    @ApiOperationSupport(order = 3)
+    @ApiImplicitParams(
+            @ApiImplicitParam(paramType = "path", name = "id", value = "主键", dataTypeClass = Long.class, required = true)
+    )
+    @ApiLog(module = "系统管理", func = "系统用户管理", remark = "删除系统用户", action = ApiLogAction.DELETE)
+    @ModifyUser
+    public Result<Boolean> deleteById(@PathVariable(value = "id") final long id) {
+        final boolean result = sysUserService.deleteById(id);
+        if (result) {
+            return DefaultResultFactory.success("删除系统用户成功。", Boolean.TRUE);
+        }
+        return DefaultResultFactory.fail("删除系统用户失败。", Boolean.FALSE);
     }
 
     /**
