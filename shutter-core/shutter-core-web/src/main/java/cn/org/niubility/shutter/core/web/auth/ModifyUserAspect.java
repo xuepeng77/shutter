@@ -37,7 +37,7 @@ public class ModifyUserAspect {
             if (arg instanceof BaseRequestVo && authService.isLogin()) {
                 final long currentUserId = authService.getCurrentUserId();
                 final BaseRequestVo baseRequestVo = (BaseRequestVo) arg;
-                baseRequestVo.setCreateUser(currentUserId);
+                baseRequestVo.setModifyUser(currentUserId);
             }
         }
     }
