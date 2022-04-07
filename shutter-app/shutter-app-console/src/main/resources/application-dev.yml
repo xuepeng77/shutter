@@ -17,7 +17,3 @@ spring:
       idle-timeout: 180000 #空闲连接存活最大时间，默认600000（10分钟)
       max-lifetime: 1800000 #控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000，即30分钟
       connection-timeout: 10000 #数据库连接超时时间,默认30秒，即30000
-knife4j:
-  enable: true
-sa-token:
-  is-log: true

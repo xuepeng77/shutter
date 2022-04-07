@@ -28,9 +28,12 @@ sa-token:
   is-share: false
   # token风格
   token-style: uuid
+  # 开启日志
+  is-log: true
 shutter:
   # Knife4j配置
   knife4j:
+    enabled: false
     title: Shutter Console API
     version: 1.0.0
     description: Shutter Console API
