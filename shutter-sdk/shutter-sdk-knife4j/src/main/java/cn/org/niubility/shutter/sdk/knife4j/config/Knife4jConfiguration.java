@@ -44,7 +44,7 @@ public class Knife4jConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .useDefaultResponseMessages(false)
                 .apiInfo(apiInfo(knife4jProperties))
-                .enable(flag)
+                .enable(knife4jProperties.getEnabled())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(knife4jProperties.getBasePackage()))
                 .paths(PathSelectors.any())

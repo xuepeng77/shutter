@@ -26,6 +26,11 @@ public class Knife4jProperty {
     private List<String> profiles = Arrays.asList("dev", "test");
 
     /**
+     * 是否启用。
+     */
+    private Boolean enabled = Boolean.TRUE;
+
+    /**
      * API文档描述。
      */
     private String description;
