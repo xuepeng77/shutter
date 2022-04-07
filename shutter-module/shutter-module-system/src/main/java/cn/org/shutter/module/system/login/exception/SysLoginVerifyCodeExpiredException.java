@@ -3,16 +3,16 @@ package cn.org.shutter.module.system.login.exception;
 import cn.org.shutter.core.common.exception.BaseException;
 
 /**
- * 登录验证码不正确的异常类。
+ * 登录验证码已过期的异常类。
  *
  * @author xuepeng
  */
-public class SysLoginVerifyCodeIncorrectException extends BaseException {
+public class SysLoginVerifyCodeExpiredException extends BaseException {
 
     /**
      * 构造函数。
      */
-    public SysLoginVerifyCodeIncorrectException() {
+    public SysLoginVerifyCodeExpiredException() {
     }
 
     /**
@@ -20,7 +20,7 @@ public class SysLoginVerifyCodeIncorrectException extends BaseException {
      *
      * @param msg 异常信息。
      */
-    public SysLoginVerifyCodeIncorrectException(String msg) {
+    public SysLoginVerifyCodeExpiredException(String msg) {
         super(msg);
     }
 
@@ -29,7 +29,7 @@ public class SysLoginVerifyCodeIncorrectException extends BaseException {
      *
      * @param cause 异常原因。
      */
-    public SysLoginVerifyCodeIncorrectException(Throwable cause) {
+    public SysLoginVerifyCodeExpiredException(Throwable cause) {
         super(cause);
     }
 
@@ -39,7 +39,7 @@ public class SysLoginVerifyCodeIncorrectException extends BaseException {
      * @param msg   异常信息。
      * @param cause 异常原因。
      */
-    public SysLoginVerifyCodeIncorrectException(String msg, Throwable cause) {
+    public SysLoginVerifyCodeExpiredException(String msg, Throwable cause) {
         super(msg, cause);
     }
 

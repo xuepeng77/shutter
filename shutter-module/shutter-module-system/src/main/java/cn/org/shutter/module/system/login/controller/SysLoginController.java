@@ -60,6 +60,7 @@ public class SysLoginController extends BaseController {
     @ApiLog(module = "身份认证", func = "系统登录", remark = "用户名密码登录", action = ApiLogAction.LOGIN)
     public Result<Boolean> login(@Valid @RequestBody final SysLoginRequestVo sysLoginRequestVo) {
         final SysLoginDto sysLoginDto = sysLoginMapper.voToDto(sysLoginRequestVo);
+        // 设置登录IP地址。
         sysLoginDto.setIp(getRequestIp());
         sysLoginService.login(sysLoginDto);
         return DefaultResultFactory.success("登录成功。", Boolean.TRUE);

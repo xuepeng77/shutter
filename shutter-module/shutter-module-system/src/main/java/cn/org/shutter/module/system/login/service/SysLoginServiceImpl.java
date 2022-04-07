@@ -4,6 +4,7 @@ import cn.dev33.satoken.stp.StpUtil;
 import cn.org.shutter.module.property.SystemProperty;
 import cn.org.shutter.module.system.login.dto.SysLoginDto;
 import cn.org.shutter.module.system.login.exception.SysLoginFailedException;
+import cn.org.shutter.module.system.login.exception.SysLoginVerifyCodeExpiredException;
 import cn.org.shutter.module.system.login.exception.SysLoginVerifyCodeIncorrectException;
 import cn.org.shutter.module.system.user.dto.SysUserDto;
 import cn.org.shutter.module.system.user.enums.SysUserStatus;
@@ -11,6 +12,7 @@ import cn.org.shutter.module.system.user.service.SysUserService;
 import cn.org.shutter.module.system.user.service.password.PasswordStrategy;
 import cn.org.shutter.module.system.user.service.password.PasswordStrategyFactory;
 import cn.org.shutter.sdk.verifycode.entity.VerifyCode;
+import cn.org.shutter.sdk.verifycode.exception.VerifyCodeExpiredException;
 import cn.org.shutter.sdk.verifycode.service.VerifyCodeService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
@@ -39,40 +41,25 @@ public class SysLoginServiceImpl implements SysLoginService {
 
     /**
      * 系统登录。
+     * 当验证码不存在或已过期时，抛出SysLoginVerifyCodeExpiredException异常对象。
+     * 当验证码不正确时，抛出SysLoginVerifyCodeIncorrectException异常对象。
      * 当用户名密码不正确时，或当用户状态不可用时，抛出LoginFailedException异常对象。
      *
      * @param sysLoginDto 系统登录的数据传输对象。
      */
     @Override
     public void login(final SysLoginDto sysLoginDto) {
-        // 判断验证码是否正确
-        final VerifyCode verifyCode = VerifyCode.builder()
-                .uuid(sysLoginDto.getUuid())
-                .code(sysLoginDto.getCode())
-                .build();
-        if (!imageVerifyCodeService.validate(verifyCode)) {
-            throw new SysLoginVerifyCodeIncorrectException("验证码不正确。");
-        }
-        // 判断是否可登录
+        // 检查验证码是否正确
+        checkVerifyCode(sysLoginDto);
+        // 检查是否可登录
         final SysUserDto sysUserDto = sysUserService.findByAccount(sysLoginDto.getAccount());
-        if (ObjectUtils.isEmpty(sysUserDto) ||
-                !getPasswordStrategy().verify(sysLoginDto.getPassword(), sysUserDto.getPassword())
-        ) {
-            throw new SysLoginFailedException("用户名或密码不正确。");
-        }
-        if (sysUserDto.getStatus() == SysUserStatus.DISABLE) {
-            throw new SysLoginFailedException("用户状态不可用。");
-        }
+        checkLogin(sysLoginDto, sysUserDto);
         // TODO 判断租户状态
         // TODO 判断租户有效期
         // 系统登录
         StpUtil.login(sysUserDto.getId());
-        // 更新用户登录信息
-        final SysUserDto sysUserDtoForUpdate = new SysUserDto();
-        sysUserDtoForUpdate.setId(sysUserDto.getId());
-        sysUserDtoForUpdate.setLoginIp(sysLoginDto.getIp());
-        sysUserDtoForUpdate.setLoginTime(LocalDateTime.now());
-        sysUserService.update(sysUserDtoForUpdate);
+        // 更新登录信息
+        updateLoginInfo(sysLoginDto, sysUserDto);
     }
 
     /**
@@ -81,6 +68,59 @@ public class SysLoginServiceImpl implements SysLoginService {
     @Override
     public void logout() {
         StpUtil.logout();
+    }
+
+    /**
+     * 检查验证码是否正确。
+     *
+     * @param sysLoginDto 系统登录的数据传输对象。
+     */
+    private void checkVerifyCode(final SysLoginDto sysLoginDto) {
+        final VerifyCode verifyCode = VerifyCode.builder()
+                .uuid(sysLoginDto.getUuid())
+                .code(sysLoginDto.getCode())
+                .build();
+        boolean validate;
+        try {
+            validate = imageVerifyCodeService.validate(verifyCode);
+        } catch (VerifyCodeExpiredException e) {
+            throw new SysLoginVerifyCodeExpiredException("登录验证码不存在或已过期。");
+        }
+        if (!validate) {
+            throw new SysLoginVerifyCodeIncorrectException("登录验证码不正确。");
+        }
+    }
+
+    /**
+     * 检查是否可以登录。
+     *
+     * @param sysLoginDto 系统登录的数据传输对象。
+     * @param sysUserDto  系统用户的数据传输对象。
+     */
+    private void checkLogin(final SysLoginDto sysLoginDto, final SysUserDto sysUserDto) {
+        if (ObjectUtils.isEmpty(sysUserDto) ||
+                !getPasswordStrategy().verify(sysLoginDto.getPassword(), sysUserDto.getPassword())
+        ) {
+            throw new SysLoginFailedException("用户名或密码不正确。");
+        }
+        if (sysUserDto.getStatus() == SysUserStatus.DISABLE) {
+            throw new SysLoginFailedException("用户状态不可用。");
+        }
+    }
+
+    /**
+     * 更新登录信息。
+     *
+     * @param sysLoginDto 系统登录的数据传输对象。
+     * @param sysUserDto  系统用户的数据传输对象。
+     */
+    private void updateLoginInfo(final SysLoginDto sysLoginDto, final SysUserDto sysUserDto) {
+        // 更新用户登录信息
+        final SysUserDto sysUserDtoForUpdate = new SysUserDto();
+        sysUserDtoForUpdate.setId(sysUserDto.getId());
+        sysUserDtoForUpdate.setLoginIp(sysLoginDto.getIp());
+        sysUserDtoForUpdate.setLoginTime(LocalDateTime.now());
+        sysUserService.update(sysUserDtoForUpdate);
     }
 
     /**

@@ -91,7 +91,7 @@ public class ImageVerifyCodeService extends AbstractVerifyCodeService {
             log.debug("判断验证码是否正确, 生成的验证码：{}, 输入的验证码：{}", code, answer);
         }
         if (StringUtils.isBlank(answer)) {
-            throw new VerifyCodeExpiredException("验证码不存在或过期");
+            throw new VerifyCodeExpiredException("验证码不存在或已过期");
         }
         return StringUtils.isNotBlank(code) && StringUtils.equals(answer, code);
     }
