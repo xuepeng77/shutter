@@ -6,8 +6,8 @@
     <!-- 父级信息 -->
     <parent>
         <artifactId>shutter-core</artifactId>
-        <groupId>cn.org.niubility</groupId>
-        <version>0.1.0-SNAPSHOT</version>
+        <groupId>cn.org.shutter</groupId>
+        <version>${revision}</version>
     </parent>
 
     <!-- 基础信息 -->
@@ -23,7 +23,7 @@
     <dependencies>
         <!-- Shutter Core Common -->
         <dependency>
-            <groupId>cn.org.niubility</groupId>
+            <groupId>cn.org.shutter</groupId>
             <artifactId>shutter-core-common</artifactId>
             <version>${project.version}</version>
         </dependency>

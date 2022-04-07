@@ -6,7 +6,7 @@
     <!-- 父级信息 -->
     <parent>
         <artifactId>shutter</artifactId>
-        <groupId>cn.org.niubility</groupId>
+        <groupId>cn.org.shutter</groupId>
         <version>${revision}</version>
     </parent>
 
@@ -31,7 +31,7 @@
         <dependencies>
             <!-- Shutter SDK -->
             <dependency>
-                <groupId>cn.org.niubility</groupId>
+                <groupId>cn.org.shutter</groupId>
                 <artifactId>shutter-sdk-dependency</artifactId>
                 <version>${project.version}</version>
                 <type>pom</type>
@@ -39,7 +39,7 @@
             </dependency>
             <!-- Shutter Module -->
             <dependency>
-                <groupId>cn.org.niubility</groupId>
+                <groupId>cn.org.shutter</groupId>
                 <artifactId>shutter-module-dependency</artifactId>
                 <version>${project.version}</version>
                 <type>pom</type>

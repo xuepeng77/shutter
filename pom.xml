@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- 基础信息 -->
-    <groupId>cn.org.niubility</groupId>
+    <groupId>cn.org.shutter</groupId>
     <artifactId>shutter</artifactId>
     <packaging>pom</packaging>
     <version>${revision}</version>

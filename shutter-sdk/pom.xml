@@ -6,7 +6,7 @@
     <!-- 父级信息 -->
     <parent>
         <artifactId>shutter</artifactId>
-        <groupId>cn.org.niubility</groupId>
+        <groupId>cn.org.shutter</groupId>
         <version>${revision}</version>
     </parent>
 
@@ -45,7 +45,7 @@
         <dependencies>
             <!-- Shutter Core -->
             <dependency>
-                <groupId>cn.org.niubility</groupId>
+                <groupId>cn.org.shutter</groupId>
                 <artifactId>shutter-core-dependency</artifactId>
                 <version>${project.version}</version>
                 <type>pom</type>

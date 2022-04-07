@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  cn.org.niubility.shutter.sdk.log4j2.config.LogConfiguration
+  cn.org.shutter.sdk.log4j2.config.LogConfiguration

@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  cn.org.niubility.shutter.sdk.verifycode.config.VerifyCodeConfiguration
+  cn.org.shutter.sdk.verifycode.config.VerifyCodeConfiguration
