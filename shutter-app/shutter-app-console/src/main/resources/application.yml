@@ -33,7 +33,7 @@ sa-token:
 shutter:
   # Knife4j配置
   knife4j:
-    enabled: false
+    enabled: true
     title: Shutter Console API
     version: 1.0.0
     description: Shutter Console API
