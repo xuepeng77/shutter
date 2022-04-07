@@ -1,4 +1,4 @@
-package cn.org.niubility.shutter.module.system.auth.vo;
+package cn.org.niubility.shutter.module.system.login.vo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

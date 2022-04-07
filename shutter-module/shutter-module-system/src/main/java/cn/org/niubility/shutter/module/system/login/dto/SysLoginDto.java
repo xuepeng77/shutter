@@ -1,4 +1,4 @@
-package cn.org.niubility.shutter.module.system.auth.dto;
+package cn.org.niubility.shutter.module.system.login.dto;
 
 import lombok.*;
 

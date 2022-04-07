@@ -16,6 +16,8 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * 系统用户的业务处理实现类。
  *
@@ -40,10 +42,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     }
 
     /**
-     * 更新系统用户。
+     * 修改系统用户。
      *
      * @param sysUserDto 系统用户的数据传输对象。
-     * @return 是否更新成功。
+     * @return 是否修改成功。
      */
     @Override
     public boolean update(final SysUserDto sysUserDto) {
@@ -58,8 +60,19 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
      * @return 是否删除成功。
      */
     @Override
-    public boolean deleteById(final long id) {
+    public boolean delete(final long id) {
         return super.removeById(id);
+    }
+
+    /**
+     * 根据主键批量删除系统用户。
+     *
+     * @param ids 系统用户主键集合。
+     * @return 是否删除成功。
+     */
+    @Override
+    public boolean deleteBatch(final List<Long> ids) {
+        return super.removeByIds(ids);
     }
 
     /**

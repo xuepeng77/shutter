@@ -1,10 +1,10 @@
-package cn.org.niubility.shutter.module.system.auth.service;
+package cn.org.niubility.shutter.module.system.login.service;
 
 import cn.dev33.satoken.stp.StpUtil;
 import cn.org.niubility.shutter.module.property.SystemProperty;
-import cn.org.niubility.shutter.module.system.auth.dto.SysLoginDto;
-import cn.org.niubility.shutter.module.system.auth.exception.LoginFailedException;
-import cn.org.niubility.shutter.module.system.auth.exception.VerifyCodeIncorrectException;
+import cn.org.niubility.shutter.module.system.login.dto.SysLoginDto;
+import cn.org.niubility.shutter.module.system.login.exception.SysLoginFailedException;
+import cn.org.niubility.shutter.module.system.login.exception.SysLoginVerifyCodeIncorrectException;
 import cn.org.niubility.shutter.module.system.user.dto.SysUserDto;
 import cn.org.niubility.shutter.module.system.user.enums.SysUserStatus;
 import cn.org.niubility.shutter.module.system.user.service.SysUserService;
@@ -27,7 +27,7 @@ import java.time.LocalDateTime;
  */
 @Service
 @Slf4j
-public class AuthServiceImpl implements AuthService {
+public class SysLoginServiceImpl implements SysLoginService {
 
     /**
      * @return 创建登录验证码。
@@ -51,17 +51,17 @@ public class AuthServiceImpl implements AuthService {
                 .code(sysLoginDto.getCode())
                 .build();
         if (!imageVerifyCodeService.validate(verifyCode)) {
-            throw new VerifyCodeIncorrectException("验证码不正确。");
+            throw new SysLoginVerifyCodeIncorrectException("验证码不正确。");
         }
         // 判断是否可登录
         final SysUserDto sysUserDto = sysUserService.findByAccount(sysLoginDto.getAccount());
         if (ObjectUtils.isEmpty(sysUserDto) ||
                 !getPasswordStrategy().verify(sysLoginDto.getPassword(), sysUserDto.getPassword())
         ) {
-            throw new LoginFailedException("用户名或密码不正确。");
+            throw new SysLoginFailedException("用户名或密码不正确。");
         }
         if (sysUserDto.getStatus() == SysUserStatus.DISABLE) {
-            throw new LoginFailedException("用户状态不可用。");
+            throw new SysLoginFailedException("用户状态不可用。");
         }
         // TODO 判断租户状态
         // TODO 判断租户有效期

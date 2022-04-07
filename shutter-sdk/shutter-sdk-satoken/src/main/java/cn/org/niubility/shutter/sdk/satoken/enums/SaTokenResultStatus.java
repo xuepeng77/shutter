@@ -1,23 +1,18 @@
-package cn.org.niubility.shutter.module.enums;
+package cn.org.niubility.shutter.sdk.satoken.enums;
 
 import cn.org.niubility.shutter.core.common.bean.api.ResultStatus;
 
 /**
- * 系统登录的响应状态类。
+ * 认证失败的响应状态类。
  *
  * @author xuepeng
  */
-public enum VerifyCodeResultStatus implements ResultStatus {
+public enum SaTokenResultStatus implements ResultStatus {
 
     /**
-     * 验证码已过期。
+     * 认证失败。
      */
-    EXPIRED(50101, "验证码已过期。"),
-
-    /**
-     * 验证码不正确
-     */
-    INCORRECT(50102, "验证码不正确。");
+    NOT_LOGIN(40001, "认证失败。");
 
     /**
      * 构造函数。
@@ -25,7 +20,7 @@ public enum VerifyCodeResultStatus implements ResultStatus {
      * @param code 状态编码。
      * @param desc 状态描述。
      */
-    VerifyCodeResultStatus(
+    SaTokenResultStatus(
             final int code, final String desc) {
         this.code = code;
         this.desc = desc;

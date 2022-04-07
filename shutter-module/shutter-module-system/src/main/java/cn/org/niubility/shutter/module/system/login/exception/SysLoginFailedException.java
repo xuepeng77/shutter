@@ -1,4 +1,4 @@
-package cn.org.niubility.shutter.module.system.auth.exception;
+package cn.org.niubility.shutter.module.system.login.exception;
 
 import cn.org.niubility.shutter.core.common.exception.BaseException;
 
@@ -7,12 +7,12 @@ import cn.org.niubility.shutter.core.common.exception.BaseException;
  *
  * @author xuepeng
  */
-public class LoginFailedException extends BaseException {
+public class SysLoginFailedException extends BaseException {
 
     /**
      * 构造函数。
      */
-    public LoginFailedException() {
+    public SysLoginFailedException() {
     }
 
     /**
@@ -20,7 +20,7 @@ public class LoginFailedException extends BaseException {
      *
      * @param msg 异常信息。
      */
-    public LoginFailedException(String msg) {
+    public SysLoginFailedException(String msg) {
         super(msg);
     }
 
@@ -29,7 +29,7 @@ public class LoginFailedException extends BaseException {
      *
      * @param cause 异常原因。
      */
-    public LoginFailedException(Throwable cause) {
+    public SysLoginFailedException(Throwable cause) {
         super(cause);
     }
 
@@ -39,7 +39,7 @@ public class LoginFailedException extends BaseException {
      * @param msg   异常信息。
      * @param cause 异常原因。
      */
-    public LoginFailedException(String msg, Throwable cause) {
+    public SysLoginFailedException(String msg, Throwable cause) {
         super(msg, cause);
     }
 

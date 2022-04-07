@@ -24,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * 系统用户的API。
@@ -70,7 +71,7 @@ public class SysUserController extends BaseController {
     @ApiOperation(value = "修改系统用户")
     @ApiOperationSupport(order = 2)
     @ApiImplicitParams(
-            @ApiImplicitParam(paramType = "path", name = "id", value = "主键", dataTypeClass = Long.class, required = true)
+            @ApiImplicitParam(paramType = "path", name = "id", value = "系统用户主键", dataTypeClass = Long.class, required = true)
     )
     @ApiLog(module = "系统管理", func = "系统用户管理", remark = "编辑系统用户", action = ApiLogAction.UPDATE)
     @ModifyUser
@@ -87,16 +88,21 @@ public class SysUserController extends BaseController {
         return DefaultResultFactory.fail("修改系统用户失败。", Boolean.FALSE);
     }
 
+    /**
+     * 根据主键删除系统用户。
+     *
+     * @param id 系统用户主键。
+     * @return 是否删除成功。
+     */
     @DeleteMapping("/v1/{id}")
     @ApiOperation(value = "删除系统用户")
     @ApiOperationSupport(order = 3)
     @ApiImplicitParams(
-            @ApiImplicitParam(paramType = "path", name = "id", value = "主键", dataTypeClass = Long.class, required = true)
+            @ApiImplicitParam(paramType = "path", name = "id", value = "系统用户主键", dataTypeClass = Long.class, required = true)
     )
     @ApiLog(module = "系统管理", func = "系统用户管理", remark = "删除系统用户", action = ApiLogAction.DELETE)
-    @ModifyUser
     public Result<Boolean> deleteById(@PathVariable(value = "id") final long id) {
-        final boolean result = sysUserService.deleteById(id);
+        final boolean result = sysUserService.delete(id);
         if (result) {
             return DefaultResultFactory.success("删除系统用户成功。", Boolean.TRUE);
         }
@@ -104,14 +110,32 @@ public class SysUserController extends BaseController {
     }
 
     /**
+     * 根据主键批量删除系统用户。
+     *
+     * @param ids 系统用户主键集合。
+     * @return 是否删除成功。
+     */
+    @DeleteMapping("/v1")
+    @ApiOperation(value = "批量删除系统用户")
+    @ApiOperationSupport(order = 4)
+    @ApiLog(module = "系统管理", func = "系统用户管理", remark = "批量删除系统用户", action = ApiLogAction.DELETE)
+    public Result<Boolean> deleteByIds(@RequestBody final List<Long> ids) {
+        final boolean result = sysUserService.deleteBatch(ids);
+        if (result) {
+            return DefaultResultFactory.success("批量删除系统用户成功。", Boolean.TRUE);
+        }
+        return DefaultResultFactory.fail("批量删除系统用户失败。", Boolean.FALSE);
+    }
+
+    /**
      * 根据主键查询系统用户。
      *
-     * @param id 主键。
-     * @return 系统用户。
+     * @param id 系统用户主键。
+     * @return 系统用户的视图对象。
      */
     @GetMapping("/v1/{id}")
     @ApiOperation(value = "根据主键查询系统用户")
-    @ApiOperationSupport(order = 3)
+    @ApiOperationSupport(order = 5)
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "path", name = "id", value = "系统主键", dataTypeClass = Long.class, required = true)
     })

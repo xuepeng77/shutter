@@ -1,7 +1,7 @@
-package cn.org.niubility.shutter.module.system.auth.mapper;
+package cn.org.niubility.shutter.module.system.login.mapper;
 
-import cn.org.niubility.shutter.module.system.auth.dto.SysLoginDto;
-import cn.org.niubility.shutter.module.system.auth.vo.SysLoginRequestVo;
+import cn.org.niubility.shutter.module.system.login.dto.SysLoginDto;
+import cn.org.niubility.shutter.module.system.login.vo.SysLoginRequestVo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

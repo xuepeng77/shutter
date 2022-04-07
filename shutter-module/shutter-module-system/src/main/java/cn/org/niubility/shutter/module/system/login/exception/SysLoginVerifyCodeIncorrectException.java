@@ -1,4 +1,4 @@
-package cn.org.niubility.shutter.module.system.auth.exception;
+package cn.org.niubility.shutter.module.system.login.exception;
 
 import cn.org.niubility.shutter.core.common.exception.BaseException;
 
@@ -7,12 +7,12 @@ import cn.org.niubility.shutter.core.common.exception.BaseException;
  *
  * @author xuepeng
  */
-public class VerifyCodeIncorrectException extends BaseException {
+public class SysLoginVerifyCodeIncorrectException extends BaseException {
 
     /**
      * 构造函数。
      */
-    public VerifyCodeIncorrectException() {
+    public SysLoginVerifyCodeIncorrectException() {
     }
 
     /**
@@ -20,7 +20,7 @@ public class VerifyCodeIncorrectException extends BaseException {
      *
      * @param msg 异常信息。
      */
-    public VerifyCodeIncorrectException(String msg) {
+    public SysLoginVerifyCodeIncorrectException(String msg) {
         super(msg);
     }
 
@@ -29,7 +29,7 @@ public class VerifyCodeIncorrectException extends BaseException {
      *
      * @param cause 异常原因。
      */
-    public VerifyCodeIncorrectException(Throwable cause) {
+    public SysLoginVerifyCodeIncorrectException(Throwable cause) {
         super(cause);
     }
 
@@ -39,7 +39,7 @@ public class VerifyCodeIncorrectException extends BaseException {
      * @param msg   异常信息。
      * @param cause 异常原因。
      */
-    public VerifyCodeIncorrectException(String msg, Throwable cause) {
+    public SysLoginVerifyCodeIncorrectException(String msg, Throwable cause) {
         super(msg, cause);
     }
 

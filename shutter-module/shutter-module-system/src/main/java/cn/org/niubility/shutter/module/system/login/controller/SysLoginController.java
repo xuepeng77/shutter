@@ -1,4 +1,4 @@
-package cn.org.niubility.shutter.module.system.auth.controller;
+package cn.org.niubility.shutter.module.system.login.controller;
 
 import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.org.niubility.shutter.core.common.bean.api.DefaultResultFactory;
@@ -6,10 +6,10 @@ import cn.org.niubility.shutter.core.common.bean.api.Result;
 import cn.org.niubility.shutter.core.web.bean.BaseController;
 import cn.org.niubility.shutter.core.web.log.ApiLog;
 import cn.org.niubility.shutter.core.web.log.ApiLogAction;
-import cn.org.niubility.shutter.module.system.auth.dto.SysLoginDto;
-import cn.org.niubility.shutter.module.system.auth.mapper.SysLoginMapper;
-import cn.org.niubility.shutter.module.system.auth.service.AuthService;
-import cn.org.niubility.shutter.module.system.auth.vo.SysLoginRequestVo;
+import cn.org.niubility.shutter.module.system.login.dto.SysLoginDto;
+import cn.org.niubility.shutter.module.system.login.mapper.SysLoginMapper;
+import cn.org.niubility.shutter.module.system.login.service.SysLoginService;
+import cn.org.niubility.shutter.module.system.login.vo.SysLoginRequestVo;
 import cn.org.niubility.shutter.sdk.verifycode.entity.VerifyCode;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
@@ -32,7 +32,7 @@ import javax.validation.Valid;
 @Api(tags = "身份认证的API")
 @ApiSupport(order = 1)
 @SaCheckLogin
-public class AuthController extends BaseController {
+public class SysLoginController extends BaseController {
 
     /**
      * 获取登录验证码。
@@ -44,7 +44,7 @@ public class AuthController extends BaseController {
     @ApiOperationSupport(order = 1)
     @ApiLog(module = "身份认证", func = "系统登录", remark = "获取验证码", action = ApiLogAction.CREATE)
     public Result<VerifyCode> createLoginVerifyCode() {
-        final VerifyCode result = authService.createLoginVerifyCode();
+        final VerifyCode result = sysLoginService.createLoginVerifyCode();
         return DefaultResultFactory.success("获取验证码成功。", result);
     }
 
@@ -61,7 +61,7 @@ public class AuthController extends BaseController {
     public Result<Boolean> login(@Valid @RequestBody final SysLoginRequestVo sysLoginRequestVo) {
         final SysLoginDto sysLoginDto = sysLoginMapper.voToDto(sysLoginRequestVo);
         sysLoginDto.setIp(getRequestIp());
-        authService.login(sysLoginDto);
+        sysLoginService.login(sysLoginDto);
         return DefaultResultFactory.success("登录成功。", Boolean.TRUE);
     }
 
@@ -75,18 +75,18 @@ public class AuthController extends BaseController {
     @ApiOperationSupport(order = 3)
     @ApiLog(module = "身份认证", func = "系统登出", remark = "系统登出", action = ApiLogAction.LOGOUT)
     public Result<Boolean> logout() {
-        authService.logout();
+        sysLoginService.logout();
         return DefaultResultFactory.success("登录成功。", Boolean.TRUE);
     }
 
     /**
      * 自动装配系统身份认证的业务处理接口。
      *
-     * @param authService 系统身份认证的业务处理接口。
+     * @param sysLoginService 系统身份认证的业务处理接口。
      */
     @Autowired
-    public void setAuthService(AuthService authService) {
-        this.authService = authService;
+    public void setSysLoginService(SysLoginService sysLoginService) {
+        this.sysLoginService = sysLoginService;
     }
 
     /**
@@ -102,7 +102,7 @@ public class AuthController extends BaseController {
     /**
      * 系统身份认证的业务处理接口。
      */
-    private AuthService authService;
+    private SysLoginService sysLoginService;
 
     /**
      * 系统登录对象转换接口。

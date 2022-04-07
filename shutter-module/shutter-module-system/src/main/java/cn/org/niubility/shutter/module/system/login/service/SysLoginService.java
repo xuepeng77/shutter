@@ -1,6 +1,6 @@
-package cn.org.niubility.shutter.module.system.auth.service;
+package cn.org.niubility.shutter.module.system.login.service;
 
-import cn.org.niubility.shutter.module.system.auth.dto.SysLoginDto;
+import cn.org.niubility.shutter.module.system.login.dto.SysLoginDto;
 import cn.org.niubility.shutter.sdk.verifycode.entity.VerifyCode;
 
 /**
@@ -8,7 +8,7 @@ import cn.org.niubility.shutter.sdk.verifycode.entity.VerifyCode;
  *
  * @author xuepeng
  */
-public interface AuthService {
+public interface SysLoginService {
 
     /**
      * @return 创建登录验证码。

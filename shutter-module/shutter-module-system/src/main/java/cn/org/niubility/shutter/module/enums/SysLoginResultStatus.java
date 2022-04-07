@@ -12,7 +12,17 @@ public enum SysLoginResultStatus implements ResultStatus {
     /**
      * 登录失败。
      */
-    LOGIN_FAILED(50001, "登录失败。");
+    LOGIN_FAILED(50001, "登录失败。"),
+
+    /**
+     * 验证码已过期。
+     */
+    VERIFY_CODE_EXPIRED(50002, "验证码已过期。"),
+
+    /**
+     * 验证码不正确
+     */
+    VERIFY_CODE_INCORRECT(50003, "验证码不正确。");
 
     /**
      * 构造函数。

@@ -4,6 +4,8 @@ import cn.org.niubility.shutter.module.system.user.dto.SysUserDto;
 import cn.org.niubility.shutter.module.system.user.entity.SysUser;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * 系统用户的业务处理接口。
  *
@@ -20,10 +22,10 @@ public interface SysUserService extends IService<SysUser> {
     boolean create(final SysUserDto sysUserDto);
 
     /**
-     * 更新系统用户。
+     * 修改系统用户。
      *
      * @param sysUserDto 系统用户的数据传输对象。
-     * @return 是否更新成功。
+     * @return 是否修改成功。
      */
     boolean update(final SysUserDto sysUserDto);
 
@@ -33,7 +35,15 @@ public interface SysUserService extends IService<SysUser> {
      * @param id 系统用户主键。
      * @return 是否删除成功。
      */
-    boolean deleteById(final long id);
+    boolean delete(final long id);
+
+    /**
+     * 根据主键批量删除系统用户。
+     *
+     * @param ids 系统用户主键集合。
+     * @return 是否删除成功。
+     */
+    boolean deleteBatch(final List<Long> ids);
 
     /**
      * 根据主键查询系统用户。
