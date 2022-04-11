@@ -1,11 +1,11 @@
 package cn.org.shutter.module.system.user.vo;
 
+import cn.org.shutter.core.common.bean.vo.BaseVo;
 import cn.org.shutter.module.system.user.enums.SysUserStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -16,19 +16,11 @@ import java.time.LocalDateTime;
  */
 @Data
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel(value = "系统用户的响应对象")
-public class SysUserVo implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * 主键。
-     */
-    @ApiModelProperty(value = "主键")
-    private Long id;
+public class SysUserVo extends BaseVo {
 
     /**
      * 帐号。
@@ -107,29 +99,5 @@ public class SysUserVo implements Serializable {
      */
     @ApiModelProperty(value = "登录时间")
     private LocalDateTime loginTime;
-
-    /**
-     * 创建人。
-     */
-    @ApiModelProperty(value = "创建人")
-    private Integer createUser;
-
-    /**
-     * 创建时间。
-     */
-    @ApiModelProperty(value = "创建时间")
-    private LocalDateTime createTime;
-
-    /**
-     * 修改人。
-     */
-    @ApiModelProperty(value = "修改人")
-    private Integer modifyUser;
-
-    /**
-     * 修改时间。
-     */
-    @ApiModelProperty(value = "修改时间")
-    private LocalDateTime modifyTime;
 
 }
