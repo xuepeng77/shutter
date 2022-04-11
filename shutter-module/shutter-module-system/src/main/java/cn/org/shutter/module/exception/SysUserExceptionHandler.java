@@ -1,6 +1,6 @@
 package cn.org.shutter.module.exception;
 
-import cn.org.shutter.core.common.bean.api.Result;
+import cn.org.shutter.core.common.api.Result;
 import cn.org.shutter.module.enums.SysUserResultStatus;
 import cn.org.shutter.module.system.user.exception.SysUserNotFoundException;
 import lombok.extern.slf4j.Slf4j;

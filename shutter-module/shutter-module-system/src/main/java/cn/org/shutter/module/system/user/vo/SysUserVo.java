@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel(value = "系统用户的响应对象")
-public class SysUserResponseVo implements Serializable {
+public class SysUserVo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

@@ -1,6 +1,6 @@
 package cn.org.shutter.module.exception;
 
-import cn.org.shutter.core.common.bean.api.Result;
+import cn.org.shutter.core.common.api.Result;
 import cn.org.shutter.module.enums.SysLoginResultStatus;
 import cn.org.shutter.module.system.login.exception.SysLoginFailedException;
 import cn.org.shutter.module.system.login.exception.SysLoginVerifyCodeExpiredException;

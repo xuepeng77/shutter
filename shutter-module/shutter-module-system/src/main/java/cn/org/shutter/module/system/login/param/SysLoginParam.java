@@ -1,4 +1,4 @@
-package cn.org.shutter.module.system.login.vo;
+package cn.org.shutter.module.system.login.param;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -19,7 +19,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel(value = "系统登录的请求对象")
-public class SysLoginRequestVo implements Serializable {
+public class SysLoginParam implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

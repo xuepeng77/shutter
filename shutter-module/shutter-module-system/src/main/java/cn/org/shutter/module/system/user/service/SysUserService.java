@@ -1,5 +1,6 @@
 package cn.org.shutter.module.system.user.service;
 
+import cn.org.shutter.core.common.bean.vo.PageVo;
 import cn.org.shutter.module.system.user.dto.SysUserDto;
 import cn.org.shutter.module.system.user.entity.SysUser;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -46,6 +47,30 @@ public interface SysUserService extends IService<SysUser> {
     boolean deleteBatch(final List<Long> ids);
 
     /**
+     * 根据主键停用系统用户。
+     *
+     * @param id 系统用户主键。
+     * @return 是否停用成功。
+     */
+    boolean disable(final long id);
+
+    /**
+     * 根据主键启用系统用户。
+     *
+     * @param id 系统用户主键。
+     * @return 是否启用成功。
+     */
+    boolean enable(final long id);
+
+    /**
+     * 根据主键重置系统用户的登录密码。
+     *
+     * @param id 系统用户主键。
+     * @return 是否重置成功。
+     */
+    boolean resetPassword(final long id);
+
+    /**
      * 根据主键查询系统用户。
      * 当根据主键查询不到用户时，抛出SysUserNotFoundException异常对象。
      *
@@ -61,5 +86,13 @@ public interface SysUserService extends IService<SysUser> {
      * @return 系统用户的数据传输对象。
      */
     SysUserDto findByAccount(final String account);
+
+    /**
+     * 根据条件分页查询系统用户。
+     *
+     * @param sysUserDto 系统用户的数据传输对象。
+     * @return 系统用户的分页对象。
+     */
+    PageVo<SysUserDto> pageByCondition(final SysUserDto sysUserDto);
 
 }

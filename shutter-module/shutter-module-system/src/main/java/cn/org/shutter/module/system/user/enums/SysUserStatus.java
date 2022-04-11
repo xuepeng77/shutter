@@ -1,5 +1,6 @@
 package cn.org.shutter.module.system.user.enums;
 
+import cn.org.shutter.core.common.bean.enums.BaseEnum;
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -15,7 +16,7 @@ import lombok.ToString;
 @Getter
 @AllArgsConstructor
 @ToString
-public enum SysUserStatus {
+public enum SysUserStatus implements BaseEnum {
 
     ENABLE(1, "启用"),
 

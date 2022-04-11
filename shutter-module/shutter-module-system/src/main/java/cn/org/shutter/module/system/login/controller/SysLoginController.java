@@ -1,15 +1,15 @@
 package cn.org.shutter.module.system.login.controller;
 
 import cn.dev33.satoken.annotation.SaCheckLogin;
-import cn.org.shutter.core.common.bean.api.DefaultResultFactory;
-import cn.org.shutter.core.common.bean.api.Result;
+import cn.org.shutter.core.common.api.DefaultResultFactory;
+import cn.org.shutter.core.common.api.Result;
 import cn.org.shutter.core.web.bean.BaseController;
 import cn.org.shutter.core.web.log.ApiLog;
 import cn.org.shutter.core.web.log.ApiLogAction;
 import cn.org.shutter.module.system.login.dto.SysLoginDto;
 import cn.org.shutter.module.system.login.mapper.SysLoginMapper;
+import cn.org.shutter.module.system.login.param.SysLoginParam;
 import cn.org.shutter.module.system.login.service.SysLoginService;
-import cn.org.shutter.module.system.login.vo.SysLoginRequestVo;
 import cn.org.shutter.sdk.verifycode.entity.VerifyCode;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
@@ -17,9 +17,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 /**
  * 系统身份认证的API。
@@ -51,15 +50,15 @@ public class SysLoginController extends BaseController {
     /**
      * 系统登录。
      *
-     * @param sysLoginRequestVo 系统登录的请求对象。
+     * @param sysLoginParam 系统登录的请求对象。
      * @return 是否登录成功。
      */
     @PostMapping("/v1/login")
     @ApiOperation(value = "系统登录")
     @ApiOperationSupport(order = 2)
     @ApiLog(module = "身份认证", func = "系统登录", remark = "用户名密码登录", action = ApiLogAction.LOGIN)
-    public Result<Boolean> login(@Valid @RequestBody final SysLoginRequestVo sysLoginRequestVo) {
-        final SysLoginDto sysLoginDto = sysLoginMapper.voToDto(sysLoginRequestVo);
+    public Result<Boolean> login(@Validated @RequestBody final SysLoginParam sysLoginParam) {
+        final SysLoginDto sysLoginDto = sysLoginMapper.paramToDto(sysLoginParam);
         // 设置登录IP地址。
         sysLoginDto.setIp(getRequestIp());
         sysLoginService.login(sysLoginDto);

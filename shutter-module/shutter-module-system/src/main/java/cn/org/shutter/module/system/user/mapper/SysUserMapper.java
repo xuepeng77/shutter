@@ -1,9 +1,11 @@
 package cn.org.shutter.module.system.user.mapper;
 
+import cn.org.shutter.core.common.bean.vo.PageVo;
 import cn.org.shutter.module.system.user.dto.SysUserDto;
 import cn.org.shutter.module.system.user.entity.SysUser;
-import cn.org.shutter.module.system.user.vo.SysUserRequestVo;
-import cn.org.shutter.module.system.user.vo.SysUserResponseVo;
+import cn.org.shutter.module.system.user.param.SysUserParam;
+import cn.org.shutter.module.system.user.vo.SysUserVo;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -16,13 +18,13 @@ import org.mapstruct.Mapping;
 public interface SysUserMapper {
 
     /**
-     * Vo转换成Dto。
+     * Param转换成Dto。
      *
-     * @param sysUserRequestVo 系统用户的请求对象。
+     * @param sysUserParam 系统用户的请求对象。
      * @return 系统用户数据传输对象。
      */
     @Mapping(target = "password", ignore = true)
-    SysUserDto voToDto(final SysUserRequestVo sysUserRequestVo);
+    SysUserDto paramToDto(final SysUserParam sysUserParam);
 
     /**
      * Dto转换成Entity。
@@ -46,6 +48,22 @@ public interface SysUserMapper {
      * @param sysUserDto 系统用户数据传输对象。
      * @return 系统用户的响应对象。
      */
-    SysUserResponseVo dtoToVo(final SysUserDto sysUserDto);
+    SysUserVo dtoToVo(final SysUserDto sysUserDto);
+
+    /**
+     * Entity分页转换成Dto分页。
+     *
+     * @param sysUserPage 系统用户实体分页对象。
+     * @return 系统用户数据传输分页对象。
+     */
+    PageVo<SysUserDto> entityPageToDtoPage(final Page<SysUser> sysUserPage);
+
+    /**
+     * Dto分页转换成Vo分页。
+     *
+     * @param sysUserDtoPage 系统用户数据传输分页对象。
+     * @return 系统用户的响应分页对象。
+     */
+    PageVo<SysUserVo> dtoPageToVoPage(final PageVo<SysUserDto> sysUserDtoPage);
 
 }

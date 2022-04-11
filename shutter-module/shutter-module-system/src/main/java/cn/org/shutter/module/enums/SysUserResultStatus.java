@@ -1,6 +1,6 @@
 package cn.org.shutter.module.enums;
 
-import cn.org.shutter.core.common.bean.api.ResultStatus;
+import cn.org.shutter.core.common.api.ResultStatus;
 
 /**
  * 系统用户的响应状态类。
