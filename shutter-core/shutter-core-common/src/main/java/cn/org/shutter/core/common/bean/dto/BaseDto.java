@@ -54,4 +54,44 @@ public class BaseDto implements Serializable {
      */
     private LocalDateTime modifyTime;
 
+    /**
+     * 开始创建时间。
+     */
+    private LocalDateTime beginCreateTime;
+
+    /**
+     * 结束创建时间。
+     */
+    private LocalDateTime endCreateTime;
+
+    /**
+     * 开始修改时间。
+     */
+    private LocalDateTime beginModifyTime;
+
+    /**
+     * 结束修改时间。
+     */
+    private LocalDateTime endModifyTime;
+
+    /**
+     * 当前页数。
+     */
+    private Integer offset;
+
+    /**
+     * 每页记录数。
+     */
+    private Integer limit;
+
+    /**
+     * 排序字段。
+     */
+    private String sort;
+
+    /**
+     * 排序规则。
+     */
+    private String order;
+
 }

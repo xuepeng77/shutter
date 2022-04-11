@@ -1,4 +1,4 @@
-package cn.org.shutter.core.common.bean.api;
+package cn.org.shutter.core.common.api;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

@@ -1,6 +1,6 @@
 package cn.org.shutter.core.web.auth;
 
-import cn.org.shutter.core.common.param.BaseParam;
+import cn.org.shutter.core.common.bean.param.BaseParam;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;

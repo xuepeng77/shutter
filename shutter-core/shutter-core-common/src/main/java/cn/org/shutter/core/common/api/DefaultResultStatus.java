@@ -1,4 +1,4 @@
-package cn.org.shutter.core.common.bean.api;
+package cn.org.shutter.core.common.api;
 
 /**
  * Result默认状态。

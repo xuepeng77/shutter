@@ -1,6 +1,6 @@
 package cn.org.shutter.core.web.converter;
 
-import cn.org.shutter.core.common.enums.BaseEnum;
+import cn.org.shutter.core.common.bean.enums.BaseEnum;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.converter.ConverterFactory;
 
