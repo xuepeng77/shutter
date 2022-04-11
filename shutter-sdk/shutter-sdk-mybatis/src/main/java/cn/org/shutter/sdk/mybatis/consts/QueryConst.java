@@ -12,4 +12,8 @@ public final class QueryConst {
 
     public static final boolean DO_NOT_THROW_EX = Boolean.FALSE;
 
+    public static final String ASC = "asc";
+
+    public static final String DESC = "desc";
+
 }
