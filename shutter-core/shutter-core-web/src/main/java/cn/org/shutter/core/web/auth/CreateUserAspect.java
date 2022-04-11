@@ -1,6 +1,6 @@
 package cn.org.shutter.core.web.auth;
 
-import cn.org.shutter.core.common.bean.vo.BaseRequestVo;
+import cn.org.shutter.core.common.param.BaseParam;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -34,9 +34,9 @@ public class CreateUserAspect {
     @Before("createUser()")
     public void doBefore(final JoinPoint joinPoint) {
         for (final Object arg : joinPoint.getArgs()) {
-            if (arg instanceof BaseRequestVo && authService.isLogin()) {
+            if (arg instanceof BaseParam && authService.isLogin()) {
                 final long currentUserId = authService.getCurrentUserId();
-                final BaseRequestVo baseRequestVo = (BaseRequestVo) arg;
+                final BaseParam baseRequestVo = (BaseParam) arg;
                 baseRequestVo.setCreateUser(currentUserId);
                 baseRequestVo.setModifyUser(currentUserId);
             }
