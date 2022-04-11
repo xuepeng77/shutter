@@ -1,6 +1,6 @@
 package cn.org.shutter.sdk.satoken.enums;
 
-import cn.org.shutter.core.common.bean.api.ResultStatus;
+import cn.org.shutter.core.common.api.ResultStatus;
 
 /**
  * 认证失败的响应状态类。

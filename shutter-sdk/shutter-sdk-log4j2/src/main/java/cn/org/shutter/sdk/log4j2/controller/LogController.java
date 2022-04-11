@@ -1,7 +1,7 @@
 package cn.org.shutter.sdk.log4j2.controller;
 
-import cn.org.shutter.core.common.bean.api.DefaultResultFactory;
-import cn.org.shutter.core.common.bean.api.Result;
+import cn.org.shutter.core.common.api.DefaultResultFactory;
+import cn.org.shutter.core.common.api.Result;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import io.swagger.annotations.Api;

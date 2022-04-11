@@ -1,7 +1,7 @@
 package cn.org.shutter.sdk.satoken.exception;
 
 import cn.dev33.satoken.exception.NotLoginException;
-import cn.org.shutter.core.common.bean.api.Result;
+import cn.org.shutter.core.common.api.Result;
 import cn.org.shutter.sdk.satoken.enums.SaTokenResultStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
