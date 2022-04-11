@@ -1,7 +1,7 @@
 package cn.org.shutter.core.web.exception;
 
-import cn.org.shutter.core.common.bean.api.DefaultResultFactory;
-import cn.org.shutter.core.common.bean.api.Result;
+import cn.org.shutter.core.common.api.DefaultResultFactory;
+import cn.org.shutter.core.common.api.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
