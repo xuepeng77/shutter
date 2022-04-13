@@ -5,6 +5,7 @@ import cn.org.shutter.module.system.user.dto.SysUserDto;
 import cn.org.shutter.module.system.user.entity.SysUser;
 import cn.org.shutter.module.system.user.param.SysUserParam;
 import cn.org.shutter.module.system.user.vo.SysUserVo;
+import cn.org.shutter.sdk.satoken.service.SaTokenUser;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -65,5 +66,13 @@ public interface SysUserMapper {
      * @return 系统用户的响应分页对象。
      */
     PageVo<SysUserVo> dtoPageToVoPage(final PageVo<SysUserDto> sysUserDtoPage);
+
+    /**
+     * Dto转换成CurrentUser。
+     *
+     * @param sysUserDto 系统用户数据传输对象。
+     * @return 当前登录人对象。
+     */
+    SaTokenUser dtoToCurrentUser(final SysUserDto sysUserDto);
 
 }

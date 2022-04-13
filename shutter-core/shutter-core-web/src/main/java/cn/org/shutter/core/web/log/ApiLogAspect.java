@@ -75,11 +75,11 @@ public class ApiLogAspect {
     public void doAfterReturning(JoinPoint joinPoint, Object result) {
         final ApiLogInfo apiLogInfo = (ApiLogInfo) ThreadLocalUtil.getAndRemove(THREAD_LOCAL_KEY);
         // 当前登录人主键
-        if (authService.isLogin() && ObjectUtils.isEmpty(apiLogInfo.getUserId())) {
-            apiLogInfo.setUserId(authService.getCurrentUserId());
+        if (authService.isLogin() && ObjectUtils.isEmpty(apiLogInfo.getOpUser())) {
+            apiLogInfo.setOpUser(authService.getCurrentUserAccount());
         }
         apiLogInfo.setResult(result.toString());
-        apiLogInfo.setExeTime(exeTime(apiLogInfo.getStartTime()));
+        apiLogInfo.setExeTime(exeTime(apiLogInfo.getOpTime()));
         if (log.isDebugEnabled()) {
             log.debug("ApiLog请求: {}", apiLogInfo);
         }
@@ -99,11 +99,11 @@ public class ApiLogAspect {
     public void doAfterThrowing(JoinPoint joinPoint, Throwable throwable) {
         final ApiLogInfo apiLogInfo = (ApiLogInfo) ThreadLocalUtil.getAndRemove(THREAD_LOCAL_KEY);
         // 当前登录人主键
-        if (authService.isLogin() && ObjectUtils.isEmpty(apiLogInfo.getUserId())) {
-            apiLogInfo.setUserId(authService.getCurrentUserId());
+        if (authService.isLogin() && ObjectUtils.isEmpty(apiLogInfo.getOpUser())) {
+            apiLogInfo.setOpUser(authService.getCurrentUserAccount());
         }
         apiLogInfo.setError(throwable.getMessage());
-        apiLogInfo.setExeTime(exeTime(apiLogInfo.getStartTime()));
+        apiLogInfo.setExeTime(exeTime(apiLogInfo.getOpTime()));
         log.error(apiLogInfo.toString(), throwable);
         // 持久化错误日志
         if (isPersistent(joinPoint)) {
@@ -125,10 +125,10 @@ public class ApiLogAspect {
                                 final Method method) {
         // 当前登录人主键
         if (authService.isLogin()) {
-            apiLogInfo.setUserId(authService.getCurrentUserId());
+            apiLogInfo.setOpUser(authService.getCurrentUserAccount());
         }
         // 请求信息
-        apiLogInfo.setStartTime(LocalDateTime.now());
+        apiLogInfo.setOpTime(LocalDateTime.now());
         apiLogInfo.setUrl(request.getRequestURL().toString());
         apiLogInfo.setUri(request.getRequestURI());
         apiLogInfo.setMethod(request.getMethod());

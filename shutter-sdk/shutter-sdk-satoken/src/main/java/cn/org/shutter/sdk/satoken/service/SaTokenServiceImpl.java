@@ -3,6 +3,7 @@ package cn.org.shutter.sdk.satoken.service;
 import cn.dev33.satoken.stp.StpUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
 /**
  * SaToken的业务处理实现类。
@@ -13,6 +14,16 @@ import org.springframework.stereotype.Component;
 public class SaTokenServiceImpl implements SaTokenService {
 
     /**
+     * Session Key。
+     */
+    private static final String SESSION_KEY = "user";
+
+    /**
+     * 未登录情况下的默认帐号。
+     */
+    private static final String NOT_LOGIN_USER_ACCOUNT = "未登录";
+
+    /**
      * @return 判断是否登录。
      */
     @Override
@@ -21,11 +32,49 @@ public class SaTokenServiceImpl implements SaTokenService {
     }
 
     /**
+     * 登录。
+     *
+     * @param saTokenUser SaToken用户的实体类。
+     */
+    @Override
+    public void login(final SaTokenUser saTokenUser) {
+        StpUtil.login(saTokenUser.getId());
+        StpUtil.getSession().set(SESSION_KEY, saTokenUser);
+    }
+
+    /**
      * @return 获取当前登录人主键。
      */
     @Override
     public long getCurrentUserId() {
         return StpUtil.getLoginIdAsLong();
+    }
+
+    /**
+     * @return 获取当前登录人帐号。
+     */
+    @Override
+    public String getCurrentUserAccount() {
+        final SaTokenUser saTokenUser = getCurrentUser();
+        return ObjectUtils.isEmpty(saTokenUser)
+                ? NOT_LOGIN_USER_ACCOUNT : saTokenUser.getAccount();
+    }
+
+    /**
+     * @return 获取当前登录人。
+     */
+    @Override
+    public SaTokenUser getCurrentUser() {
+        return (SaTokenUser) StpUtil.getSession().get(SESSION_KEY);
+    }
+
+    /**
+     * 登出。
+     */
+    @Override
+    public void logout() {
+        StpUtil.getSession().delete(SESSION_KEY);
+        StpUtil.logout();
     }
 
 }

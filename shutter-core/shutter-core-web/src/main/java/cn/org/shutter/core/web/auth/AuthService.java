@@ -12,4 +12,9 @@ public interface AuthService {
      */
     long getCurrentUserId();
 
+    /**
+     * @return 获取当前登录人帐号。
+     */
+    String getCurrentUserAccount();
+
 }

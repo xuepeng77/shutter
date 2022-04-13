@@ -19,22 +19,22 @@ import java.time.LocalDateTime;
 public class SysLog extends BaseEntity {
 
     /**
-     * 用户主键。
-     * 数据库字段：user_id，bigint(20)。
-     */
-    private Long userId;
-
-    /**
      * 日志类型：0=访问日志；1=错误日志；
      * 数据库字段：type，tinyint(2)。
      */
     private SysLogType type;
 
     /**
-     * 请求开始时间。
-     * 数据库字段：start_time，timestamp。
+     * 用户。
+     * 数据库字段：op_user，varchar(32)。
      */
-    private LocalDateTime startTime;
+    private String opUser;
+
+    /**
+     * 创建时间。
+     * 数据库字段：op_time，timestamp。
+     */
+    private LocalDateTime opTime;
 
     /**
      * 请求地址。

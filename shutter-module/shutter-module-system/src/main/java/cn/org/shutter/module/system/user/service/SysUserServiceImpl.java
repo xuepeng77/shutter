@@ -127,6 +127,18 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     }
 
     /**
+     * 验证密码是否正确。
+     *
+     * @param input    输入的密码。
+     * @param password 数据库中的密码。
+     * @return 密码是否正确。
+     */
+    @Override
+    public boolean verifyPassword(final String input, final String password) {
+        return getPasswordStrategy().verify(input, password);
+    }
+
+    /**
      * 根据主键查询系统用户。
      * 当根据主键查询不到用户时，抛出SysUserNotFoundException异常对象。
      *
@@ -261,6 +273,14 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     }
 
     /**
+     * @return 获取系统用户对象转换接口。
+     */
+    @Override
+    public SysUserMapper getSysUserMapper() {
+        return this.sysUserMapper;
+    }
+
+    /**
      * 自动装配系统用户对象转换接口。
      *
      * @param sysUserMapper 系统用户对象转换接口。
@@ -289,7 +309,6 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     public void setSystemProperty(SystemProperty systemProperty) {
         this.systemProperty = systemProperty;
     }
-
 
     /**
      * 系统用户对象转换接口。

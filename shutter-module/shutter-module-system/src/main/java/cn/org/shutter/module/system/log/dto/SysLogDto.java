@@ -18,14 +18,14 @@ import java.time.LocalDateTime;
 public class SysLogDto extends BaseDto {
 
     /**
-     * 用户主键。
+     * 创建用户。
      */
-    private Long userId;
+    private String opUser;
 
     /**
      * 请求开始时间。
      */
-    private LocalDateTime startTime;
+    private LocalDateTime opTime;
 
     /**
      * 请求Url。

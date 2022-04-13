@@ -3,6 +3,7 @@ package cn.org.shutter.module.system.user.service;
 import cn.org.shutter.core.common.bean.vo.PageVo;
 import cn.org.shutter.module.system.user.dto.SysUserDto;
 import cn.org.shutter.module.system.user.entity.SysUser;
+import cn.org.shutter.module.system.user.mapper.SysUserMapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
@@ -71,6 +72,15 @@ public interface SysUserService extends IService<SysUser> {
     boolean resetPassword(final long id);
 
     /**
+     * 验证密码是否正确。
+     *
+     * @param input    输入的密码。
+     * @param password 数据库中的密码。
+     * @return 密码是否正确。
+     */
+    boolean verifyPassword(final String input, final String password);
+
+    /**
      * 根据主键查询系统用户。
      * 当根据主键查询不到用户时，抛出SysUserNotFoundException异常对象。
      *
@@ -94,5 +104,10 @@ public interface SysUserService extends IService<SysUser> {
      * @return 系统用户的分页对象。
      */
     PageVo<SysUserDto> pageByCondition(final SysUserDto sysUserDto);
+
+    /**
+     * @return 获取系统用户对象转换接口。
+     */
+    SysUserMapper getSysUserMapper();
 
 }

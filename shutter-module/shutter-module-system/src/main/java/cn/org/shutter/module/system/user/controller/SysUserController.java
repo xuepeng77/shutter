@@ -11,7 +11,6 @@ import cn.org.shutter.core.web.bean.BaseController;
 import cn.org.shutter.core.web.log.ApiLog;
 import cn.org.shutter.core.web.log.ApiLogAction;
 import cn.org.shutter.module.system.user.dto.SysUserDto;
-import cn.org.shutter.module.system.user.mapper.SysUserMapper;
 import cn.org.shutter.module.system.user.param.SysUserParam;
 import cn.org.shutter.module.system.user.service.SysUserService;
 import cn.org.shutter.module.system.user.vo.SysUserVo;
@@ -55,7 +54,7 @@ public class SysUserController extends BaseController {
     @CreateUser
     public Result<Boolean> create(@Validated(BaseParam.create.class)
                                   @RequestBody final SysUserParam sysUserParam) {
-        final SysUserDto sysUserDto = sysUserMapper.paramToDto(sysUserParam);
+        final SysUserDto sysUserDto = sysUserService.getSysUserMapper().paramToDto(sysUserParam);
         sysUserDto.setRegeditIp(getRequestIp());
         final boolean result = sysUserService.create(sysUserDto);
         if (result) {
@@ -83,7 +82,7 @@ public class SysUserController extends BaseController {
             @PathVariable(value = "id") final long id,
             @Validated(BaseParam.update.class) @RequestBody final SysUserParam sysUserParam
     ) {
-        final SysUserDto sysUserDto = sysUserMapper.paramToDto(sysUserParam);
+        final SysUserDto sysUserDto = sysUserService.getSysUserMapper().paramToDto(sysUserParam);
         sysUserDto.setId(id);
         final boolean result = sysUserService.update(sysUserDto);
         if (result) {
@@ -209,7 +208,7 @@ public class SysUserController extends BaseController {
     @ApiLog(module = "系统管理", func = "系统用户管理", remark = "查询系统用户", action = ApiLogAction.DETAIL)
     public Result<SysUserVo> findById(@PathVariable(value = "id") final long id) {
         final SysUserDto sysUserDto = sysUserService.findById(id);
-        final SysUserVo result = sysUserMapper.dtoToVo(sysUserDto);
+        final SysUserVo result = sysUserService.getSysUserMapper().dtoToVo(sysUserDto);
         return DefaultResultFactory.success("查询系统用户。", result);
     }
 
@@ -226,9 +225,9 @@ public class SysUserController extends BaseController {
     public Result<PageVo<SysUserVo>> pageByCondition(
             @Validated(BaseParam.page.class) final SysUserParam sysUserParam
     ) {
-        final SysUserDto sysUserDto = sysUserMapper.paramToDto(sysUserParam);
+        final SysUserDto sysUserDto = sysUserService.getSysUserMapper().paramToDto(sysUserParam);
         final PageVo<SysUserDto> userDtoPage = sysUserService.pageByCondition(sysUserDto);
-        final PageVo<SysUserVo> result = sysUserMapper.dtoPageToVoPage(userDtoPage);
+        final PageVo<SysUserVo> result = sysUserService.getSysUserMapper().dtoPageToVoPage(userDtoPage);
         return DefaultResultFactory.success("分页查询系统用户。", result);
     }
 
@@ -243,23 +242,8 @@ public class SysUserController extends BaseController {
     }
 
     /**
-     * 自动装配系统用户对象转换接口。
-     *
-     * @param sysUserMapper 系统用户对象转换接口。
-     */
-    @Autowired
-    public void setSysUserMapper(SysUserMapper sysUserMapper) {
-        this.sysUserMapper = sysUserMapper;
-    }
-
-    /**
      * 系统用户的业务处理接口。
      */
     private SysUserService sysUserService;
-
-    /**
-     * 系统用户对象转换接口。
-     */
-    private SysUserMapper sysUserMapper;
 
 }

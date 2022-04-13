@@ -1,7 +1,5 @@
 package cn.org.shutter.module.system.login.service;
 
-import cn.dev33.satoken.stp.StpUtil;
-import cn.org.shutter.module.property.SystemProperty;
 import cn.org.shutter.module.system.login.dto.SysLoginDto;
 import cn.org.shutter.module.system.login.exception.SysLoginFailedException;
 import cn.org.shutter.module.system.login.exception.SysLoginVerifyCodeExpiredException;
@@ -9,8 +7,8 @@ import cn.org.shutter.module.system.login.exception.SysLoginVerifyCodeIncorrectE
 import cn.org.shutter.module.system.user.dto.SysUserDto;
 import cn.org.shutter.module.system.user.enums.SysUserStatus;
 import cn.org.shutter.module.system.user.service.SysUserService;
-import cn.org.shutter.module.system.user.service.password.PasswordStrategy;
-import cn.org.shutter.module.system.user.service.password.PasswordStrategyFactory;
+import cn.org.shutter.sdk.satoken.service.SaTokenService;
+import cn.org.shutter.sdk.satoken.service.SaTokenUser;
 import cn.org.shutter.sdk.verifycode.entity.VerifyCode;
 import cn.org.shutter.sdk.verifycode.exception.VerifyCodeExpiredException;
 import cn.org.shutter.sdk.verifycode.service.VerifyCodeService;
@@ -57,7 +55,8 @@ public class SysLoginServiceImpl implements SysLoginService {
         // TODO 判断租户状态
         // TODO 判断租户有效期
         // 系统登录
-        StpUtil.login(sysUserDto.getId());
+        final SaTokenUser saToeknUser = sysUserService.getSysUserMapper().dtoToCurrentUser(sysUserDto);
+        saTokenService.login(saToeknUser);
         // 更新登录信息
         updateLoginInfo(sysLoginDto, sysUserDto);
     }
@@ -67,7 +66,7 @@ public class SysLoginServiceImpl implements SysLoginService {
      */
     @Override
     public void logout() {
-        StpUtil.logout();
+        saTokenService.logout();
     }
 
     /**
@@ -99,7 +98,7 @@ public class SysLoginServiceImpl implements SysLoginService {
      */
     private void checkLogin(final SysLoginDto sysLoginDto, final SysUserDto sysUserDto) {
         if (ObjectUtils.isEmpty(sysUserDto) ||
-                !getPasswordStrategy().verify(sysLoginDto.getPassword(), sysUserDto.getPassword())
+                !sysUserService.verifyPassword(sysLoginDto.getPassword(), sysUserDto.getPassword())
         ) {
             throw new SysLoginFailedException("用户名或密码不正确。");
         }
@@ -124,13 +123,6 @@ public class SysLoginServiceImpl implements SysLoginService {
     }
 
     /**
-     * @return 获取登录密码策略的接口。
-     */
-    private PasswordStrategy getPasswordStrategy() {
-        return passwordStrategyFactory.getInstance(systemProperty.getSysUserProperty().getPasswordStrategyType());
-    }
-
-    /**
      * 自动装配验证码的业务处理接口。
      *
      * @param imageVerifyCodeService 验证码的业务处理接口。
@@ -151,23 +143,13 @@ public class SysLoginServiceImpl implements SysLoginService {
     }
 
     /**
-     * 自动装配登录密码策略的工厂类。
+     * 自动装配SaToken的业务处理接口。
      *
-     * @param passwordStrategyFactory 登录密码策略的工厂类。
+     * @param saTokenService SaToken的业务处理接口。
      */
     @Autowired
-    public void setPasswordStrategyFactory(PasswordStrategyFactory passwordStrategyFactory) {
-        this.passwordStrategyFactory = passwordStrategyFactory;
-    }
-
-    /**
-     * 自动装配系统管理的自定义配置类。
-     *
-     * @param systemProperty 系统管理的自定义配置类。
-     */
-    @Autowired
-    public void setSystemProperty(SystemProperty systemProperty) {
-        this.systemProperty = systemProperty;
+    public void setSaTokenService(SaTokenService saTokenService) {
+        this.saTokenService = saTokenService;
     }
 
     /**
@@ -181,13 +163,8 @@ public class SysLoginServiceImpl implements SysLoginService {
     private SysUserService sysUserService;
 
     /**
-     * 登录密码策略的工厂类。
+     * SaToken的业务处理接口。
      */
-    private PasswordStrategyFactory passwordStrategyFactory;
-
-    /**
-     * 系统管理的自定义配置类。
-     */
-    private SystemProperty systemProperty;
+    private SaTokenService saTokenService;
 
 }
