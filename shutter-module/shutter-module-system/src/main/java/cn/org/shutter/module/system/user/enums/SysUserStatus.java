@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 /**
- * 系统用户状态枚举。
+ * 系统用户的状态枚举。
  *
  * @author xuepeng
  */

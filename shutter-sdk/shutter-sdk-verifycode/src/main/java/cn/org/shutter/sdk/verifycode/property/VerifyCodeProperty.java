@@ -52,12 +52,12 @@ public class VerifyCodeProperty {
         /**
          * 图片宽度
          */
-        private Integer captchaImgWidth = 130;
+        private Integer captchaImgWidth = 127;
 
         /**
          * 图片高度
          */
-        private Integer captchaImgHeight = 48;
+        private Integer captchaImgHeight = 40;
 
         /**
          * 验证码长度。

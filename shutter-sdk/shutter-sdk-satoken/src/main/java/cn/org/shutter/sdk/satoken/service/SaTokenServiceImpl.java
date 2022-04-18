@@ -35,11 +35,13 @@ public class SaTokenServiceImpl implements SaTokenService {
      * 登录。
      *
      * @param saTokenUser SaToken用户的实体类。
+     * @return 访问令牌。
      */
     @Override
-    public void login(final SaTokenUser saTokenUser) {
+    public String login(final SaTokenUser saTokenUser) {
         StpUtil.login(saTokenUser.getId());
         StpUtil.getSession().set(SESSION_KEY, saTokenUser);
+        return StpUtil.getTokenValue();
     }
 
     /**

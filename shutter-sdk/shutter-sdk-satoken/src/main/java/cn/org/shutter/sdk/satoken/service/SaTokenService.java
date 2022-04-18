@@ -13,8 +13,9 @@ public interface SaTokenService extends AuthService {
      * 登录。
      *
      * @param saTokenUser SaToken用户的实体类。
+     * @return 访问令牌。
      */
-    void login(final SaTokenUser saTokenUser);
+    String login(final SaTokenUser saTokenUser);
 
     /**
      * @return 获取当前登录人。

@@ -46,7 +46,7 @@ public class SysLoginServiceImpl implements SysLoginService {
      * @param sysLoginDto 系统登录的数据传输对象。
      */
     @Override
-    public void login(final SysLoginDto sysLoginDto) {
+    public String login(final SysLoginDto sysLoginDto) {
         // 检查验证码是否正确
         checkVerifyCode(sysLoginDto);
         // 检查是否可登录
@@ -56,9 +56,18 @@ public class SysLoginServiceImpl implements SysLoginService {
         // TODO 判断租户有效期
         // 系统登录
         final SaTokenUser saToeknUser = sysUserService.getSysUserMapper().dtoToCurrentUser(sysUserDto);
-        saTokenService.login(saToeknUser);
+        final String accessToken = saTokenService.login(saToeknUser);
         // 更新登录信息
         updateLoginInfo(sysLoginDto, sysUserDto);
+        return accessToken;
+    }
+
+    /**
+     * @return 获取当前登录人。
+     */
+    @Override
+    public SaTokenUser getCurrentUser() {
+        return saTokenService.getCurrentUser();
     }
 
     /**

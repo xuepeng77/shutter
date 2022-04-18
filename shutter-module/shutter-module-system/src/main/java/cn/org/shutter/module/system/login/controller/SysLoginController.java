@@ -10,6 +10,7 @@ import cn.org.shutter.module.system.login.dto.SysLoginDto;
 import cn.org.shutter.module.system.login.mapper.SysLoginMapper;
 import cn.org.shutter.module.system.login.param.SysLoginParam;
 import cn.org.shutter.module.system.login.service.SysLoginService;
+import cn.org.shutter.sdk.satoken.service.SaTokenUser;
 import cn.org.shutter.sdk.verifycode.entity.VerifyCode;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
@@ -41,7 +42,7 @@ public class SysLoginController extends BaseController {
     @GetMapping("/v1/verify-code")
     @ApiOperation(value = "获取验证码")
     @ApiOperationSupport(order = 1)
-    @ApiLog(module = "身份认证", func = "系统登录", remark = "获取验证码", action = ApiLogAction.CREATE)
+    @ApiLog(module = "系统管理", func = "身份认证", remark = "获取验证码", action = ApiLogAction.CREATE)
     public Result<VerifyCode> createLoginVerifyCode() {
         final VerifyCode result = sysLoginService.createLoginVerifyCode();
         return DefaultResultFactory.success("获取验证码成功。", result);
@@ -51,18 +52,27 @@ public class SysLoginController extends BaseController {
      * 系统登录。
      *
      * @param sysLoginParam 系统登录的请求对象。
-     * @return 是否登录成功。
+     * @return 访问令牌。
      */
     @PostMapping("/v1/login")
     @ApiOperation(value = "系统登录")
     @ApiOperationSupport(order = 2)
-    @ApiLog(module = "身份认证", func = "系统登录", remark = "用户名密码登录", action = ApiLogAction.LOGIN)
-    public Result<Boolean> login(@Validated @RequestBody final SysLoginParam sysLoginParam) {
+    @ApiLog(module = "系统管理", func = "身份认证", remark = "用户名密码登录", action = ApiLogAction.LOGIN)
+    public Result<String> login(@Validated @RequestBody final SysLoginParam sysLoginParam) {
         final SysLoginDto sysLoginDto = sysLoginMapper.paramToDto(sysLoginParam);
         // 设置登录IP地址。
         sysLoginDto.setIp(getRequestIp());
-        sysLoginService.login(sysLoginDto);
-        return DefaultResultFactory.success("登录成功。", Boolean.TRUE);
+        final String accessToken = sysLoginService.login(sysLoginDto);
+        return DefaultResultFactory.success("登录成功。", accessToken);
+    }
+
+    @GetMapping("/v1/current-user")
+    @ApiOperation(value = "获取当前登录人")
+    @ApiOperationSupport(order = 3)
+    @ApiLog(module = "系统管理", func = "身份认证", remark = "获取当前登录人", action = ApiLogAction.QUERY)
+    public Result<SaTokenUser> getCurrentUser() {
+        final SaTokenUser saTokenUser = sysLoginService.getCurrentUser();
+        return DefaultResultFactory.success("获取当前登录人", saTokenUser);
     }
 
     /**
@@ -72,8 +82,8 @@ public class SysLoginController extends BaseController {
      */
     @PostMapping("/v1/logout")
     @ApiOperation(value = "系统登出")
-    @ApiOperationSupport(order = 3)
-    @ApiLog(module = "身份认证", func = "系统登出", remark = "系统登出", action = ApiLogAction.LOGOUT)
+    @ApiOperationSupport(order = 4)
+    @ApiLog(module = "系统管理", func = "身份认证", remark = "系统登出", action = ApiLogAction.LOGOUT)
     public Result<Boolean> logout() {
         sysLoginService.logout();
         return DefaultResultFactory.success("登录成功。", Boolean.TRUE);

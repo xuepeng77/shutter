@@ -44,9 +44,9 @@ public class ImageVerifyCodeService extends AbstractVerifyCodeService {
     protected VerifyCode sending(final String to) {
         final Captcha captcha = new ArithmeticCaptcha(
                 verifyCodeProperty.getImage().getCaptchaImgWidth(),
-                verifyCodeProperty.getImage().getCaptchaImgHeight()
+                verifyCodeProperty.getImage().getCaptchaImgHeight(),
+                verifyCodeProperty.getImage().getCaptchaLength()
         );
-        captcha.setLen(verifyCodeProperty.getImage().getCaptchaLength());
         final String uuid = RandomUtil.get32UUID();
         final String img = captcha.toBase64();
         final String text = captcha.text();
