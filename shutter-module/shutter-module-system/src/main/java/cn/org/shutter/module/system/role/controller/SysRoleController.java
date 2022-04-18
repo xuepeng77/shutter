@@ -61,6 +61,13 @@ public class SysRoleController {
         return DefaultResultFactory.fail("创建系统角色失败。", Boolean.FALSE);
     }
 
+    /**
+     * 修改系统角色。
+     *
+     * @param id           系统角色主键。
+     * @param sysRoleParam 系统角色的请求对象。
+     * @return 是否修改成功。
+     */
     @PutMapping("/v1/{id}")
     @ApiOperation(value = "修改系统角色")
     @ApiOperationSupport(order = 2)
