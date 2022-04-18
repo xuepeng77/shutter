@@ -12,6 +12,7 @@ import cn.org.shutter.module.system.user.service.password.PasswordStrategy;
 import cn.org.shutter.module.system.user.service.password.PasswordStrategyFactory;
 import cn.org.shutter.sdk.mybatis.consts.QueryConst;
 import cn.org.shutter.sdk.mybatis.util.PageUtil;
+import cn.org.shutter.sdk.mybatis.util.QueryWrapperUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -22,7 +23,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -152,11 +152,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
         if (ObjectUtils.isEmpty(sysUser)) {
             throw new SysUserNotFoundException("根据主键[" + id + "]未能查询到系统用户。");
         }
-        final SysUserDto result = sysUserMapper.entityToDto(sysUser);
-        if (log.isDebugEnabled()) {
-            log.debug("根据主键：{}，查询用户：{}", id, result.toString());
-        }
-        return result;
+        return sysUserMapper.entityToDto(sysUser);
     }
 
     /**
@@ -167,15 +163,13 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
      */
     @Override
     public SysUserDto findByAccount(final String account) {
+        final QueryWrapper<SysUser> wrapper = QueryWrapperUtil.createQueryWrapper();
+        final LambdaQueryWrapper<SysUser> lambda = wrapper.lambda();
         final SysUser sysUser = super.getOne(
-                createQueryWrapper().lambda().eq(SysUser::getAccount, account),
+                lambda.eq(SysUser::getAccount, account),
                 QueryConst.DO_NOT_THROW_EX
         );
-        final SysUserDto result = sysUserMapper.entityToDto(sysUser);
-        if (log.isDebugEnabled()) {
-            log.debug("根据帐号：{}，查询用户：{}", account, result.toString());
-        }
-        return result;
+        return sysUserMapper.entityToDto(sysUser);
     }
 
     /**
@@ -193,13 +187,6 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     }
 
     /**
-     * @return 创建QueryWrapper。
-     */
-    private QueryWrapper<SysUser> createQueryWrapper() {
-        return new QueryWrapper<>();
-    }
-
-    /**
      * 创建带条件的QueryWrapper。
      *
      * @param sysUserDto 系统用户数据传输对象。
@@ -207,7 +194,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
      */
     private QueryWrapper<SysUser> createQueryWrapper(final SysUserDto sysUserDto) {
         final SysUser sysUser = sysUserMapper.dtoToEntity(sysUserDto);
-        final QueryWrapper<SysUser> wrapper = this.createQueryWrapper();
+        final QueryWrapper<SysUser> wrapper = QueryWrapperUtil.createQueryWrapper(sysUserDto);
         final LambdaQueryWrapper<SysUser> lambda = wrapper.lambda();
         if (StringUtils.isNotBlank(sysUser.getAccount())) {
             lambda.like(SysUser::getAccount, sysUser.getAccount());
@@ -235,32 +222,6 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
         }
         if (ObjectUtils.isNotEmpty(sysUser.getStatus())) {
             lambda.eq(SysUser::getStatus, sysUser.getStatus());
-        }
-        // 创建时间查询条件
-        if (ObjectUtils.isNotEmpty(sysUserDto.getBeginCreateTime())
-                && ObjectUtils.isNotEmpty(sysUserDto.getEndCreateTime())) {
-            lambda.between(SysUser::getCreateTime, sysUserDto.getBeginCreateTime(), sysUserDto.getEndCreateTime());
-        }
-        if (ObjectUtils.isNotEmpty(sysUserDto.getBeginCreateTime())
-                && ObjectUtils.isNotEmpty(sysUserDto.getEndCreateTime())) {
-            lambda.between(SysUser::getCreateTime, sysUserDto.getBeginCreateTime(), LocalDateTime.now());
-        }
-        if (ObjectUtils.isEmpty(sysUserDto.getBeginCreateTime())
-                && ObjectUtils.isNotEmpty(sysUserDto.getEndCreateTime())) {
-            lambda.le(SysUser::getCreateTime, sysUserDto.getEndCreateTime());
-        }
-        // 修改时间查询条件
-        if (ObjectUtils.isNotEmpty(sysUserDto.getBeginModifyTime())
-                && ObjectUtils.isNotEmpty(sysUserDto.getEndModifyTime())) {
-            lambda.between(SysUser::getModifyTime, sysUserDto.getBeginModifyTime(), sysUserDto.getEndModifyTime());
-        }
-        if (ObjectUtils.isNotEmpty(sysUserDto.getBeginModifyTime())
-                && ObjectUtils.isNotEmpty(sysUserDto.getEndModifyTime())) {
-            lambda.between(SysUser::getModifyTime, sysUserDto.getBeginModifyTime(), LocalDateTime.now());
-        }
-        if (ObjectUtils.isEmpty(sysUserDto.getBeginModifyTime())
-                && ObjectUtils.isNotEmpty(sysUserDto.getEndModifyTime())) {
-            lambda.le(SysUser::getModifyTime, sysUserDto.getEndModifyTime());
         }
         return wrapper;
     }
