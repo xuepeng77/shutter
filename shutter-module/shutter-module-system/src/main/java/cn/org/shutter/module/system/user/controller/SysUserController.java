@@ -53,8 +53,7 @@ public class SysUserController extends BaseController {
     @ApiLog(module = "系统管理", func = "系统用户管理", remark = "创建系统用户", action = ApiLogAction.CREATE)
     @CreateUser
     // TODO 校验参数唯一性
-    public Result<Boolean> create(@Validated(BaseParam.create.class)
-                                  @RequestBody final SysUserParam sysUserParam) {
+    public Result<Boolean> create(@Validated(BaseParam.create.class) @RequestBody final SysUserParam sysUserParam) {
         final SysUserDto sysUserDto = sysUserService.getSysUserMapper().paramToDto(sysUserParam);
         sysUserDto.setRegeditIp(getRequestIp());
         final boolean result = sysUserService.create(sysUserDto);
@@ -79,6 +78,7 @@ public class SysUserController extends BaseController {
     )
     @ApiLog(module = "系统管理", func = "系统用户管理", remark = "编辑系统用户", action = ApiLogAction.UPDATE)
     @ModifyUser
+    // TODO 校验参数唯一性
     public Result<Boolean> update(
             @PathVariable(value = "id") final long id,
             @Validated(BaseParam.update.class) @RequestBody final SysUserParam sysUserParam
