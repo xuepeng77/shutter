@@ -1,6 +1,7 @@
 package cn.org.shutter.sdk.mybatis.util;
 
 import cn.org.shutter.core.common.bean.dto.BaseDto;
+import cn.org.shutter.sdk.mybatis.entity.BaseEntity;
 import cn.org.shutter.sdk.mybatis.entity.BizEntity;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -27,7 +28,7 @@ public class QueryWrapperUtil {
      * @param <E> QueryWrapper中的泛型类，集成自BaseEntity类。
      * @return QueryWrapper查询对象。
      */
-    public static <E extends BizEntity> QueryWrapper<E> createQueryWrapper() {
+    public static <E extends BaseEntity> QueryWrapper<E> createQueryWrapper() {
         return new QueryWrapper<>();
     }
 
