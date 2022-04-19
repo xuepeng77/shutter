@@ -5,8 +5,11 @@ import cn.org.shutter.module.system.role.dto.SysRoleDto;
 import cn.org.shutter.module.system.role.entity.SysRole;
 import cn.org.shutter.module.system.role.param.SysRoleParam;
 import cn.org.shutter.module.system.role.vo.SysRoleVo;
+import cn.org.shutter.sdk.satoken.service.SaTokenRole;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.mapstruct.Mapper;
+
+import java.util.List;
 
 /**
  * 系统角色对象转换接口。
@@ -49,6 +52,14 @@ public interface SysRoleMapper {
     SysRoleVo dtoToVo(final SysRoleDto sysRoleDto);
 
     /**
+     * Entity集合转换成Dto集合。
+     *
+     * @param sysRoleList 系统角色实体对象集合。
+     * @return 系统角色数据传输对象集合。
+     */
+    List<SysRoleDto> entityListToDtoList(final List<SysRole> sysRoleList);
+
+    /**
      * Entity分页转换成Dto分页。
      *
      * @param sysRolePage 系统角色实体分页对象。
@@ -63,5 +74,13 @@ public interface SysRoleMapper {
      * @return 系统角色的响应分页对象。
      */
     PageVo<SysRoleVo> dtoPageToVoPage(final PageVo<SysRoleDto> sysRoleDtoPage);
+
+    /**
+     * Dto转换成SaTokenRole。
+     *
+     * @param sysRoleDto 系统角色数据传输对象。
+     * @return 当前SaTokenRole对象。
+     */
+    SaTokenRole dtoToSaTokenRole(final SysRoleDto sysRoleDto);
 
 }

@@ -52,12 +52,12 @@ public class SysRoleUserServiceImpl extends ServiceImpl<SysRoleUserDao, SysRoleU
     /**
      * 给一个系统用户授权多个系统角色。
      *
-     * @param roleIds 系统角色主键集合。
      * @param userId  系统用户主键。
+     * @param roleIds 系统角色主键集合。
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void saveRolesToUsers(final List<Long> roleIds, final long userId) {
+    public void saveRolesToUser(final long userId, final List<Long> roleIds) {
         // 删除关系
         super.remove(
                 createQueryWrapper().lambda().eq(SysRoleUser::getUserId, userId)

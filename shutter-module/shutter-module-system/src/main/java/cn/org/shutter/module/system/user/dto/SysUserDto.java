@@ -1,11 +1,13 @@
 package cn.org.shutter.module.system.user.dto;
 
 import cn.org.shutter.core.common.bean.dto.BaseDto;
+import cn.org.shutter.module.system.role.dto.SysRoleDto;
 import cn.org.shutter.module.system.user.enums.SysUserStatus;
 import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 系统用户的数据传输类。
@@ -88,5 +90,10 @@ public class SysUserDto extends BaseDto {
      * 登录时间。
      */
     private LocalDateTime loginTime;
+
+    /**
+     * 系统角色集合。
+     */
+    private List<SysRoleDto> roles;
 
 }

@@ -20,10 +20,10 @@ public interface SysRoleUserService {
     /**
      * 给一个系统用户授权多个系统角色。
      *
-     * @param roleIds 系统角色主键集合。
      * @param userId  系统用户主键。
+     * @param roleIds 系统角色主键集合。
      */
-    void saveRolesToUsers(final List<Long> roleIds, final long userId);
+    void saveRolesToUser(final long userId, final List<Long> roleIds);
 
     /**
      * 查询系统角色下已授权的系统用户。

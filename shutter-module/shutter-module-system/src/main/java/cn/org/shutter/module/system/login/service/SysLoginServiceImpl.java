@@ -4,6 +4,8 @@ import cn.org.shutter.module.system.login.dto.SysLoginDto;
 import cn.org.shutter.module.system.login.exception.SysLoginFailedException;
 import cn.org.shutter.module.system.login.exception.SysLoginVerifyCodeExpiredException;
 import cn.org.shutter.module.system.login.exception.SysLoginVerifyCodeIncorrectException;
+import cn.org.shutter.module.system.role.dto.SysRoleDto;
+import cn.org.shutter.module.system.role.service.SysRoleService;
 import cn.org.shutter.module.system.user.dto.SysUserDto;
 import cn.org.shutter.module.system.user.enums.SysUserStatus;
 import cn.org.shutter.module.system.user.service.SysUserService;
@@ -19,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 系统身份认证的业务处理实现类。
@@ -52,11 +55,16 @@ public class SysLoginServiceImpl implements SysLoginService {
         // 检查是否可登录
         final SysUserDto sysUserDto = sysUserService.findByAccount(sysLoginDto.getAccount());
         checkLogin(sysLoginDto, sysUserDto);
-        // TODO 判断租户状态
-        // TODO 判断租户有效期
+
+        // 查询用户被授权的角色
+        final List<Long> roleIds = sysUserService.findRoles(sysUserDto.getId());
+        final List<SysRoleDto> sysRoleDtos = sysRoleService.findByIds(roleIds);
+        sysUserDto.setRoles(sysRoleDtos);
+
+        // TODO 判断租户状态，有效期
         // 系统登录
-        final SaTokenUser saToeknUser = sysUserService.getSysUserMapper().dtoToCurrentUser(sysUserDto);
-        final String accessToken = saTokenService.login(saToeknUser);
+        final SaTokenUser saTokenUser = sysUserService.getSysUserMapper().dtoToSaTokenUser(sysUserDto);
+        final String accessToken = saTokenService.login(saTokenUser);
         // 更新登录信息
         updateLoginInfo(sysLoginDto, sysUserDto);
         return accessToken;
@@ -152,6 +160,16 @@ public class SysLoginServiceImpl implements SysLoginService {
     }
 
     /**
+     * 自动装配系统角色的业务处理接口。
+     *
+     * @param sysRoleService 系统角色的业务处理接口。
+     */
+    @Autowired
+    public void setSysRoleService(SysRoleService sysRoleService) {
+        this.sysRoleService = sysRoleService;
+    }
+
+    /**
      * 自动装配SaToken的业务处理接口。
      *
      * @param saTokenService SaToken的业务处理接口。
@@ -170,6 +188,11 @@ public class SysLoginServiceImpl implements SysLoginService {
      * 系统用户的业务处理接口。
      */
     private SysUserService sysUserService;
+
+    /**
+     * 系统角色的业务处理接口。
+     */
+    private SysRoleService sysRoleService;
 
     /**
      * SaToken的业务处理接口。

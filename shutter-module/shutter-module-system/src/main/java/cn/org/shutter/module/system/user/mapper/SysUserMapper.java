@@ -1,6 +1,7 @@
 package cn.org.shutter.module.system.user.mapper;
 
 import cn.org.shutter.core.common.bean.vo.PageVo;
+import cn.org.shutter.module.system.role.mapper.SysRoleMapper;
 import cn.org.shutter.module.system.user.dto.SysUserDto;
 import cn.org.shutter.module.system.user.entity.SysUser;
 import cn.org.shutter.module.system.user.param.SysUserParam;
@@ -15,7 +16,9 @@ import org.mapstruct.Mapping;
  *
  * @author xuepeng
  */
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {
+        SysRoleMapper.class
+})
 public interface SysUserMapper {
 
     /**
@@ -24,7 +27,6 @@ public interface SysUserMapper {
      * @param sysUserParam 系统用户的请求对象。
      * @return 系统用户数据传输对象。
      */
-    @Mapping(target = "password", ignore = true)
     SysUserDto paramToDto(final SysUserParam sysUserParam);
 
     /**
@@ -68,11 +70,12 @@ public interface SysUserMapper {
     PageVo<SysUserVo> dtoPageToVoPage(final PageVo<SysUserDto> sysUserDtoPage);
 
     /**
-     * Dto转换成CurrentUser。
+     * Dto转换成SaTokenUser。
      *
      * @param sysUserDto 系统用户数据传输对象。
-     * @return 当前登录人对象。
+     * @return 当前SaTokenUser对象。
      */
-    SaTokenUser dtoToCurrentUser(final SysUserDto sysUserDto);
+    @Mapping(source = "sysUserDto.roles", target = "roles")
+    SaTokenUser dtoToSaTokenUser(final SysUserDto sysUserDto);
 
 }

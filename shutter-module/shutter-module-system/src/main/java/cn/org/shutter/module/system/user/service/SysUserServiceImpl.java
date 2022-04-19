@@ -2,6 +2,7 @@ package cn.org.shutter.module.system.user.service;
 
 import cn.org.shutter.core.common.bean.vo.PageVo;
 import cn.org.shutter.module.property.SystemProperty;
+import cn.org.shutter.module.system.role.service.SysRoleUserService;
 import cn.org.shutter.module.system.user.dao.SysUserDao;
 import cn.org.shutter.module.system.user.dto.SysUserDto;
 import cn.org.shutter.module.system.user.entity.SysUser;
@@ -187,6 +188,28 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     }
 
     /**
+     * 给一个系统用户授权多个系统角色。
+     *
+     * @param id      系统用户主键。
+     * @param roleIds 系统角色主键集合。
+     */
+    @Override
+    public void saveRoles(final long id, final List<Long> roleIds) {
+        sysRoleUserService.saveRolesToUser(id, roleIds);
+    }
+
+    /**
+     * 查询系统用户下已授权的系统角色。
+     *
+     * @param id 系统用户主键。
+     * @return 系统角色主键集合。
+     */
+    @Override
+    public List<Long> findRoles(final long id) {
+        return sysRoleUserService.findRolesByUserId(id);
+    }
+
+    /**
      * 创建带条件的QueryWrapper。
      *
      * @param sysUserDto 系统用户数据传输对象。
@@ -272,6 +295,16 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     }
 
     /**
+     * 自动装配系统角色与系统用户关系的业务处理接口。
+     *
+     * @param sysRoleUserService 系统角色与系统用户关系的业务处理接口。
+     */
+    @Autowired
+    public void setSysRoleUserService(SysRoleUserService sysRoleUserService) {
+        this.sysRoleUserService = sysRoleUserService;
+    }
+
+    /**
      * 系统用户对象转换接口。
      */
     private SysUserMapper sysUserMapper;
@@ -285,5 +318,11 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
      * 系统管理的自定义配置类。
      */
     private SystemProperty systemProperty;
+
+    /**
+     * 系统角色与系统用户关系的业务处理接口。
+     */
+    private SysRoleUserService sysRoleUserService;
+
 
 }

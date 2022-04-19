@@ -122,6 +122,18 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRole> impleme
     }
 
     /**
+     * 根据主键查询系统角色。
+     *
+     * @param ids 系统角色主键集合。
+     * @return 系统角色的的数据传输对象集合。
+     */
+    @Override
+    public List<SysRoleDto> findByIds(final List<Long> ids) {
+        final List<SysRole> sysRoles = super.listByIds(ids);
+        return sysRoleMapper.entityListToDtoList(sysRoles);
+    }
+
+    /**
      * 根据条件分页查询系统角色。
      *
      * @param sysRoleDto 系统角色的数据传输对象。

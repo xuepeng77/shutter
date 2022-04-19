@@ -4,6 +4,7 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * SaToken用户的实体类。
@@ -82,5 +83,10 @@ public class SaTokenUser {
      * 登录时间。
      */
     private LocalDateTime loginTime;
+
+    /**
+     * 角色。
+     */
+    private List<SaTokenRole> roles;
 
 }

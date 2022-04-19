@@ -106,6 +106,22 @@ public interface SysUserService extends IService<SysUser> {
     PageVo<SysUserDto> pageByCondition(final SysUserDto sysUserDto);
 
     /**
+     * 给一个系统用户授权多个系统角色。
+     *
+     * @param id      系统用户主键。
+     * @param roleIds 系统角色主键集合。
+     */
+    void saveRoles(final long id, final List<Long> roleIds);
+
+    /**
+     * 查询系统用户下已授权的系统角色。
+     *
+     * @param id 系统用户主键。
+     * @return 系统角色主键集合。
+     */
+    List<Long> findRoles(final long id);
+
+    /**
      * @return 获取系统用户对象转换接口。
      */
     SysUserMapper getSysUserMapper();

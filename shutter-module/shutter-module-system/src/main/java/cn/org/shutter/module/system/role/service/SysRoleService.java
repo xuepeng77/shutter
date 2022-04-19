@@ -71,6 +71,14 @@ public interface SysRoleService {
     SysRoleDto findById(final long id);
 
     /**
+     * 根据主键查询系统角色。
+     *
+     * @param ids 系统角色主键集合。
+     * @return 系统角色的的数据传输对象集合。
+     */
+    List<SysRoleDto> findByIds(final List<Long> ids);
+
+    /**
      * 根据条件分页查询系统角色。
      *
      * @param sysRoleDto 系统角色的数据传输对象。
