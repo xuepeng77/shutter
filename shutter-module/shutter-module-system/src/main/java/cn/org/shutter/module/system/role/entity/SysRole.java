@@ -5,7 +5,7 @@ import cn.org.shutter.sdk.mybatis.entity.BizEntity;
 import lombok.*;
 
 /**
- * 系统角色实体类。
+ * 系统角色的实体类。
  * 数据库表：sys_role，系统角色表。
  *
  * @author xuepeng

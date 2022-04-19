@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
- * 系统用户实体类。
+ * 系统用户的实体类。
  * 数据库表：sys_user，系统用户表。
  *
  * @author xuepeng

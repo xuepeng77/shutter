@@ -7,7 +7,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 /**
- * 系统日志实体类。
+ * 系统日志的实体类。
  *
  * @author xuepeng
  */
