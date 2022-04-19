@@ -24,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 /**
@@ -180,7 +181,7 @@ public class SysRoleController {
     @ApiOperation(value = "查询系统角色")
     @ApiOperationSupport(order = 7)
     @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "path", name = "id", value = "系统主键", dataTypeClass = Long.class, required = true)
+            @ApiImplicitParam(paramType = "path", name = "id", value = "系统角色主键", dataTypeClass = Long.class, required = true)
     })
     @ApiLog(module = "系统管理", func = "系统角色管理", remark = "查询系统角色", action = ApiLogAction.DETAIL)
     public Result<SysRoleVo> findById(@PathVariable(value = "id") final long id) {
@@ -206,6 +207,47 @@ public class SysRoleController {
         final PageVo<SysRoleDto> roleDtoPage = sysRoleService.pageByCondition(sysRoleDto);
         final PageVo<SysRoleVo> result = sysRoleService.getSysRoleMapper().dtoPageToVoPage(roleDtoPage);
         return DefaultResultFactory.success("分页查询系统角色。", result);
+    }
+
+    /**
+     * 给一个系统角色授权多个系统用户。
+     *
+     * @param id      系统角色主键。
+     * @param userIds 系统用户主键集合。
+     * @return 是否保存成功。
+     */
+    @PutMapping("/v1/{id}/users")
+    @ApiOperation(value = "授权系统用户")
+    @ApiOperationSupport(order = 9)
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "path", name = "id", value = "系统角色主键", dataTypeClass = Long.class, required = true),
+            @ApiImplicitParam(paramType = "body", name = "userIds", value = "系统用户主键集合", dataTypeClass = Array.class)
+    })
+    @ApiLog(module = "系统管理", func = "系统角色管理", remark = "授权系统用户", action = ApiLogAction.GRANT)
+    public Result<Boolean> saveUsers(
+            @PathVariable(value = "id") final long id,
+            @RequestBody final List<Long> userIds
+    ) {
+        sysRoleService.saveUsers(id, userIds);
+        return DefaultResultFactory.success("授权系统用户成功。", Boolean.TRUE);
+    }
+
+    /**
+     * 查询系统角色下已授权的系统用户
+     *
+     * @param id 系统角色主键。
+     * @return 系统用户主键集合。
+     */
+    @GetMapping("/v1/{id}/users")
+    @ApiOperation(value = "查询系统用户")
+    @ApiOperationSupport(order = 10)
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "path", name = "id", value = "系统角色主键", dataTypeClass = Long.class, required = true)
+    })
+    @ApiLog(module = "系统管理", func = "系统角色管理", remark = "查询系统用户", action = ApiLogAction.QUERY)
+    public Result<List<Long>> findUsers(@PathVariable(value = "id") final long id) {
+        final List<Long> result = sysRoleService.findUsers(id);
+        return DefaultResultFactory.success("查询系统用户成功。", result);
     }
 
     /**

@@ -79,6 +79,22 @@ public interface SysRoleService {
     PageVo<SysRoleDto> pageByCondition(final SysRoleDto sysRoleDto);
 
     /**
+     * 给一个系统角色授权多个系统用户。
+     *
+     * @param id      系统角色主键。
+     * @param userIds 系统用户主键集合。
+     */
+    void saveUsers(final long id, final List<Long> userIds);
+
+    /**
+     * 查询系统角色下已授权的系统用户。
+     *
+     * @param id 系统角色主键。
+     * @return 系统用户主键集合。
+     */
+    List<Long> findUsers(final long id);
+
+    /**
      * @return 获取系统角色对象转换接口。
      */
     SysRoleMapper getSysRoleMapper();

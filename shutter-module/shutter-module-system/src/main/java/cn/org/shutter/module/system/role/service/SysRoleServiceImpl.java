@@ -136,6 +136,28 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRole> impleme
     }
 
     /**
+     * 给一个系统角色授权多个系统用户。
+     *
+     * @param id      系统角色主键。
+     * @param userIds 系统用户主键集合。
+     */
+    @Override
+    public void saveUsers(final long id, final List<Long> userIds) {
+        sysRoleUserService.saveUsersToRole(id, userIds);
+    }
+
+    /**
+     * 查询系统角色下已授权的系统用户。
+     *
+     * @param id 系统角色主键。
+     * @return 系统用户主键集合。
+     */
+    @Override
+    public List<Long> findUsers(final long id) {
+        return sysRoleUserService.findUsersByRoleId(id);
+    }
+
+    /**
      * 创建带条件的QueryWrapper。
      *
      * @param sysRoleDto 系统角色数据传输对象。
@@ -176,8 +198,23 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRole> impleme
     }
 
     /**
+     * 自动装配系统角色与系统用户关系的业务处理接口。
+     *
+     * @param sysRoleUserService 系统角色与系统用户关系的业务处理接口。
+     */
+    @Autowired
+    public void setSysRoleUserService(SysRoleUserService sysRoleUserService) {
+        this.sysRoleUserService = sysRoleUserService;
+    }
+
+    /**
      * 系统角色对象转换接口。
      */
     private SysRoleMapper sysRoleMapper;
+
+    /**
+     * 系统角色与系统用户关系的业务处理接口。
+     */
+    private SysRoleUserService sysRoleUserService;
 
 }
