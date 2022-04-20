@@ -32,12 +32,6 @@ public class SysRoleVo extends BaseVo {
     private String name;
 
     /**
-     * 备注。
-     */
-    @ApiModelProperty(value = "备注")
-    private String remark;
-
-    /**
      * 状态：0=禁用；1=启用。
      */
     @ApiModelProperty(value = "状态")
@@ -48,5 +42,11 @@ public class SysRoleVo extends BaseVo {
      */
     @ApiModelProperty(value = "排序")
     private Integer orderId;
+
+    /**
+     * 备注。
+     */
+    @ApiModelProperty(value = "备注")
+    private String remark;
 
 }

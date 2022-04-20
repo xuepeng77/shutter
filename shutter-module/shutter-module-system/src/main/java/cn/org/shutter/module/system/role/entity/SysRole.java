@@ -30,12 +30,6 @@ public class SysRole extends BizEntity {
     private String name;
 
     /**
-     * 备注。
-     * 数据库字段：remark，varchar(256)。
-     */
-    private String remark;
-
-    /**
      * 状态：0=禁用；1=启用。
      * 数据库字段：status，tinyint(2)。
      */
@@ -46,5 +40,11 @@ public class SysRole extends BizEntity {
      * 数据库字段：order_id，int(11)。
      */
     private Integer orderId;
+
+    /**
+     * 备注。
+     * 数据库字段：remark，varchar(256)。
+     */
+    private String remark;
 
 }

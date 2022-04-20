@@ -27,11 +27,6 @@ public class SysRoleDto extends BaseDto {
     private String name;
 
     /**
-     * 备注。
-     */
-    private String remark;
-
-    /**
      * 状态：0=禁用；1=启用。
      */
     private SysRoleStatus status;
@@ -40,5 +35,10 @@ public class SysRoleDto extends BaseDto {
      * 排序。
      */
     private Integer orderId;
+
+    /**
+     * 备注。
+     */
+    private String remark;
 
 }
