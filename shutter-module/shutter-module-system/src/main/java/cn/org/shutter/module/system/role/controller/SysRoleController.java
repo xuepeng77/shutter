@@ -65,7 +65,7 @@ public class SysRoleController {
     /**
      * 修改系统角色。
      *
-     * @param id           系统角色主键。
+     * @param id           系统角色的主键。
      * @param sysRoleParam 系统角色的请求对象。
      * @return 是否修改成功。
      */
@@ -93,7 +93,7 @@ public class SysRoleController {
     /**
      * 根据主键删除系统角色。
      *
-     * @param id 系统角色主键。
+     * @param id 系统角色的主键。
      * @return 是否删除成功。
      */
     @DeleteMapping("/v1/{id}")
@@ -112,34 +112,16 @@ public class SysRoleController {
     }
 
     /**
-     * 根据主键批量删除系统角色。
-     *
-     * @param ids 系统角色主键集合。
-     * @return 是否删除成功。
-     */
-    @DeleteMapping("/v1")
-    @ApiOperation(value = "批量删除系统角色")
-    @ApiOperationSupport(order = 4)
-    @ApiLog(module = "系统管理", func = "系统角色管理", remark = "批量删除系统角色", action = ApiLogAction.DELETE)
-    public Result<Boolean> deleteByIds(@RequestBody final List<Long> ids) {
-        final boolean result = sysRoleService.deleteBatch(ids);
-        if (result) {
-            return DefaultResultFactory.success("批量删除系统角色成功。", Boolean.TRUE);
-        }
-        return DefaultResultFactory.fail("批量删除系统角色失败。", Boolean.FALSE);
-    }
-
-    /**
      * 根据主键停用系统角色。
      *
-     * @param id 系统角色主键。
+     * @param id 系统角色的主键。
      * @return 是否停用成功。
      */
     @PutMapping("/v1/{id}/disable")
     @ApiOperation(value = "停用系统角色")
-    @ApiOperationSupport(order = 5)
+    @ApiOperationSupport(order = 4)
     @ApiImplicitParams(
-            @ApiImplicitParam(paramType = "path", name = "id", value = "系统角色主键", dataTypeClass = Long.class, required = true)
+            @ApiImplicitParam(paramType = "path", name = "id", value = "系统角色的主键", dataTypeClass = Long.class, required = true)
     )
     @ApiLog(module = "系统管理", func = "系统角色管理", remark = "停用系统角色", action = ApiLogAction.CHANGE)
     public Result<Boolean> disable(@PathVariable(value = "id") final long id) {
@@ -153,14 +135,14 @@ public class SysRoleController {
     /**
      * 根据主键启用系统角色。
      *
-     * @param id 系统角色主键。
+     * @param id 系统角色的主键。
      * @return 是否启用成功。
      */
     @PutMapping("/v1/{id}/enable")
     @ApiOperation(value = "启用系统角色")
-    @ApiOperationSupport(order = 6)
+    @ApiOperationSupport(order = 5)
     @ApiImplicitParams(
-            @ApiImplicitParam(paramType = "path", name = "id", value = "系统角色主键", dataTypeClass = Long.class, required = true)
+            @ApiImplicitParam(paramType = "path", name = "id", value = "系统角色的主键", dataTypeClass = Long.class, required = true)
     )
     @ApiLog(module = "系统管理", func = "系统角色管理", remark = "启用系统角色", action = ApiLogAction.CHANGE)
     public Result<Boolean> enable(@PathVariable(value = "id") final long id) {
@@ -174,14 +156,14 @@ public class SysRoleController {
     /**
      * 根据主键查询系统角色。
      *
-     * @param id 系统角色主键。
+     * @param id 系统角色的主键。
      * @return 系统角色的响应对象。
      */
     @GetMapping("/v1/{id}")
     @ApiOperation(value = "查询系统角色")
-    @ApiOperationSupport(order = 7)
+    @ApiOperationSupport(order = 6)
     @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "path", name = "id", value = "系统角色主键", dataTypeClass = Long.class, required = true)
+            @ApiImplicitParam(paramType = "path", name = "id", value = "系统角色的主键", dataTypeClass = Long.class, required = true)
     })
     @ApiLog(module = "系统管理", func = "系统角色管理", remark = "查询系统角色", action = ApiLogAction.DETAIL)
     public Result<SysRoleVo> findById(@PathVariable(value = "id") final long id) {
@@ -198,7 +180,7 @@ public class SysRoleController {
      */
     @GetMapping("/v1")
     @ApiOperation(value = "分页查询系统角色")
-    @ApiOperationSupport(order = 8)
+    @ApiOperationSupport(order = 7)
     @ApiLog(module = "系统管理", func = "系统角色管理", remark = "分页查询系统角色", action = ApiLogAction.QUERY)
     public Result<PageVo<SysRoleVo>> pageByCondition(
             @Validated(BaseParam.page.class) final SysRoleParam sysRoleParam
@@ -212,15 +194,15 @@ public class SysRoleController {
     /**
      * 给一个系统角色授权多个系统用户。
      *
-     * @param id      系统角色主键。
+     * @param id      系统角色的主键。
      * @param userIds 系统用户主键集合。
      * @return 是否保存成功。
      */
     @PutMapping("/v1/{id}/users")
     @ApiOperation(value = "授权系统用户")
-    @ApiOperationSupport(order = 9)
+    @ApiOperationSupport(order = 8)
     @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "path", name = "id", value = "系统角色主键", dataTypeClass = Long.class, required = true),
+            @ApiImplicitParam(paramType = "path", name = "id", value = "系统角色的主键", dataTypeClass = Long.class, required = true),
             @ApiImplicitParam(paramType = "body", name = "userIds", value = "系统用户主键集合", dataTypeClass = Array.class)
     })
     @ApiLog(module = "系统管理", func = "系统角色管理", remark = "授权系统用户", action = ApiLogAction.GRANT)
@@ -235,14 +217,14 @@ public class SysRoleController {
     /**
      * 查询系统角色下已授权的系统用户
      *
-     * @param id 系统角色主键。
+     * @param id 系统角色的主键。
      * @return 系统用户主键集合。
      */
     @GetMapping("/v1/{id}/users")
     @ApiOperation(value = "查询系统用户")
-    @ApiOperationSupport(order = 10)
+    @ApiOperationSupport(order = 9)
     @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "path", name = "id", value = "系统角色主键", dataTypeClass = Long.class, required = true)
+            @ApiImplicitParam(paramType = "path", name = "id", value = "系统角色的主键", dataTypeClass = Long.class, required = true)
     })
     @ApiLog(module = "系统管理", func = "系统角色管理", remark = "查询系统用户", action = ApiLogAction.QUERY)
     public Result<List<Long>> findUsers(@PathVariable(value = "id") final long id) {

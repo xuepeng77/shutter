@@ -26,8 +26,8 @@ public class SysRoleUserServiceImpl extends ServiceImpl<SysRoleUserDao, SysRoleU
     /**
      * 给一个系统角色授权多个系统用户。
      *
-     * @param roleId  系统角色主键。
-     * @param userIds 系统用户主键集合。
+     * @param roleId  系统角色的主键。
+     * @param userIds 系统用户的主键集合。
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -52,8 +52,8 @@ public class SysRoleUserServiceImpl extends ServiceImpl<SysRoleUserDao, SysRoleU
     /**
      * 给一个系统用户授权多个系统角色。
      *
-     * @param userId  系统用户主键。
-     * @param roleIds 系统角色主键集合。
+     * @param userId  系统用户的主键。
+     * @param roleIds 系统角色的主键集合。
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -78,8 +78,8 @@ public class SysRoleUserServiceImpl extends ServiceImpl<SysRoleUserDao, SysRoleU
     /**
      * 查询系统角色下已授权的系统用户。
      *
-     * @param roleId 系统角色主键。
-     * @return 系统用户主键集合。
+     * @param roleId 系统角色的主键。
+     * @return 系统用户的主键集合。
      */
     @Override
     public List<Long> findUsersByRoleId(final long roleId) {
@@ -95,8 +95,8 @@ public class SysRoleUserServiceImpl extends ServiceImpl<SysRoleUserDao, SysRoleU
     /**
      * 查询系统用户下已授权的系统角色。
      *
-     * @param userId 系统用户主键。
-     * @return 系统角色主键集合。
+     * @param userId 系统用户的主键。
+     * @return 系统角色的主键集合。
      */
     @Override
     public List<Long> findRolesByUserId(final long userId) {

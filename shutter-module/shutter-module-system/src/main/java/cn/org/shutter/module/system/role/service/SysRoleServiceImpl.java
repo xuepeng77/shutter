@@ -57,29 +57,19 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRole> impleme
     /**
      * 根据主键删除系统角色。
      *
-     * @param id 系统角色主键。
+     * @param id 系统角色的主键。
      * @return 是否删除成功。
      */
     @Override
     public boolean delete(final long id) {
+        // TODO 删除之前的校验
         return super.removeById(id);
-    }
-
-    /**
-     * 根据主键批量删除系统角色。
-     *
-     * @param ids 系统角色主键集合。
-     * @return 是否删除成功。
-     */
-    @Override
-    public boolean deleteBatch(final List<Long> ids) {
-        return super.removeByIds(ids);
     }
 
     /**
      * 根据主键停用系统角色。
      *
-     * @param id 系统角色主键。
+     * @param id 系统角色的主键。
      * @return 是否停用成功。
      */
     @Override
@@ -93,7 +83,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRole> impleme
     /**
      * 根据主键启用系统角色。
      *
-     * @param id 系统角色主键。
+     * @param id 系统角色的主键。
      * @return 是否启用成功。
      */
     @Override
@@ -108,7 +98,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRole> impleme
      * 根据主键查询系统角色。
      * 当根据主键查询不到角色时，抛出SysRoleNotFoundException异常对象。
      *
-     * @param id 系统角色主键。
+     * @param id 系统角色的主键。
      * @return 系统角色的的数据传输对象。
      */
     @Override
@@ -124,7 +114,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRole> impleme
     /**
      * 根据主键查询系统角色。
      *
-     * @param ids 系统角色主键集合。
+     * @param ids 系统角色的主键集合。
      * @return 系统角色的的数据传输对象集合。
      */
     @Override
@@ -142,6 +132,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRole> impleme
     @Override
     public PageVo<SysRoleDto> pageByCondition(final SysRoleDto sysRoleDto) {
         final QueryWrapper<SysRole> wrapper = createQueryWrapper(sysRoleDto);
+        wrapper.lambda().orderByAsc(SysRole::getOrderId);
         final Page<SysRole> page = PageUtil.createPage(sysRoleDto);
         final Page<SysRole> roles = super.page(page, wrapper);
         return sysRoleMapper.entityPageToDtoPage(roles);
@@ -150,7 +141,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRole> impleme
     /**
      * 给一个系统角色授权多个系统用户。
      *
-     * @param id      系统角色主键。
+     * @param id      系统角色的主键。
      * @param userIds 系统用户主键集合。
      */
     @Override
@@ -161,7 +152,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRole> impleme
     /**
      * 查询系统角色下已授权的系统用户。
      *
-     * @param id 系统角色主键。
+     * @param id 系统角色的主键。
      * @return 系统用户主键集合。
      */
     @Override

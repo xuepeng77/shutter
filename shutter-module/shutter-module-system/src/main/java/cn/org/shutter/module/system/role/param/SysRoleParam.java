@@ -56,7 +56,7 @@ public class SysRoleParam extends BaseParam {
     /**
      * 备注。
      */
-    @ApiModelProperty(value = "备注", required = true)
+    @ApiModelProperty(value = "备注")
     @Length(max = 256, message = "备注长度不能大于256个字符", groups = {create.class, update.class})
     private String remark;
 

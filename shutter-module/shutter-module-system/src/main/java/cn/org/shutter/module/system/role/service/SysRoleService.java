@@ -32,23 +32,15 @@ public interface SysRoleService {
     /**
      * 根据主键删除系统角色。
      *
-     * @param id 系统角色主键。
+     * @param id 系统角色的主键。
      * @return 是否删除成功。
      */
     boolean delete(final long id);
 
     /**
-     * 根据主键批量删除系统角色。
-     *
-     * @param ids 系统角色主键集合。
-     * @return 是否删除成功。
-     */
-    boolean deleteBatch(final List<Long> ids);
-
-    /**
      * 根据主键停用系统角色。
      *
-     * @param id 系统角色主键。
+     * @param id 系统角色的主键。
      * @return 是否停用成功。
      */
     boolean disable(final long id);
@@ -56,7 +48,7 @@ public interface SysRoleService {
     /**
      * 根据主键启用系统角色。
      *
-     * @param id 系统角色主键。
+     * @param id 系统角色的主键。
      * @return 是否启用成功。
      */
     boolean enable(final long id);
@@ -65,7 +57,7 @@ public interface SysRoleService {
      * 根据主键查询系统角色。
      * 当根据主键查询不到角色时，抛出SysRoleNotFoundException异常对象。
      *
-     * @param id 系统角色主键。
+     * @param id 系统角色的主键。
      * @return 系统角色的的数据传输对象。
      */
     SysRoleDto findById(final long id);
@@ -73,7 +65,7 @@ public interface SysRoleService {
     /**
      * 根据主键查询系统角色。
      *
-     * @param ids 系统角色主键集合。
+     * @param ids 系统角色的主键集合。
      * @return 系统角色的的数据传输对象集合。
      */
     List<SysRoleDto> findByIds(final List<Long> ids);
@@ -89,7 +81,7 @@ public interface SysRoleService {
     /**
      * 给一个系统角色授权多个系统用户。
      *
-     * @param id      系统角色主键。
+     * @param id      系统角色的主键。
      * @param userIds 系统用户主键集合。
      */
     void saveUsers(final long id, final List<Long> userIds);
@@ -97,7 +89,7 @@ public interface SysRoleService {
     /**
      * 查询系统角色下已授权的系统用户。
      *
-     * @param id 系统角色主键。
+     * @param id 系统角色的主键。
      * @return 系统用户主键集合。
      */
     List<Long> findUsers(final long id);
