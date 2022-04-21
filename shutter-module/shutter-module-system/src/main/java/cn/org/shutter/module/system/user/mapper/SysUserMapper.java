@@ -25,30 +25,30 @@ public interface SysUserMapper {
      * Param转换成Dto。
      *
      * @param sysUserParam 系统用户的请求对象。
-     * @return 系统用户数据传输对象。
+     * @return 系统用户的数据传输对象。
      */
     SysUserDto paramToDto(final SysUserParam sysUserParam);
 
     /**
      * Dto转换成Entity。
      *
-     * @param sysUserDto 系统用户数据传输对象。
-     * @return 系统用户实体对象。
+     * @param sysUserDto 系统用户的数据传输对象。
+     * @return 系统用户的实体对象。
      */
     SysUser dtoToEntity(final SysUserDto sysUserDto);
 
     /**
      * Entity转换成Dto。
      *
-     * @param sysUser 系统用户实体对象。
-     * @return 系统用户数据传输对象。
+     * @param sysUser 系统用户的实体对象。
+     * @return 系统用户的数据传输对象。
      */
     SysUserDto entityToDto(final SysUser sysUser);
 
     /**
      * Dto转换成Vo。
      *
-     * @param sysUserDto 系统用户数据传输对象。
+     * @param sysUserDto 系统用户的数据传输对象。
      * @return 系统用户的响应对象。
      */
     SysUserVo dtoToVo(final SysUserDto sysUserDto);
@@ -56,15 +56,15 @@ public interface SysUserMapper {
     /**
      * Entity分页转换成Dto分页。
      *
-     * @param sysUserPage 系统用户实体分页对象。
-     * @return 系统用户数据传输分页对象。
+     * @param sysUserPage 系统用户的实体分页对象。
+     * @return 系统用户的数据传输分页对象。
      */
     PageVo<SysUserDto> entityPageToDtoPage(final Page<SysUser> sysUserPage);
 
     /**
      * Dto分页转换成Vo分页。
      *
-     * @param sysUserDtoPage 系统用户数据传输分页对象。
+     * @param sysUserDtoPage 系统用户的数据传输分页对象。
      * @return 系统用户的响应分页对象。
      */
     PageVo<SysUserVo> dtoPageToVoPage(final PageVo<SysUserDto> sysUserDtoPage);
@@ -72,7 +72,7 @@ public interface SysUserMapper {
     /**
      * Dto转换成SaTokenUser。
      *
-     * @param sysUserDto 系统用户数据传输对象。
+     * @param sysUserDto 系统用户的数据传输对象。
      * @return 当前SaTokenUser对象。
      */
     @Mapping(source = "sysUserDto.roles", target = "roles")

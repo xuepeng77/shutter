@@ -66,7 +66,7 @@ public class SysUserController extends BaseController {
     /**
      * 修改系统用户。
      *
-     * @param id           系统用户主键。
+     * @param id           系统用户的主键。
      * @param sysUserParam 系统用户的请求对象。
      * @return 是否修改成功。
      */
@@ -74,7 +74,7 @@ public class SysUserController extends BaseController {
     @ApiOperation(value = "修改系统用户")
     @ApiOperationSupport(order = 2)
     @ApiImplicitParams(
-            @ApiImplicitParam(paramType = "path", name = "id", value = "系统用户主键", dataTypeClass = Long.class, required = true)
+            @ApiImplicitParam(paramType = "path", name = "id", value = "系统用户的主键", dataTypeClass = Long.class, required = true)
     )
     @ApiLog(module = "系统管理", func = "系统用户管理", remark = "编辑系统用户", action = ApiLogAction.UPDATE)
     @ModifyUser
@@ -95,14 +95,14 @@ public class SysUserController extends BaseController {
     /**
      * 根据主键删除系统用户。
      *
-     * @param id 系统用户主键。
+     * @param id 系统用户的主键。
      * @return 是否删除成功。
      */
     @DeleteMapping("/v1/{id}")
     @ApiOperation(value = "删除系统用户")
     @ApiOperationSupport(order = 3)
     @ApiImplicitParams(
-            @ApiImplicitParam(paramType = "path", name = "id", value = "系统用户主键", dataTypeClass = Long.class, required = true)
+            @ApiImplicitParam(paramType = "path", name = "id", value = "系统用户的主键", dataTypeClass = Long.class, required = true)
     )
     @ApiLog(module = "系统管理", func = "系统用户管理", remark = "删除系统用户", action = ApiLogAction.DELETE)
     public Result<Boolean> deleteById(@PathVariable(value = "id") final long id) {
@@ -116,7 +116,7 @@ public class SysUserController extends BaseController {
     /**
      * 根据主键批量删除系统用户。
      *
-     * @param ids 系统用户主键集合。
+     * @param ids 系统用户的主键集合。
      * @return 是否删除成功。
      */
     @DeleteMapping("/v1")
@@ -134,14 +134,14 @@ public class SysUserController extends BaseController {
     /**
      * 根据主键停用系统用户。
      *
-     * @param id 系统用户主键。
+     * @param id 系统用户的主键。
      * @return 是否停用成功。
      */
     @PutMapping("/v1/{id}/disable")
     @ApiOperation(value = "停用系统用户")
     @ApiOperationSupport(order = 5)
     @ApiImplicitParams(
-            @ApiImplicitParam(paramType = "path", name = "id", value = "系统用户主键", dataTypeClass = Long.class, required = true)
+            @ApiImplicitParam(paramType = "path", name = "id", value = "系统用户的主键", dataTypeClass = Long.class, required = true)
     )
     @ApiLog(module = "系统管理", func = "系统用户管理", remark = "停用系统用户", action = ApiLogAction.CHANGE)
     public Result<Boolean> disable(@PathVariable(value = "id") final long id) {
@@ -155,14 +155,14 @@ public class SysUserController extends BaseController {
     /**
      * 根据主键启用系统用户。
      *
-     * @param id 系统用户主键。
+     * @param id 系统用户的主键。
      * @return 是否启用成功。
      */
     @PutMapping("/v1/{id}/enable")
     @ApiOperation(value = "启用系统用户")
     @ApiOperationSupport(order = 6)
     @ApiImplicitParams(
-            @ApiImplicitParam(paramType = "path", name = "id", value = "系统用户主键", dataTypeClass = Long.class, required = true)
+            @ApiImplicitParam(paramType = "path", name = "id", value = "系统用户的主键", dataTypeClass = Long.class, required = true)
     )
     @ApiLog(module = "系统管理", func = "系统用户管理", remark = "启用系统用户", action = ApiLogAction.CHANGE)
     public Result<Boolean> enable(@PathVariable(value = "id") final long id) {
@@ -176,14 +176,14 @@ public class SysUserController extends BaseController {
     /**
      * 根据主键重置系统用户的登录密码。
      *
-     * @param id 系统用户主键。
+     * @param id 系统用户的主键。
      * @return 是否重置成功。
      */
     @PutMapping("/v1/{id}/reset-password")
     @ApiOperation(value = "重置登录密码")
     @ApiOperationSupport(order = 7)
     @ApiImplicitParams(
-            @ApiImplicitParam(paramType = "path", name = "id", value = "系统用户主键", dataTypeClass = Long.class, required = true)
+            @ApiImplicitParam(paramType = "path", name = "id", value = "系统用户的主键", dataTypeClass = Long.class, required = true)
     )
     @ApiLog(module = "系统管理", func = "系统用户管理", remark = "重置登录密码", action = ApiLogAction.UPDATE)
     public Result<Boolean> resetPassword(@PathVariable(value = "id") final long id) {
@@ -197,7 +197,7 @@ public class SysUserController extends BaseController {
     /**
      * 根据主键查询系统用户。
      *
-     * @param id 系统用户主键。
+     * @param id 系统用户的主键。
      * @return 系统用户的响应对象。
      */
     @GetMapping("/v1/{id}")

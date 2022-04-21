@@ -64,7 +64,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     /**
      * 根据主键删除系统用户。
      *
-     * @param id 系统用户主键。
+     * @param id 系统用户的主键。
      * @return 是否删除成功。
      */
     @Override
@@ -75,7 +75,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     /**
      * 根据主键批量删除系统用户。
      *
-     * @param ids 系统用户主键集合。
+     * @param ids 系统用户的主键集合。
      * @return 是否删除成功。
      */
     @Override
@@ -86,7 +86,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     /**
      * 根据主键停用系统用户。
      *
-     * @param id 系统用户主键。
+     * @param id 系统用户的主键。
      * @return 是否停用成功。
      */
     @Override
@@ -100,7 +100,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     /**
      * 根据主键启用系统用户。
      *
-     * @param id 系统用户主键。
+     * @param id 系统用户的主键。
      * @return 是否启用成功。
      */
     @Override
@@ -114,7 +114,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     /**
      * 根据主键重置系统用户的登录密码。
      *
-     * @param id 系统用户主键。
+     * @param id 系统用户的主键。
      * @return 是否重置成功。
      */
     @Override
@@ -143,7 +143,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
      * 根据主键查询系统用户。
      * 当根据主键查询不到用户时，抛出SysUserNotFoundException异常对象。
      *
-     * @param id 系统用户主键。
+     * @param id 系统用户的主键。
      * @return 系统用户的的数据传输对象。
      */
     @Override
@@ -190,7 +190,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     /**
      * 给一个系统用户授权多个系统角色。
      *
-     * @param id      系统用户主键。
+     * @param id      系统用户的主键。
      * @param roleIds 系统角色主键集合。
      */
     @Override
@@ -201,7 +201,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     /**
      * 查询系统用户下已授权的系统角色。
      *
-     * @param id 系统用户主键。
+     * @param id 系统用户的主键。
      * @return 系统角色主键集合。
      */
     @Override
