@@ -17,7 +17,7 @@ public interface SysLoginMapper {
      * Param转换成Dto。
      *
      * @param sysLoginParam 系统登录的请求对象。
-     * @return 系统登录数据传输对象。
+     * @return 系统登录的数据传输对象。
      */
     @Mapping(target = "ip", ignore = true)
     SysLoginDto paramToDto(final SysLoginParam sysLoginParam);
