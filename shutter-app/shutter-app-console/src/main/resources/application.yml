@@ -30,6 +30,8 @@ sa-token:
   token-style: uuid
   # 开启日志
   is-log: true
+knife4j:
+  enable: true
 shutter:
   # Knife4j配置
   knife4j:

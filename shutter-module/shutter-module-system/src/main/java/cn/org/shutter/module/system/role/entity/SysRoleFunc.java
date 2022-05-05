@@ -4,8 +4,8 @@ import cn.org.shutter.sdk.mybatis.entity.BaseEntity;
 import lombok.*;
 
 /**
- * 系统角色与系统用户关系的实体类。
- * 数据库表：sys_role_user，系统角色与系统用户关系表。
+ * 系统角色与系统功能关系的实体类。
+ * 数据库表：sys_role_func，系统角色与系统功能关系表。
  *
  * @author xuepeng
  */
@@ -14,7 +14,7 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class SysRoleUser extends BaseEntity {
+public class SysRoleFunc extends BaseEntity {
 
     /**
      * 角色主键。
@@ -23,9 +23,9 @@ public class SysRoleUser extends BaseEntity {
     private Long roleId;
 
     /**
-     * 用户主键。
-     * 数据库字段：user_id，bigint(20)。
+     * 功能主键。
+     * 数据库字段：func_id，bigint(20)。
      */
-    private Long userId;
+    private Long funcId;
 
 }

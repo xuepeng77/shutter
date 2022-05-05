@@ -1,5 +1,8 @@
 package cn.org.shutter.module.system.login.service;
 
+import cn.org.shutter.core.web.auth.CurrentUser;
+import cn.org.shutter.module.system.func.dto.SysFuncDto;
+import cn.org.shutter.module.system.func.service.SysFuncService;
 import cn.org.shutter.module.system.login.dto.SysLoginDto;
 import cn.org.shutter.module.system.login.exception.SysLoginFailedException;
 import cn.org.shutter.module.system.login.exception.SysLoginVerifyCodeExpiredException;
@@ -10,7 +13,6 @@ import cn.org.shutter.module.system.user.dto.SysUserDto;
 import cn.org.shutter.module.system.user.enums.SysUserStatus;
 import cn.org.shutter.module.system.user.service.SysUserService;
 import cn.org.shutter.sdk.satoken.service.SaTokenService;
-import cn.org.shutter.sdk.satoken.service.SaTokenUser;
 import cn.org.shutter.sdk.verifycode.entity.VerifyCode;
 import cn.org.shutter.sdk.verifycode.exception.VerifyCodeExpiredException;
 import cn.org.shutter.sdk.verifycode.service.VerifyCodeService;
@@ -55,16 +57,18 @@ public class SysLoginServiceImpl implements SysLoginService {
         // 检查是否可登录
         final SysUserDto sysUserDto = sysUserService.findByAccount(sysLoginDto.getAccount());
         checkLogin(sysLoginDto, sysUserDto);
-
+        // TODO 判断租户状态，有效期
+        final CurrentUser currentUser = sysUserService.getSysUserMapper().dtoToCurrentUser(sysUserDto);
         // 查询用户被授权的角色
         final List<Long> roleIds = sysUserService.findRoles(sysUserDto.getId());
         final List<SysRoleDto> sysRoleDtos = sysRoleService.findByIds(roleIds);
-        sysUserDto.setRoles(sysRoleDtos);
-
-        // TODO 判断租户状态，有效期
+        currentUser.setRoles(sysRoleService.getSysRoleMapper().dtoListToCurrentUserRoleList(sysRoleDtos));
+        // 查询用户被授权的功能
+        final List<Long> funcIds = sysRoleService.findFuncs(roleIds);
+        final List<SysFuncDto> sysFuncDtos = sysFuncService.findByIds(funcIds);
+        currentUser.setFuncs(sysFuncService.getSysFuncMapper().dtoListToCurrentUserFuncList(sysFuncDtos));
         // 系统登录
-        final SaTokenUser saTokenUser = sysUserService.getSysUserMapper().dtoToSaTokenUser(sysUserDto);
-        final String accessToken = saTokenService.login(saTokenUser);
+        final String accessToken = saTokenService.login(currentUser);
         // 更新登录信息
         updateLoginInfo(sysLoginDto, sysUserDto);
         return accessToken;
@@ -74,7 +78,8 @@ public class SysLoginServiceImpl implements SysLoginService {
      * @return 获取当前登录人。
      */
     @Override
-    public SaTokenUser getCurrentUser() {
+    public CurrentUser getCurrentUser() {
+        // TODO 每次获取当前用户都重新读取角色和功能
         return saTokenService.getCurrentUser();
     }
 
@@ -124,6 +129,12 @@ public class SysLoginServiceImpl implements SysLoginService {
         }
     }
 
+    private void addRoles() {
+    }
+
+    private void addFuncs() {
+    }
+
     /**
      * 更新登录信息。
      *
@@ -170,6 +181,16 @@ public class SysLoginServiceImpl implements SysLoginService {
     }
 
     /**
+     * 自动装配系统功能的业务处理接口。
+     *
+     * @param sysFuncService 系统功能的业务处理接口。
+     */
+    @Autowired
+    public void setSysFuncService(SysFuncService sysFuncService) {
+        this.sysFuncService = sysFuncService;
+    }
+
+    /**
      * 自动装配SaToken的业务处理接口。
      *
      * @param saTokenService SaToken的业务处理接口。
@@ -193,6 +214,11 @@ public class SysLoginServiceImpl implements SysLoginService {
      * 系统角色的业务处理接口。
      */
     private SysRoleService sysRoleService;
+
+    /**
+     * 系统功能的业务处理接口。
+     */
+    private SysFuncService sysFuncService;
 
     /**
      * SaToken的业务处理接口。

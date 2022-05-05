@@ -3,6 +3,7 @@ package cn.org.shutter.module.system.login.controller;
 import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.org.shutter.core.common.api.DefaultResultFactory;
 import cn.org.shutter.core.common.api.Result;
+import cn.org.shutter.core.web.auth.CurrentUser;
 import cn.org.shutter.core.web.bean.BaseController;
 import cn.org.shutter.core.web.log.ApiLog;
 import cn.org.shutter.core.web.log.ApiLogAction;
@@ -10,7 +11,6 @@ import cn.org.shutter.module.system.login.dto.SysLoginDto;
 import cn.org.shutter.module.system.login.mapper.SysLoginMapper;
 import cn.org.shutter.module.system.login.param.SysLoginParam;
 import cn.org.shutter.module.system.login.service.SysLoginService;
-import cn.org.shutter.sdk.satoken.service.SaTokenUser;
 import cn.org.shutter.sdk.verifycode.entity.VerifyCode;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
@@ -66,12 +66,15 @@ public class SysLoginController extends BaseController {
         return DefaultResultFactory.success("登录成功。", accessToken);
     }
 
+    /**
+     * @return 获取当前登录人。
+     */
     @GetMapping("/v1/current-user")
     @ApiOperation(value = "获取当前登录人")
     @ApiOperationSupport(order = 3)
     @ApiLog(module = "系统管理", func = "身份认证", remark = "获取当前登录人", action = ApiLogAction.QUERY)
-    public Result<SaTokenUser> getCurrentUser() {
-        final SaTokenUser saTokenUser = sysLoginService.getCurrentUser();
+    public Result<CurrentUser> getCurrentUser() {
+        final CurrentUser saTokenUser = sysLoginService.getCurrentUser();
         return DefaultResultFactory.success("获取当前登录人", saTokenUser);
     }
 

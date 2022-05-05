@@ -1,6 +1,7 @@
 package cn.org.shutter.sdk.satoken.service;
 
 import cn.org.shutter.core.web.auth.AuthService;
+import cn.org.shutter.core.web.auth.CurrentUser;
 
 /**
  * SaToken的业务处理接口。
@@ -12,15 +13,15 @@ public interface SaTokenService extends AuthService {
     /**
      * 登录。
      *
-     * @param saTokenUser SaToken用户的实体类。
+     * @param currentUser 当前登录人。
      * @return 访问令牌。
      */
-    String login(final SaTokenUser saTokenUser);
+    String login(final CurrentUser currentUser);
 
     /**
      * @return 获取当前登录人。
      */
-    SaTokenUser getCurrentUser();
+    CurrentUser getCurrentUser();
 
     /**
      * 登出。

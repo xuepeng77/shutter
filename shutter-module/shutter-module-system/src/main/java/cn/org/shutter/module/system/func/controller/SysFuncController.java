@@ -43,7 +43,7 @@ public class SysFuncController {
     @ApiOperationSupport(order = 1)
     @ApiLog(module = "系统管理", func = "系统功能管理", remark = "查询全部系统功能", action = ApiLogAction.QUERY)
     public Result<List<SysFuncVo>> findAll() {
-        final List<SysFuncDto> sysFuncDtos = sysFuncService.findAll();
+        final List<SysFuncDto> sysFuncDtos = sysFuncService.findAllToTree();
         final List<SysFuncVo> result = sysFuncService.getSysFuncMapper().dtoListToVoList(sysFuncDtos);
         return DefaultResultFactory.success("查询全部系统功能成功。", result);
     }

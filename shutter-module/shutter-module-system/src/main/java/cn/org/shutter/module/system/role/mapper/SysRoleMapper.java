@@ -1,11 +1,11 @@
 package cn.org.shutter.module.system.role.mapper;
 
 import cn.org.shutter.core.common.bean.vo.PageVo;
+import cn.org.shutter.core.web.auth.CurrentUserRole;
 import cn.org.shutter.module.system.role.dto.SysRoleDto;
 import cn.org.shutter.module.system.role.entity.SysRole;
 import cn.org.shutter.module.system.role.param.SysRoleParam;
 import cn.org.shutter.module.system.role.vo.SysRoleVo;
-import cn.org.shutter.sdk.satoken.service.SaTokenRole;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.mapstruct.Mapper;
 
@@ -76,11 +76,11 @@ public interface SysRoleMapper {
     PageVo<SysRoleVo> dtoPageToVoPage(final PageVo<SysRoleDto> sysRoleDtoPage);
 
     /**
-     * Dto转换成SaTokenRole。
+     * Dto集合转换成CurrentUserRole集合。
      *
-     * @param sysRoleDto 系统角色的数据传输对象。
-     * @return 当前SaTokenRole对象。
+     * @param sysRoleDtoList 系统角色的数据传输对象集合。
+     * @return CurrentUserRole集合。
      */
-    SaTokenRole dtoToSaTokenRole(final SysRoleDto sysRoleDto);
+    List<CurrentUserRole> dtoListToCurrentUserRoleList(final List<SysRoleDto> sysRoleDtoList);
 
 }

@@ -82,7 +82,7 @@ public interface SysRoleService {
      * 给一个系统角色授权多个系统用户。
      *
      * @param id      系统角色的主键。
-     * @param userIds 系统用户主键集合。
+     * @param userIds 系统用户的主键集合。
      */
     void saveUsers(final long id, final List<Long> userIds);
 
@@ -90,9 +90,33 @@ public interface SysRoleService {
      * 查询系统角色下已授权的系统用户。
      *
      * @param id 系统角色的主键。
-     * @return 系统用户主键集合。
+     * @return 系统用户的主键集合。
      */
     List<Long> findUsers(final long id);
+
+    /**
+     * 给一个系统角色授权多个系统功能。
+     *
+     * @param id      系统角色的主键。
+     * @param funcIds 系统功能的主键集合。
+     */
+    void saveFuncs(final long id, final List<Long> funcIds);
+
+    /**
+     * 查询系统角色下已授权的系统功能。
+     *
+     * @param id 系统角色的主键。
+     * @return 系统功能的主键集合。
+     */
+    List<Long> findFuncs(final long id);
+
+    /**
+     * 查询系统角色下已授权的系统功能。
+     *
+     * @param ids 系统角色的主键集合。
+     * @return 系统功能的主键集合。
+     */
+    List<Long> findFuncs(final List<Long> ids);
 
     /**
      * @return 获取系统角色对象转换接口。

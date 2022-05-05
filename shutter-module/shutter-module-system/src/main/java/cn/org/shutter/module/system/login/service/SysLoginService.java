@@ -1,7 +1,7 @@
 package cn.org.shutter.module.system.login.service;
 
+import cn.org.shutter.core.web.auth.CurrentUser;
 import cn.org.shutter.module.system.login.dto.SysLoginDto;
-import cn.org.shutter.sdk.satoken.service.SaTokenUser;
 import cn.org.shutter.sdk.verifycode.entity.VerifyCode;
 
 /**
@@ -30,7 +30,7 @@ public interface SysLoginService {
     /**
      * @return 获取当前登录人。
      */
-    SaTokenUser getCurrentUser();
+    CurrentUser getCurrentUser();
 
     /**
      * 系统登出。

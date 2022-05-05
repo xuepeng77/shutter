@@ -142,7 +142,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRole> impleme
      * 给一个系统角色授权多个系统用户。
      *
      * @param id      系统角色的主键。
-     * @param userIds 系统用户主键集合。
+     * @param userIds 系统用户的主键集合。
      */
     @Override
     public void saveUsers(final long id, final List<Long> userIds) {
@@ -153,11 +153,44 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRole> impleme
      * 查询系统角色下已授权的系统用户。
      *
      * @param id 系统角色的主键。
-     * @return 系统用户主键集合。
+     * @return 系统用户的主键集合。
      */
     @Override
     public List<Long> findUsers(final long id) {
         return sysRoleUserService.findUsersByRoleId(id);
+    }
+
+    /**
+     * 给一个系统角色授权多个系统功能。
+     *
+     * @param id      系统角色的主键。
+     * @param funcIds 系统功能的主键集合。
+     */
+    @Override
+    public void saveFuncs(final long id, final List<Long> funcIds) {
+        sysRoleFuncService.saveFuncsToRole(id, funcIds);
+    }
+
+    /**
+     * 查询系统角色下已授权的系统功能。
+     *
+     * @param id 系统角色的主键。
+     * @return 系统功能的主键集合。
+     */
+    @Override
+    public List<Long> findFuncs(final long id) {
+        return sysRoleFuncService.findFuncsByRoleId(id);
+    }
+
+    /**
+     * 查询系统角色下已授权的系统功能。
+     *
+     * @param ids 系统角色的主键集合。
+     * @return 系统功能的主键集合。
+     */
+    @Override
+    public List<Long> findFuncs(final List<Long> ids) {
+        return sysRoleFuncService.findFuncsByRoleId(ids);
     }
 
     /**
@@ -211,6 +244,16 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRole> impleme
     }
 
     /**
+     * 自动装配系统角色与系统功能关系的业务处理接口。
+     *
+     * @param sysRoleFuncService 系统角色与系统功能关系的业务处理接口。
+     */
+    @Autowired
+    public void setSysRoleFuncService(SysRoleFuncService sysRoleFuncService) {
+        this.sysRoleFuncService = sysRoleFuncService;
+    }
+
+    /**
      * 系统角色对象转换接口。
      */
     private SysRoleMapper sysRoleMapper;
@@ -219,5 +262,10 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRole> impleme
      * 系统角色与系统用户关系的业务处理接口。
      */
     private SysRoleUserService sysRoleUserService;
+
+    /**
+     * 系统角色与系统功能关系的业务处理接口。
+     */
+    private SysRoleFuncService sysRoleFuncService;
 
 }

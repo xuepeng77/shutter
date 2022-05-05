@@ -1,9 +1,10 @@
-package cn.org.shutter.sdk.satoken.service;
+package cn.org.shutter.core.web.auth;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 /**
- * SaToken角色的实体类。
+ * 当前登录人授权的角色。
  *
  * @author xuepeng
  */
@@ -12,21 +13,24 @@ import lombok.*;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class SaTokenRole {
+public class CurrentUserRole {
 
     /**
      * 主键。
      */
+    @ApiModelProperty(value = "主键")
     private Long id;
 
     /**
      * 唯一标识。
      */
+    @ApiModelProperty(value = "唯一标识")
     private String code;
 
     /**
      * 名称。
      */
+    @ApiModelProperty(value = "名称")
     private String name;
 
 }

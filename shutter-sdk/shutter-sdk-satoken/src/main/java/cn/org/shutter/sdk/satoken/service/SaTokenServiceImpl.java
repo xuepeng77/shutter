@@ -1,6 +1,7 @@
 package cn.org.shutter.sdk.satoken.service;
 
 import cn.dev33.satoken.stp.StpUtil;
+import cn.org.shutter.core.web.auth.CurrentUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
@@ -34,13 +35,13 @@ public class SaTokenServiceImpl implements SaTokenService {
     /**
      * 登录。
      *
-     * @param saTokenUser SaToken用户的实体类。
+     * @param currentUser 当前登录人。
      * @return 访问令牌。
      */
     @Override
-    public String login(final SaTokenUser saTokenUser) {
-        StpUtil.login(saTokenUser.getId());
-        StpUtil.getSession().set(SESSION_KEY, saTokenUser);
+    public String login(final CurrentUser currentUser) {
+        StpUtil.login(currentUser.getId());
+        StpUtil.getSession().set(SESSION_KEY, currentUser);
         return StpUtil.getTokenValue();
     }
 
@@ -57,17 +58,17 @@ public class SaTokenServiceImpl implements SaTokenService {
      */
     @Override
     public String getCurrentUserAccount() {
-        final SaTokenUser saTokenUser = getCurrentUser();
-        return ObjectUtils.isEmpty(saTokenUser)
-                ? NOT_LOGIN_USER_ACCOUNT : saTokenUser.getAccount();
+        final CurrentUser currentUser = getCurrentUser();
+        return ObjectUtils.isEmpty(currentUser)
+                ? NOT_LOGIN_USER_ACCOUNT : currentUser.getAccount();
     }
 
     /**
      * @return 获取当前登录人。
      */
     @Override
-    public SaTokenUser getCurrentUser() {
-        return (SaTokenUser) StpUtil.getSession().get(SESSION_KEY);
+    public CurrentUser getCurrentUser() {
+        return (CurrentUser) StpUtil.getSession().get(SESSION_KEY);
     }
 
     /**

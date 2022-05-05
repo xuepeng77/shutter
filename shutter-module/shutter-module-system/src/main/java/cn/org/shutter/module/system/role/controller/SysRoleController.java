@@ -195,7 +195,7 @@ public class SysRoleController {
      * 给一个系统角色授权多个系统用户。
      *
      * @param id      系统角色的主键。
-     * @param userIds 系统用户主键集合。
+     * @param userIds 系统用户的主键集合。
      * @return 是否保存成功。
      */
     @PutMapping("/v1/{id}/users")
@@ -203,7 +203,7 @@ public class SysRoleController {
     @ApiOperationSupport(order = 8)
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "path", name = "id", value = "系统角色的主键", dataTypeClass = Long.class, required = true),
-            @ApiImplicitParam(paramType = "body", name = "userIds", value = "系统用户主键集合", dataTypeClass = Array.class)
+            @ApiImplicitParam(paramType = "body", name = "userIds", value = "系统用户的主键集合", dataTypeClass = Array.class)
     })
     @ApiLog(module = "系统管理", func = "系统角色管理", remark = "授权系统用户", action = ApiLogAction.GRANT)
     public Result<Boolean> saveUsers(
@@ -215,10 +215,10 @@ public class SysRoleController {
     }
 
     /**
-     * 查询系统角色下已授权的系统用户
+     * 查询系统角色下已授权的系统用户。
      *
      * @param id 系统角色的主键。
-     * @return 系统用户主键集合。
+     * @return 系统用户的主键集合。
      */
     @GetMapping("/v1/{id}/users")
     @ApiOperation(value = "查询系统用户")
@@ -230,6 +230,47 @@ public class SysRoleController {
     public Result<List<Long>> findUsers(@PathVariable(value = "id") final long id) {
         final List<Long> result = sysRoleService.findUsers(id);
         return DefaultResultFactory.success("查询系统用户成功。", result);
+    }
+
+    /**
+     * 给一个系统角色授权多个系统功能。
+     *
+     * @param id      系统角色的主键。
+     * @param funcIds 系统功能的主键集合。
+     * @return 是否保存成功。
+     */
+    @PutMapping("/v1/{id}/funcs")
+    @ApiOperation(value = "授权系统功能")
+    @ApiOperationSupport(order = 10)
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "path", name = "id", value = "系统角色的主键", dataTypeClass = Long.class, required = true),
+            @ApiImplicitParam(paramType = "body", name = "funcIds", value = "系统功能的主键集合", dataTypeClass = Array.class)
+    })
+    @ApiLog(module = "系统管理", func = "系统角色管理", remark = "授权系统功能", action = ApiLogAction.GRANT)
+    public Result<Boolean> saveFuncs(
+            @PathVariable(value = "id") final long id,
+            @RequestBody final List<Long> funcIds
+    ) {
+        sysRoleService.saveFuncs(id, funcIds);
+        return DefaultResultFactory.success("授权系统功能成功。", Boolean.TRUE);
+    }
+
+    /**
+     * 查询系统角色下已授权的系统功能。
+     *
+     * @param id 系统角色的主键。
+     * @return 系统功能的主键集合。
+     */
+    @GetMapping("/v1/{id}/funcs")
+    @ApiOperation(value = "查询系统功能")
+    @ApiOperationSupport(order = 11)
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "path", name = "id", value = "系统角色的主键", dataTypeClass = Long.class, required = true)
+    })
+    @ApiLog(module = "系统管理", func = "系统角色管理", remark = "查询系统功能", action = ApiLogAction.QUERY)
+    public Result<List<Long>> findFuncs(@PathVariable(value = "id") final long id) {
+        final List<Long> result = sysRoleService.findFuncs(id);
+        return DefaultResultFactory.success("查询系统功能成功。", result);
     }
 
     /**

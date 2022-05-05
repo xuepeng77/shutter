@@ -1,24 +1,25 @@
-package cn.org.shutter.module.system.func.vo;
+package cn.org.shutter.core.web.auth;
 
-import cn.org.shutter.core.common.bean.vo.BaseVo;
-import cn.org.shutter.module.system.func.enums.SysFuncStatus;
-import cn.org.shutter.module.system.func.enums.SysFuncType;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 /**
- * 系统角色的响应类。
+ * 当前登录人授权的功能。
  *
  * @author xuepeng
  */
 @Data
 @ToString
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel(value = "系统功能的响应对象")
-public class SysFuncVo extends BaseVo {
+public class CurrentUserFunc {
+
+    /**
+     * 主键。
+     */
+    @ApiModelProperty(value = "主键")
+    private Integer id;
 
     /**
      * 父级主键。
@@ -37,12 +38,6 @@ public class SysFuncVo extends BaseVo {
      */
     @ApiModelProperty(value = "编号")
     private String code;
-
-    /**
-     * 类型：0=菜单；1=按钮。
-     */
-    @ApiModelProperty(value = "类型")
-    private SysFuncType type;
 
     /**
      * 转发地址。
@@ -97,23 +92,5 @@ public class SysFuncVo extends BaseVo {
      */
     @ApiModelProperty(value = "是否隐藏头区域")
     private Boolean hideHeader;
-
-    /**
-     * 状态：0=禁用；1=启用。
-     */
-    @ApiModelProperty(value = "状态")
-    private SysFuncStatus status;
-
-    /**
-     * 排序。
-     */
-    @ApiModelProperty(value = "排序")
-    private Integer orderId;
-
-    /**
-     * 备注。
-     */
-    @ApiModelProperty(value = "备注")
-    private String remark;
 
 }

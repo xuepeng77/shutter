@@ -1,24 +1,20 @@
 package cn.org.shutter.module.system.user.mapper;
 
 import cn.org.shutter.core.common.bean.vo.PageVo;
-import cn.org.shutter.module.system.role.mapper.SysRoleMapper;
+import cn.org.shutter.core.web.auth.CurrentUser;
 import cn.org.shutter.module.system.user.dto.SysUserDto;
 import cn.org.shutter.module.system.user.entity.SysUser;
 import cn.org.shutter.module.system.user.param.SysUserParam;
 import cn.org.shutter.module.system.user.vo.SysUserVo;
-import cn.org.shutter.sdk.satoken.service.SaTokenUser;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 /**
  * 系统用户对象转换接口。
  *
  * @author xuepeng
  */
-@Mapper(componentModel = "spring", uses = {
-        SysRoleMapper.class
-})
+@Mapper(componentModel = "spring")
 public interface SysUserMapper {
 
     /**
@@ -70,12 +66,11 @@ public interface SysUserMapper {
     PageVo<SysUserVo> dtoPageToVoPage(final PageVo<SysUserDto> sysUserDtoPage);
 
     /**
-     * Dto转换成SaTokenUser。
+     * Dto转换成CurrentUser。
      *
      * @param sysUserDto 系统用户的数据传输对象。
-     * @return 当前SaTokenUser对象。
+     * @return CurrentUser对象。
      */
-    @Mapping(source = "sysUserDto.roles", target = "roles")
-    SaTokenUser dtoToSaTokenUser(final SysUserDto sysUserDto);
+    CurrentUser dtoToCurrentUser(final SysUserDto sysUserDto);
 
 }

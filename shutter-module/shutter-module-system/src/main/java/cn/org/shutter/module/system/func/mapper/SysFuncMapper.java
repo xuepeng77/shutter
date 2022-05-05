@@ -1,6 +1,7 @@
 package cn.org.shutter.module.system.func.mapper;
 
 import cn.org.shutter.core.common.bean.vo.PageVo;
+import cn.org.shutter.core.web.auth.CurrentUserFunc;
 import cn.org.shutter.module.system.func.dto.SysFuncDto;
 import cn.org.shutter.module.system.func.entity.SysFunc;
 import cn.org.shutter.module.system.func.param.SysFuncParam;
@@ -22,30 +23,30 @@ public interface SysFuncMapper {
      * Param转换成Dto。
      *
      * @param sysFuncParam 系统功能的请求对象。
-     * @return 系统功能数据传输对象。
+     * @return 系统功能的数据传输对象。
      */
     SysFuncDto paramToDto(final SysFuncParam sysFuncParam);
 
     /**
      * Dto转换成Entity。
      *
-     * @param sysFuncDto 系统功能数据传输对象。
-     * @return 系统功能实体对象。
+     * @param sysFuncDto 系统功能的数据传输对象。
+     * @return 系统功能的实体对象。
      */
     SysFunc dtoToEntity(final SysFuncDto sysFuncDto);
 
     /**
      * Entity转换成Dto。
      *
-     * @param sysFunc 系统功能实体对象。
-     * @return 系统功能数据传输对象。
+     * @param sysFunc 系统功能的实体对象。
+     * @return 系统功能的数据传输对象。
      */
     SysFuncDto entityToDto(final SysFunc sysFunc);
 
     /**
      * Dto转换成Vo。
      *
-     * @param sysFuncDto 系统功能数据传输对象。
+     * @param sysFuncDto 系统功能的数据传输对象。
      * @return 系统功能的响应对象。
      */
     SysFuncVo dtoToVo(final SysFuncDto sysFuncDto);
@@ -53,15 +54,15 @@ public interface SysFuncMapper {
     /**
      * Entity集合转换成Dto集合。
      *
-     * @param sysFuncList 系统功能实体对象集合。
-     * @return 系统功能数据传输对象集合。
+     * @param sysFuncList 系统功能的实体对象集合。
+     * @return 系统功能的数据传输对象集合。
      */
     List<SysFuncDto> entityListToDtoList(final List<SysFunc> sysFuncList);
 
     /**
      * Dto集合转换成Vo集合。
      *
-     * @param sysFuncDtoList 系统功能数据传输对象集合。
+     * @param sysFuncDtoList 系统功能的数据传输对象集合。
      * @return 系统功能的响应对象集合。
      */
     List<SysFuncVo> dtoListToVoList(final List<SysFuncDto> sysFuncDtoList);
@@ -69,17 +70,25 @@ public interface SysFuncMapper {
     /**
      * Entity分页转换成Dto分页。
      *
-     * @param sysFuncPage 系统功能实体分页对象。
-     * @return 系统功能数据传输分页对象。
+     * @param sysFuncPage 系统功能的实体分页对象。
+     * @return 系统功能的数据传输分页对象。
      */
     PageVo<SysFuncDto> entityPageToDtoPage(final Page<SysFunc> sysFuncPage);
 
     /**
      * Dto分页转换成Vo分页。
      *
-     * @param sysFuncDtoPage 系统功能数据传输分页对象。
+     * @param sysFuncDtoPage 系统功能的数据传输分页对象。
      * @return 系统功能的响应分页对象。
      */
     PageVo<SysFuncVo> dtoPageToVoPage(final PageVo<SysFuncDto> sysFuncDtoPage);
+
+    /**
+     * Dto集合转换成CurrentUserFunc集合。
+     *
+     * @param sysFuncDtoList 系统功能的数据传输对象集合。
+     * @return CurrentUserFunc集合。
+     */
+    List<CurrentUserFunc> dtoListToCurrentUserFuncList(final List<SysFuncDto> sysFuncDtoList);
 
 }
