@@ -76,8 +76,10 @@ public class SaTokenServiceImpl implements SaTokenService {
      */
     @Override
     public void logout() {
-        StpUtil.getSession().delete(SESSION_KEY);
-        StpUtil.logout();
+        if (StpUtil.isLogin()) {
+            StpUtil.getSession().delete(SESSION_KEY);
+            StpUtil.logout();
+        }
     }
 
 }

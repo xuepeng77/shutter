@@ -56,3 +56,4 @@ shutter:
     exclude-paths:
       - /v1/auth/v1/verify-code
       - /v1/auth/v1/login
+      - /v1/auth/v1/logout
