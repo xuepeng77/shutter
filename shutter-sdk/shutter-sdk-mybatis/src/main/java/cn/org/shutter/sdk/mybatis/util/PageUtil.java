@@ -40,8 +40,7 @@ public class PageUtil {
         if (!ObjectUtils.isEmpty(dto.getSort())) {
             page.addOrder(new OrderItem(
                     CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, dto.getSort()),
-                    StringUtils.equalsAnyIgnoreCase(dto.getOrder(), QueryConst.ASC)
-                            ? Boolean.TRUE : Boolean.FALSE)
+                    StringUtils.equalsAnyIgnoreCase(dto.getOrder(), QueryConst.ASC) ? Boolean.TRUE : Boolean.FALSE)
             );
         }
         return page;

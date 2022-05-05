@@ -44,29 +44,23 @@ public class QueryWrapperUtil {
         final QueryWrapper<E> wrapper = createQueryWrapper();
         final LambdaQueryWrapper<E> lambda = wrapper.lambda();
         // 创建时间查询条件
-        if (ObjectUtils.isNotEmpty(dto.getBeginCreateTime())
-                && ObjectUtils.isNotEmpty(dto.getEndCreateTime())) {
+        if (ObjectUtils.isNotEmpty(dto.getBeginCreateTime()) && ObjectUtils.isNotEmpty(dto.getEndCreateTime())) {
             lambda.between(E::getCreateTime, dto.getBeginCreateTime(), dto.getEndCreateTime());
         }
-        if (ObjectUtils.isNotEmpty(dto.getBeginCreateTime())
-                && ObjectUtils.isNotEmpty(dto.getEndCreateTime())) {
+        if (ObjectUtils.isNotEmpty(dto.getBeginCreateTime()) && ObjectUtils.isNotEmpty(dto.getEndCreateTime())) {
             lambda.between(E::getCreateTime, dto.getBeginCreateTime(), LocalDateTime.now());
         }
-        if (ObjectUtils.isEmpty(dto.getBeginCreateTime())
-                && ObjectUtils.isNotEmpty(dto.getEndCreateTime())) {
+        if (ObjectUtils.isEmpty(dto.getBeginCreateTime()) && ObjectUtils.isNotEmpty(dto.getEndCreateTime())) {
             lambda.le(E::getCreateTime, dto.getEndCreateTime());
         }
         // 修改时间查询条件
-        if (ObjectUtils.isNotEmpty(dto.getBeginModifyTime())
-                && ObjectUtils.isNotEmpty(dto.getEndModifyTime())) {
+        if (ObjectUtils.isNotEmpty(dto.getBeginModifyTime()) && ObjectUtils.isNotEmpty(dto.getEndModifyTime())) {
             lambda.between(E::getModifyTime, dto.getBeginModifyTime(), dto.getEndModifyTime());
         }
-        if (ObjectUtils.isNotEmpty(dto.getBeginModifyTime())
-                && ObjectUtils.isNotEmpty(dto.getEndModifyTime())) {
+        if (ObjectUtils.isNotEmpty(dto.getBeginModifyTime()) && ObjectUtils.isNotEmpty(dto.getEndModifyTime())) {
             lambda.between(E::getModifyTime, dto.getBeginModifyTime(), LocalDateTime.now());
         }
-        if (ObjectUtils.isEmpty(dto.getBeginModifyTime())
-                && ObjectUtils.isNotEmpty(dto.getEndModifyTime())) {
+        if (ObjectUtils.isEmpty(dto.getBeginModifyTime()) && ObjectUtils.isNotEmpty(dto.getEndModifyTime())) {
             lambda.le(E::getModifyTime, dto.getEndModifyTime());
         }
         return wrapper;

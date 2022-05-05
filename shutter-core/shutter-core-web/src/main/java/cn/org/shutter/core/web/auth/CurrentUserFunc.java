@@ -40,6 +40,12 @@ public class CurrentUserFunc {
     private String code;
 
     /**
+     * 类型：0=菜单；1=按钮。
+     */
+    @ApiModelProperty(value = "类型")
+    private Integer type;
+
+    /**
      * 转发地址。
      */
     @ApiModelProperty(value = "转发地址")

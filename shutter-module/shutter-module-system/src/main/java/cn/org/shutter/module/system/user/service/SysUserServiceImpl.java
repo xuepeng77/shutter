@@ -219,33 +219,15 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
         final SysUser sysUser = sysUserMapper.dtoToEntity(sysUserDto);
         final QueryWrapper<SysUser> wrapper = QueryWrapperUtil.createQueryWrapper(sysUserDto);
         final LambdaQueryWrapper<SysUser> lambda = wrapper.lambda();
-        if (StringUtils.isNotBlank(sysUser.getAccount())) {
-            lambda.like(SysUser::getAccount, sysUser.getAccount());
-        }
-        if (StringUtils.isNotBlank(sysUser.getPhoneNumber())) {
-            lambda.like(SysUser::getPhoneNumber, sysUser.getPhoneNumber());
-        }
-        if (StringUtils.isNotBlank(sysUser.getEmail())) {
-            lambda.like(SysUser::getEmail, sysUser.getEmail());
-        }
-        if (StringUtils.isNotBlank(sysUser.getChineseName())) {
-            lambda.like(SysUser::getChineseName, sysUser.getChineseName());
-        }
-        if (StringUtils.isNotBlank(sysUser.getEnglishName())) {
-            lambda.like(SysUser::getEnglishName, sysUser.getEnglishName());
-        }
-        if (StringUtils.isNotBlank(sysUser.getNickName())) {
-            lambda.like(SysUser::getNickName, sysUser.getNickName());
-        }
-        if (ObjectUtils.isNotEmpty(sysUser.getBirthday())) {
-            lambda.eq(SysUser::getBirthday, sysUser.getBirthday());
-        }
-        if (ObjectUtils.isNotEmpty(sysUser.getGender())) {
-            lambda.eq(SysUser::getGender, sysUser.getGender());
-        }
-        if (ObjectUtils.isNotEmpty(sysUser.getStatus())) {
-            lambda.eq(SysUser::getStatus, sysUser.getStatus());
-        }
+        lambda.like(StringUtils.isNotBlank(sysUser.getAccount()), SysUser::getAccount, sysUser.getAccount());
+        lambda.like(StringUtils.isNotBlank(sysUser.getPhoneNumber()), SysUser::getPhoneNumber, sysUser.getPhoneNumber());
+        lambda.like(StringUtils.isNotBlank(sysUser.getEmail()), SysUser::getEmail, sysUser.getEmail());
+        lambda.like(StringUtils.isNotBlank(sysUser.getChineseName()), SysUser::getChineseName, sysUser.getChineseName());
+        lambda.like(StringUtils.isNotBlank(sysUser.getEnglishName()), SysUser::getEnglishName, sysUser.getEnglishName());
+        lambda.like(StringUtils.isNotBlank(sysUser.getNickName()), SysUser::getNickName, sysUser.getNickName());
+        lambda.eq(ObjectUtils.isNotEmpty(sysUser.getBirthday()), SysUser::getBirthday, sysUser.getBirthday());
+        lambda.eq(ObjectUtils.isNotEmpty(sysUser.getGender()), SysUser::getGender, sysUser.getGender());
+        lambda.eq(ObjectUtils.isNotEmpty(sysUser.getStatus()), SysUser::getStatus, sysUser.getStatus());
         return wrapper;
     }
 

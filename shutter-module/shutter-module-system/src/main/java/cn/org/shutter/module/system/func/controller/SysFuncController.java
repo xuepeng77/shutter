@@ -3,9 +3,12 @@ package cn.org.shutter.module.system.func.controller;
 import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.org.shutter.core.common.api.DefaultResultFactory;
 import cn.org.shutter.core.common.api.Result;
+import cn.org.shutter.core.common.bean.param.BaseParam;
+import cn.org.shutter.core.web.auth.CreateUser;
 import cn.org.shutter.core.web.log.ApiLog;
 import cn.org.shutter.core.web.log.ApiLogAction;
 import cn.org.shutter.module.system.func.dto.SysFuncDto;
+import cn.org.shutter.module.system.func.param.SysFuncParam;
 import cn.org.shutter.module.system.func.service.SysFuncService;
 import cn.org.shutter.module.system.func.vo.SysFuncVo;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
@@ -15,9 +18,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,12 +36,28 @@ import java.util.List;
 @ApiSupport(order = 4)
 public class SysFuncController {
 
+
+    @PostMapping("/v1")
+    @ApiOperation(value = "创建系统功能")
+    @ApiOperationSupport(order = 1)
+    @ApiLog(module = "系统管理", func = "系统功能管理", remark = "创建系统功能", action = ApiLogAction.CREATE)
+    @CreateUser
+    // TODO 校验参数唯一性
+    public Result<Boolean> create(@Validated(BaseParam.create.class) @RequestBody final SysFuncParam sysFuncParam) {
+        final SysFuncDto sysFuncDto = sysFuncService.getSysFuncMapper().paramToDto(sysFuncParam);
+        final boolean result = sysFuncService.create(sysFuncDto);
+        if (result) {
+            return DefaultResultFactory.success("创建系统功能成功。", Boolean.TRUE);
+        }
+        return DefaultResultFactory.fail("创建系统功能失败。", Boolean.FALSE);
+    }
+
     /**
      * @return 查询全部系统功能。
      */
     @GetMapping("/v1")
     @ApiOperation(value = "查询全部系统功能")
-    @ApiOperationSupport(order = 1)
+    @ApiOperationSupport(order = 99)
     @ApiLog(module = "系统管理", func = "系统功能管理", remark = "查询全部系统功能", action = ApiLogAction.QUERY)
     public Result<List<SysFuncVo>> findAll() {
         final List<SysFuncDto> sysFuncDtos = sysFuncService.findAllToTree();

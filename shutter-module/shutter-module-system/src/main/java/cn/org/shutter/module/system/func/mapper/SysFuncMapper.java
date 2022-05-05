@@ -8,6 +8,8 @@ import cn.org.shutter.module.system.func.param.SysFuncParam;
 import cn.org.shutter.module.system.func.vo.SysFuncVo;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 
 import java.util.List;
 
@@ -82,6 +84,15 @@ public interface SysFuncMapper {
      * @return 系统功能的响应分页对象。
      */
     PageVo<SysFuncVo> dtoPageToVoPage(final PageVo<SysFuncDto> sysFuncDtoPage);
+
+    /**
+     * Dto转换成CurrentUserFunc对象。
+     *
+     * @param sysFuncDto 系统功能的数据传输对象。
+     * @return CurrentUserFunc对象。
+     */
+    @Mappings(@Mapping(source = "type.code", target = "type"))
+    CurrentUserFunc dtoToCurrentUserFunc(final SysFuncDto sysFuncDto);
 
     /**
      * Dto集合转换成CurrentUserFunc集合。

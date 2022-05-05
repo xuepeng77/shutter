@@ -203,15 +203,9 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRole> impleme
         final SysRole sysRole = sysRoleMapper.dtoToEntity(sysRoleDto);
         final QueryWrapper<SysRole> wrapper = QueryWrapperUtil.createQueryWrapper(sysRoleDto);
         final LambdaQueryWrapper<SysRole> lambda = wrapper.lambda();
-        if (StringUtils.isNotBlank(sysRole.getCode())) {
-            lambda.like(SysRole::getCode, sysRole.getCode());
-        }
-        if (StringUtils.isNotBlank(sysRole.getName())) {
-            lambda.like(SysRole::getName, sysRole.getName());
-        }
-        if (ObjectUtils.isNotEmpty(sysRole.getStatus())) {
-            lambda.eq(SysRole::getStatus, sysRole.getStatus());
-        }
+        lambda.like(StringUtils.isNotBlank(sysRole.getCode()), SysRole::getCode, sysRole.getCode());
+        lambda.like(StringUtils.isNotBlank(sysRole.getName()), SysRole::getName, sysRole.getName());
+        lambda.eq(ObjectUtils.isNotEmpty(sysRole.getStatus()), SysRole::getStatus, sysRole.getStatus());
         return wrapper;
     }
 
