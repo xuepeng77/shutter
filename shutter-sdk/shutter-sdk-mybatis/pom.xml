@@ -16,8 +16,8 @@
     <packaging>jar</packaging>
 
     <!-- 项目介绍 -->
-    <name>Shutter SDK ORM</name>
-    <description>Shutter SDK Myabtis提供了MyBatis、MyBatis Plus相关的开发工具</description>
+    <name>Shutter SDK MyBatis</name>
+    <description>Shutter SDK MyBatis提供了MyBatis、MyBatis Plus相关的开发工具</description>
 
     <!-- 依赖配置 -->
     <dependencies>

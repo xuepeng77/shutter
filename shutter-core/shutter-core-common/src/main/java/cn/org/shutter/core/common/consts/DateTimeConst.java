@@ -7,7 +7,11 @@ package cn.org.shutter.core.common.consts;
  */
 public final class DateTimeConst {
 
-    private DateTimeConst() {}
+    /**
+     * 构造函数。
+     */
+    private DateTimeConst() {
+    }
 
     public static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
 

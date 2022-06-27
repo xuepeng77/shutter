@@ -28,14 +28,12 @@
                 <artifactId>shutter-core-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
             <!-- DataBase依赖 -->
             <dependency>
                 <groupId>cn.org.shutter</groupId>
                 <artifactId>shutter-core-database</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
             <!-- Web依赖 -->
             <dependency>
                 <groupId>cn.org.shutter</groupId>

@@ -7,6 +7,9 @@ package cn.org.shutter.core.common.consts;
  */
 public final class PunctuationConst {
 
+    /**
+     * 构造函数。
+     */
     private PunctuationConst() {
     }
 

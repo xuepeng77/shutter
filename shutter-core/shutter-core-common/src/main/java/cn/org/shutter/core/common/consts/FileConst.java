@@ -7,7 +7,11 @@ package cn.org.shutter.core.common.consts;
  */
 public final class FileConst {
 
-    private FileConst() {}
+    /**
+     * 构造函数。
+     */
+    private FileConst() {
+    }
 
     /**
      * 文件后缀分割符。
