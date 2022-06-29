@@ -6,7 +6,7 @@ import cn.org.shutter.module.system.dept.mapper.SysDeptMapper;
 import java.util.List;
 
 /**
- * 系统组织结构的业务处理接口。
+ * 系统组织机构的业务处理接口。
  *
  * @author xuepeng
  */

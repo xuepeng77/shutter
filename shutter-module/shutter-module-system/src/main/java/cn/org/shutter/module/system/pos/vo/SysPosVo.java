@@ -1,16 +1,13 @@
-package cn.org.shutter.module.system.dept.vo;
+package cn.org.shutter.module.system.pos.vo;
 
 import cn.org.shutter.core.common.bean.vo.BaseVo;
-import cn.org.shutter.module.system.dept.enums.SysDeptStatus;
+import cn.org.shutter.module.system.pos.enums.SysPosStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * 系统组织机构的响应类。
+ * 系统岗位的响应类。
  *
  * @author xuepeng
  */
@@ -19,14 +16,8 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel(value = "系统组织机构的响应对象")
-public class SysDeptVo extends BaseVo {
-
-    /**
-     * 父级主键。
-     */
-    @ApiModelProperty(value = "父级主键")
-    private Integer parentId;
+@ApiModel(value = "系统岗位的响应对象")
+public class SysPosVo extends BaseVo {
 
     /**
      * 名称。
@@ -44,7 +35,7 @@ public class SysDeptVo extends BaseVo {
      * 状态：0=禁用；1=启用。
      */
     @ApiModelProperty(value = "状态")
-    private SysDeptStatus status;
+    private SysPosStatus status;
 
     /**
      * 排序。
@@ -57,11 +48,5 @@ public class SysDeptVo extends BaseVo {
      */
     @ApiModelProperty(value = "备注")
     private String remark;
-
-    /**
-     * 子系统部门。
-     */
-    @ApiModelProperty(value = "子系统部门")
-    private List<SysDeptVo> children = new ArrayList<>();
 
 }

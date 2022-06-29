@@ -1,7 +1,7 @@
-package cn.org.shutter.module.system.dept.param;
+package cn.org.shutter.module.system.pos.param;
 
 import cn.org.shutter.core.common.bean.param.BaseParam;
-import cn.org.shutter.module.system.dept.enums.SysDeptStatus;
+import cn.org.shutter.module.system.pos.enums.SysPosStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
- * 系统组织机构的请求类。
+ * 系统岗位的请求类。
  *
  * @author xuepeng
  */
@@ -20,15 +20,8 @@ import javax.validation.constraints.NotNull;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel(value = "系统组织机构的请求对象")
-public class SysDeptParam extends BaseParam {
-
-    /**
-     * 父级主键。
-     */
-    @ApiModelProperty(value = "父级主键", required = true)
-    @NotNull(message = "父级主键不能为空", groups = {create.class, update.class})
-    private Long parentId;
+@ApiModel(value = "系统岗位的请求对象")
+public class SysPosParam extends BaseParam {
 
     /**
      * 名称。
@@ -51,7 +44,7 @@ public class SysDeptParam extends BaseParam {
      */
     @ApiModelProperty(value = "状态", required = true)
     @NotNull(message = "状态不能为空", groups = {create.class, update.class})
-    private SysDeptStatus status;
+    private SysPosStatus status;
 
     /**
      * 排序。

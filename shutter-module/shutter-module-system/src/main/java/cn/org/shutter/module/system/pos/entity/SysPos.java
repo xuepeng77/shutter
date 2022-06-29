@@ -1,12 +1,12 @@
-package cn.org.shutter.module.system.dept.entity;
+package cn.org.shutter.module.system.pos.entity;
 
-import cn.org.shutter.module.system.dept.enums.SysDeptStatus;
+import cn.org.shutter.module.system.pos.enums.SysPosStatus;
 import cn.org.shutter.sdk.mybatis.entity.BizEntity;
 import lombok.*;
 
 /**
- * 系统组织机构的实体类。
- * 数据库表：sys_dept，系统组织机构表。
+ * 系统岗位的实体类。
+ * 数据库表：sys_pos，系统岗位表。
  *
  * @author xuepeng
  */
@@ -15,13 +15,7 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class SysDept extends BizEntity {
-
-    /**
-     * 父级主键。
-     * 数据库字段：parent_id，bigint(20)。
-     */
-    private Long parentId;
+public class SysPos extends BizEntity {
 
     /**
      * 名称。
@@ -39,7 +33,7 @@ public class SysDept extends BizEntity {
      * 状态：0=禁用；1=启用。
      * 数据库字段：status，tinyint(2)。
      */
-    private SysDeptStatus status;
+    private SysPosStatus status;
 
     /**
      * 排序。
