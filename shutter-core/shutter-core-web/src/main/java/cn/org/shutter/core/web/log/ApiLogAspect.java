@@ -104,7 +104,6 @@ public class ApiLogAspect {
         }
         apiLogInfo.setError(throwable.getMessage());
         apiLogInfo.setExeTime(exeTime(apiLogInfo.getOpTime()));
-        log.error(apiLogInfo.toString(), throwable);
         // 持久化错误日志
         if (isPersistent(joinPoint)) {
             apiLogPersistent.saveErrorLog(apiLogInfo);

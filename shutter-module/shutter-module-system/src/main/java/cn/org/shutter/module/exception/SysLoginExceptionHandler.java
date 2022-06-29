@@ -28,7 +28,7 @@ public class SysLoginExceptionHandler {
     @ExceptionHandler(value = SysLoginFailedException.class)
     @ResponseBody
     public Result<String> sysLoginFailedException(SysLoginFailedException e) {
-        log.error(e.getMessage());
+        log.error(e.getMessage(), e);
         return new Result.Builder<String>(SysLoginResultStatus.LOGIN_FAILED)
                 .msg(e.getMessage()).build();
     }
@@ -42,7 +42,7 @@ public class SysLoginExceptionHandler {
     @ExceptionHandler(value = SysLoginVerifyCodeExpiredException.class)
     @ResponseBody
     public Result<String> sysLoginVerifyCodeExpiredException(SysLoginVerifyCodeExpiredException e) {
-        log.error(e.getMessage());
+        log.error(e.getMessage(), e);
         return new Result.Builder<String>(SysLoginResultStatus.VERIFY_CODE_EXPIRED)
                 .msg(e.getMessage()).build();
     }
@@ -56,7 +56,7 @@ public class SysLoginExceptionHandler {
     @ExceptionHandler(value = SysLoginVerifyCodeIncorrectException.class)
     @ResponseBody
     public Result<String> verifyCodeIncorrectException(SysLoginVerifyCodeIncorrectException e) {
-        log.error(e.getMessage());
+        log.error(e.getMessage(), e);
         return new Result.Builder<String>(SysLoginResultStatus.VERIFY_CODE_INCORRECT)
                 .msg(e.getMessage()).build();
     }

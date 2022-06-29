@@ -26,7 +26,7 @@ public class SysRoleExceptionHandler {
     @ExceptionHandler(value = SysRoleNotFoundException.class)
     @ResponseBody
     public Result<String> sysRoleNotFoundException(SysRoleNotFoundException e) {
-        log.error(e.getMessage());
+        log.error(e.getMessage(), e);
         return new Result.Builder<String>(SysRoleResultStatus.NOT_FOUND)
                 .msg(e.getMessage()).build();
     }

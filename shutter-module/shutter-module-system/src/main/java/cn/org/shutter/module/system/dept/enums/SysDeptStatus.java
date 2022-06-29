@@ -1,4 +1,4 @@
-package cn.org.shutter.module.system.func.enums;
+package cn.org.shutter.module.system.dept.enums;
 
 import cn.org.shutter.core.common.bean.enums.BaseEnum;
 import com.baomidou.mybatisplus.annotation.EnumValue;
@@ -9,14 +9,14 @@ import lombok.Getter;
 import lombok.ToString;
 
 /**
- * 系统功能的状态枚举。
+ * 系统组织机构的状态枚举。
  *
  * @author xuepeng
  */
 @Getter
 @AllArgsConstructor
 @ToString
-public enum SysFuncStatus implements BaseEnum {
+public enum SysDeptStatus implements BaseEnum {
 
     ENABLE(1, "启用"),
 
@@ -30,8 +30,8 @@ public enum SysFuncStatus implements BaseEnum {
      * @return 枚举。
      */
     @JsonCreator
-    public static SysFuncStatus findEnum(final Integer code) {
-        for (SysFuncStatus e : values()) {
+    public static SysDeptStatus findEnum(final Integer code) {
+        for (SysDeptStatus e : values()) {
             if (e.code.equals(code)) {
                 return e;
             }

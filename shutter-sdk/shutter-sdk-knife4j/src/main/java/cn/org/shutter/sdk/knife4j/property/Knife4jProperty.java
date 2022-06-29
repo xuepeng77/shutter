@@ -1,6 +1,5 @@
 package cn.org.shutter.sdk.knife4j.property;
 
-
 import lombok.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

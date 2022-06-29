@@ -12,7 +12,7 @@ public enum SysUserResultStatus implements ResultStatus {
     /**
      * 用户不存在。
      */
-    NOT_FOUND(50201, "用户不存在。");
+    NOT_FOUND(50101, "用户不存在。");
 
     /**
      * 构造函数。
@@ -46,6 +46,7 @@ public enum SysUserResultStatus implements ResultStatus {
      * 状态编码。
      */
     private final int code;
+
     /**
      * 状态描述。
      */

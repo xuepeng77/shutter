@@ -56,6 +56,7 @@ public enum SysLoginResultStatus implements ResultStatus {
      * 状态编码。
      */
     private final int code;
+
     /**
      * 状态描述。
      */

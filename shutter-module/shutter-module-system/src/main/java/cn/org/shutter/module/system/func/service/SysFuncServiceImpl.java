@@ -1,5 +1,6 @@
 package cn.org.shutter.module.system.func.service;
 
+import cn.org.shutter.core.common.util.TreeUtil;
 import cn.org.shutter.module.system.func.dao.SysFuncDao;
 import cn.org.shutter.module.system.func.dto.SysFuncDto;
 import cn.org.shutter.module.system.func.entity.SysFunc;
@@ -123,7 +124,8 @@ public class SysFuncServiceImpl extends ServiceImpl<SysFuncDao, SysFunc> impleme
     @Override
     public List<SysFuncDto> findAllToTree() {
         final List<SysFunc> sysFuncs = super.list();
-        return getSysFuncMapper().entityListToDtoList(sysFuncs);
+        final List<SysFuncDto> sysFuncDtos = getSysFuncMapper().entityListToDtoList(sysFuncs);
+        return TreeUtil.format(sysFuncDtos);
     }
 
     /**

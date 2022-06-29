@@ -3,16 +3,16 @@ package cn.org.shutter.module.enums;
 import cn.org.shutter.core.common.api.ResultStatus;
 
 /**
- * 系统角色的响应状态类。
+ * 系统功能的响应状态类。
  *
  * @author xuepeng
  */
-public enum SysRoleResultStatus implements ResultStatus {
+public enum SysFuncResultStatus implements ResultStatus {
 
     /**
-     * 角色不存在。
+     * 功能不存在。
      */
-    NOT_FOUND(50201, "角色不存在。");
+    NOT_FOUND(50301, "功能不存在。");
 
     /**
      * 构造函数。
@@ -20,7 +20,7 @@ public enum SysRoleResultStatus implements ResultStatus {
      * @param code 状态编码。
      * @param desc 状态描述。
      */
-    SysRoleResultStatus(
+    SysFuncResultStatus(
             final int code, final String desc) {
         this.code = code;
         this.desc = desc;

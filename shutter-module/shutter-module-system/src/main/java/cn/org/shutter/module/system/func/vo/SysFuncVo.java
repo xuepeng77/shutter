@@ -7,8 +7,11 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * 系统角色的响应类。
+ * 系统功能的响应类。
  *
  * @author xuepeng
  */
@@ -115,5 +118,11 @@ public class SysFuncVo extends BaseVo {
      */
     @ApiModelProperty(value = "备注")
     private String remark;
+
+    /**
+     * 子系统功能。
+     */
+    @ApiModelProperty(value = "子系统功能")
+    private List<SysFuncVo> children = new ArrayList<>();
 
 }

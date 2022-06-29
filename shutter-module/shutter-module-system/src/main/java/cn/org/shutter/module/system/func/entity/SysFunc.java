@@ -7,7 +7,7 @@ import lombok.*;
 
 /**
  * 系统功能的实体类。
- * 数据库表：sys_role，系统功能表。
+ * 数据库表：sys_func，系统功能表。
  *
  * @author xuepeng
  */
@@ -22,7 +22,7 @@ public class SysFunc extends BizEntity {
      * 父级主键。
      * 数据库字段：parent_id，bigint(20)。
      */
-    private Integer parentId;
+    private Long parentId;
 
     /**
      * 名称。

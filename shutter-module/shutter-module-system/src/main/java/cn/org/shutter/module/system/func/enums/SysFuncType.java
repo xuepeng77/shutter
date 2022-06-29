@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 /**
- * 系统菜单的类型枚举。
+ * 系统功能的类型枚举。
  *
  * @author xuepeng
  */

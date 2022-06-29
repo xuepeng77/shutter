@@ -21,7 +21,7 @@ import javax.validation.constraints.NotNull;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel(value = "系统角色的请求对象")
+@ApiModel(value = "系统功能的请求对象")
 public class SysFuncParam extends BaseParam {
 
     /**
@@ -29,7 +29,7 @@ public class SysFuncParam extends BaseParam {
      */
     @ApiModelProperty(value = "父级主键", required = true)
     @NotNull(message = "父级主键不能为空", groups = {create.class, update.class})
-    private Integer parentId;
+    private Long parentId;
 
     /**
      * 名称。

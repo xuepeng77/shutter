@@ -204,7 +204,7 @@ public class SysUserController extends BaseController {
     @ApiOperation(value = "查询系统用户")
     @ApiOperationSupport(order = 8)
     @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "path", name = "id", value = "系统主键", dataTypeClass = Long.class, required = true)
+            @ApiImplicitParam(paramType = "path", name = "id", value = "系统用户的主键", dataTypeClass = Long.class, required = true)
     })
     @ApiLog(module = "系统管理", func = "系统用户管理", remark = "查询系统用户", action = ApiLogAction.DETAIL)
     public Result<SysUserVo> findById(@PathVariable(value = "id") final long id) {
