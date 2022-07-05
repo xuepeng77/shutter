@@ -77,7 +77,7 @@ public class SysDeptDto extends BaseDto implements TreeStruct {
     private String remark;
 
     /**
-     * 子系统部门。
+     * 子机构。
      */
     private List<SysDeptDto> children = new ArrayList<>();
 

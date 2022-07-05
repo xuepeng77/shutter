@@ -50,7 +50,7 @@ public class SysFuncParam extends BaseParam {
     /**
      * 类型：0=菜单；1=按钮。
      */
-    @ApiModelProperty(value = "类型", required = true)
+    @ApiModelProperty(value = "类型：0=菜单；1=按钮", required = true)
     @NotNull(message = "类型不能为空", groups = {create.class, update.class})
     private SysFuncType type;
 
@@ -121,7 +121,7 @@ public class SysFuncParam extends BaseParam {
     /**
      * 状态：0=禁用；1=启用。
      */
-    @ApiModelProperty(value = "状态", required = true)
+    @ApiModelProperty(value = "状态：0=禁用；1=启用", required = true)
     @NotNull(message = "状态不能为空", groups = {create.class, update.class})
     private SysFuncStatus status;
 

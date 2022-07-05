@@ -75,7 +75,7 @@ public interface SysFuncMapper {
      * @param sysFuncPage 系统功能的实体分页对象。
      * @return 系统功能的数据传输分页对象。
      */
-    PageVo<SysFuncDto> entityPageToDtoPage(final Page<SysFunc> sysFuncPage);
+    Page<SysFuncDto> entityPageToDtoPage(final Page<SysFunc> sysFuncPage);
 
     /**
      * Dto分页转换成Vo分页。
@@ -83,7 +83,7 @@ public interface SysFuncMapper {
      * @param sysFuncDtoPage 系统功能的数据传输分页对象。
      * @return 系统功能的响应分页对象。
      */
-    PageVo<SysFuncVo> dtoPageToVoPage(final PageVo<SysFuncDto> sysFuncDtoPage);
+    PageVo<SysFuncVo> dtoPageToVoPage(final Page<SysFuncDto> sysFuncDtoPage);
 
     /**
      * Dto转换成CurrentUserFunc对象。

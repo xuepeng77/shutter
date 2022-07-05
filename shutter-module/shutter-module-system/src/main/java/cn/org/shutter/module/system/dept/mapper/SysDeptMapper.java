@@ -72,7 +72,7 @@ public interface SysDeptMapper {
      * @param sysDeptPage 系统组织机构的实体分页对象。
      * @return 系统组织机构的数据传输分页对象。
      */
-    PageVo<SysDeptDto> entityPageToDtoPage(final Page<SysDept> sysDeptPage);
+    Page<SysDeptDto> entityPageToDtoPage(final Page<SysDept> sysDeptPage);
 
     /**
      * Dto分页转换成Vo分页。
@@ -80,6 +80,6 @@ public interface SysDeptMapper {
      * @param sysDeptDtoPage 系统组织机构的数据传输分页对象。
      * @return 系统组织机构的响应分页对象。
      */
-    PageVo<SysDeptVo> dtoPageToVoPage(final PageVo<SysDeptDto> sysDeptDtoPage);
+    PageVo<SysDeptVo> dtoPageToVoPage(final Page<SysDeptDto> sysDeptDtoPage);
 
 }

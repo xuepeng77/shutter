@@ -43,7 +43,7 @@ public class SysDeptVo extends BaseVo {
     /**
      * 状态：0=禁用；1=启用。
      */
-    @ApiModelProperty(value = "状态")
+    @ApiModelProperty(value = "状态：0=禁用；1=启用")
     private SysDeptStatus status;
 
     /**
@@ -59,9 +59,9 @@ public class SysDeptVo extends BaseVo {
     private String remark;
 
     /**
-     * 子系统部门。
+     * 子机构。
      */
-    @ApiModelProperty(value = "子系统部门")
+    @ApiModelProperty(value = "子机构")
     private List<SysDeptVo> children = new ArrayList<>();
 
 }
