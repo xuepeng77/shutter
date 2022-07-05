@@ -13,6 +13,7 @@ import cn.org.shutter.module.system.role.dto.SysRoleDto;
 import cn.org.shutter.module.system.role.param.SysRoleParam;
 import cn.org.shutter.module.system.role.service.SysRoleService;
 import cn.org.shutter.module.system.role.vo.SysRoleVo;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import io.swagger.annotations.Api;
@@ -186,7 +187,7 @@ public class SysRoleController {
             @Validated(BaseParam.page.class) final SysRoleParam sysRoleParam
     ) {
         final SysRoleDto sysRoleDto = sysRoleService.getSysRoleMapper().paramToDto(sysRoleParam);
-        final PageVo<SysRoleDto> roleDtoPage = sysRoleService.pageByCondition(sysRoleDto);
+        final Page<SysRoleDto> roleDtoPage = sysRoleService.pageByCondition(sysRoleDto);
         final PageVo<SysRoleVo> result = sysRoleService.getSysRoleMapper().dtoPageToVoPage(roleDtoPage);
         return DefaultResultFactory.success("分页查询系统角色。", result);
     }

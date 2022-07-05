@@ -1,6 +1,5 @@
 package cn.org.shutter.module.system.role.service;
 
-import cn.org.shutter.core.common.bean.vo.PageVo;
 import cn.org.shutter.module.system.role.dao.SysRoleDao;
 import cn.org.shutter.module.system.role.dto.SysRoleDto;
 import cn.org.shutter.module.system.role.entity.SysRole;
@@ -130,7 +129,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRole> impleme
      * @return 系统角色的分页对象。
      */
     @Override
-    public PageVo<SysRoleDto> pageByCondition(final SysRoleDto sysRoleDto) {
+    public Page<SysRoleDto> pageByCondition(final SysRoleDto sysRoleDto) {
         final QueryWrapper<SysRole> wrapper = createQueryWrapper(sysRoleDto);
         wrapper.lambda().orderByAsc(SysRole::getOrderId);
         final Page<SysRole> page = PageUtil.createPage(sysRoleDto);

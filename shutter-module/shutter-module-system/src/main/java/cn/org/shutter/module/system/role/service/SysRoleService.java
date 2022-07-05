@@ -1,8 +1,8 @@
 package cn.org.shutter.module.system.role.service;
 
-import cn.org.shutter.core.common.bean.vo.PageVo;
 import cn.org.shutter.module.system.role.dto.SysRoleDto;
 import cn.org.shutter.module.system.role.mapper.SysRoleMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import java.util.List;
 
@@ -76,7 +76,7 @@ public interface SysRoleService {
      * @param sysRoleDto 系统角色的数据传输对象。
      * @return 系统角色的分页对象。
      */
-    PageVo<SysRoleDto> pageByCondition(final SysRoleDto sysRoleDto);
+    Page<SysRoleDto> pageByCondition(final SysRoleDto sysRoleDto);
 
     /**
      * 给一个系统角色授权多个系统用户。

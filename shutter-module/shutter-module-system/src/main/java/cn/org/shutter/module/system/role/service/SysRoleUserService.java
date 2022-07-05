@@ -41,4 +41,12 @@ public interface SysRoleUserService {
      */
     List<Long> findRolesByUserId(final long userId);
 
+    /**
+     * 查询系统角色下是否有已授权的系统用户。
+     *
+     * @param roleId 系统角色的主键。
+     * @return 是否有已授权的系统用户。
+     */
+    boolean hasUsersByRoleId(final long roleId);
+
 }

@@ -41,4 +41,12 @@ public interface SysRoleFuncService {
      */
     List<Long> findFuncsByRoleId(final List<Long> roleIds);
 
+    /**
+     * 查询系统角色下是否有已授权的系统功能。
+     *
+     * @param roleId 系统角色的主键。
+     * @return 是否有已授权的系统功能。
+     */
+    boolean hasFuncsByRoleId(final long roleId);
+
 }

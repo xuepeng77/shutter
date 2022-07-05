@@ -110,6 +110,19 @@ public class SysRoleFuncServiceImpl extends ServiceImpl<SysRoleFuncDao, SysRoleF
     }
 
     /**
+     * 查询系统角色下是否有已授权的系统功能。
+     *
+     * @param roleId 系统角色的主键。
+     * @return 是否有已授权的系统功能。
+     */
+    @Override
+    public boolean hasFuncsByRoleId(final long roleId) {
+        return super.count(
+                createQueryWrapper().lambda().eq(SysRoleFunc::getRoleId, roleId)
+        ) > 0;
+    }
+
+    /**
      * @return 创建QueryWrapper查询对象。
      */
     private QueryWrapper<SysRoleFunc> createQueryWrapper() {

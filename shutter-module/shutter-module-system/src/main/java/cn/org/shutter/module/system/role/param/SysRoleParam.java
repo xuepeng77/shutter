@@ -42,7 +42,7 @@ public class SysRoleParam extends BaseParam {
     /**
      * 状态：0=禁用；1=启用。
      */
-    @ApiModelProperty(value = "状态")
+    @ApiModelProperty(value = "状态：0=禁用；1=启用")
     @NotNull(message = "状态不能为空", groups = {create.class, update.class})
     private SysRoleStatus status;
 

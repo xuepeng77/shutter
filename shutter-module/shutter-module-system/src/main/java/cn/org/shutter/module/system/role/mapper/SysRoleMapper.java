@@ -65,7 +65,7 @@ public interface SysRoleMapper {
      * @param sysRolePage 系统角色的实体分页对象。
      * @return 系统角色的数据传输分页对象。
      */
-    PageVo<SysRoleDto> entityPageToDtoPage(final Page<SysRole> sysRolePage);
+    Page<SysRoleDto> entityPageToDtoPage(final Page<SysRole> sysRolePage);
 
     /**
      * Dto分页转换成Vo分页。
@@ -73,7 +73,7 @@ public interface SysRoleMapper {
      * @param sysRoleDtoPage 系统角色的数据传输分页对象。
      * @return 系统角色的响应分页对象。
      */
-    PageVo<SysRoleVo> dtoPageToVoPage(final PageVo<SysRoleDto> sysRoleDtoPage);
+    PageVo<SysRoleVo> dtoPageToVoPage(final Page<SysRoleDto> sysRoleDtoPage);
 
     /**
      * Dto集合转换成CurrentUserRole集合。

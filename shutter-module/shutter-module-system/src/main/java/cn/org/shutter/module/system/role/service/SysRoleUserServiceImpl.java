@@ -110,6 +110,19 @@ public class SysRoleUserServiceImpl extends ServiceImpl<SysRoleUserDao, SysRoleU
     }
 
     /**
+     * 查询系统角色下是否有已授权的系统用户。
+     *
+     * @param roleId 系统角色的主键。
+     * @return 是否有已授权的系统用户。
+     */
+    @Override
+    public boolean hasUsersByRoleId(final long roleId) {
+        return super.count(
+                createQueryWrapper().lambda().eq(SysRoleUser::getRoleId, roleId)
+        ) > 0;
+    }
+
+    /**
      * @return 创建QueryWrapper查询对象。
      */
     private QueryWrapper<SysRoleUser> createQueryWrapper() {
