@@ -1,6 +1,5 @@
 package cn.org.shutter.module.system.user.service;
 
-import cn.org.shutter.core.common.bean.vo.PageVo;
 import cn.org.shutter.module.property.SystemProperty;
 import cn.org.shutter.module.system.role.service.SysRoleUserService;
 import cn.org.shutter.module.system.user.dao.SysUserDao;
@@ -180,7 +179,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
      * @return 系统用户的分页对象。
      */
     @Override
-    public PageVo<SysUserDto> pageByCondition(final SysUserDto sysUserDto) {
+    public Page<SysUserDto> pageByCondition(final SysUserDto sysUserDto) {
         final QueryWrapper<SysUser> wrapper = createQueryWrapper(sysUserDto);
         final Page<SysUser> page = PageUtil.createPage(sysUserDto);
         final Page<SysUser> users = super.page(page, wrapper);

@@ -1,9 +1,9 @@
 package cn.org.shutter.module.system.user.service;
 
-import cn.org.shutter.core.common.bean.vo.PageVo;
 import cn.org.shutter.module.system.user.dto.SysUserDto;
 import cn.org.shutter.module.system.user.entity.SysUser;
 import cn.org.shutter.module.system.user.mapper.SysUserMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
@@ -103,7 +103,7 @@ public interface SysUserService extends IService<SysUser> {
      * @param sysUserDto 系统用户的数据传输对象。
      * @return 系统用户的分页对象。
      */
-    PageVo<SysUserDto> pageByCondition(final SysUserDto sysUserDto);
+    Page<SysUserDto> pageByCondition(final SysUserDto sysUserDto);
 
     /**
      * 给一个系统用户授权多个系统角色。

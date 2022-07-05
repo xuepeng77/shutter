@@ -14,6 +14,7 @@ import cn.org.shutter.module.system.user.dto.SysUserDto;
 import cn.org.shutter.module.system.user.param.SysUserParam;
 import cn.org.shutter.module.system.user.service.SysUserService;
 import cn.org.shutter.module.system.user.vo.SysUserVo;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import io.swagger.annotations.Api;
@@ -227,7 +228,7 @@ public class SysUserController extends BaseController {
             @Validated(BaseParam.page.class) final SysUserParam sysUserParam
     ) {
         final SysUserDto sysUserDto = sysUserService.getSysUserMapper().paramToDto(sysUserParam);
-        final PageVo<SysUserDto> userDtoPage = sysUserService.pageByCondition(sysUserDto);
+        final Page<SysUserDto> userDtoPage = sysUserService.pageByCondition(sysUserDto);
         final PageVo<SysUserVo> result = sysUserService.getSysUserMapper().dtoPageToVoPage(userDtoPage);
         return DefaultResultFactory.success("分页查询系统用户。", result);
     }

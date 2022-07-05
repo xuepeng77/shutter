@@ -55,7 +55,7 @@ public interface SysUserMapper {
      * @param sysUserPage 系统用户的实体分页对象。
      * @return 系统用户的数据传输分页对象。
      */
-    PageVo<SysUserDto> entityPageToDtoPage(final Page<SysUser> sysUserPage);
+    Page<SysUserDto> entityPageToDtoPage(final Page<SysUser> sysUserPage);
 
     /**
      * Dto分页转换成Vo分页。
@@ -63,7 +63,7 @@ public interface SysUserMapper {
      * @param sysUserDtoPage 系统用户的数据传输分页对象。
      * @return 系统用户的响应分页对象。
      */
-    PageVo<SysUserVo> dtoPageToVoPage(final PageVo<SysUserDto> sysUserDtoPage);
+    PageVo<SysUserVo> dtoPageToVoPage(final Page<SysUserDto> sysUserDtoPage);
 
     /**
      * Dto转换成CurrentUser。
