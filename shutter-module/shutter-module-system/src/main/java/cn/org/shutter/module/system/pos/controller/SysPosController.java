@@ -14,6 +14,7 @@ import cn.org.shutter.module.system.pos.dto.SysPosDto;
 import cn.org.shutter.module.system.pos.param.SysPosParam;
 import cn.org.shutter.module.system.pos.service.SysPosService;
 import cn.org.shutter.module.system.pos.vo.SysPosVo;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import io.swagger.annotations.Api;
@@ -185,7 +186,7 @@ public class SysPosController extends BaseController {
             @Validated(BaseParam.page.class) final SysPosParam sysPosParam
     ) {
         final SysPosDto sysPosDto = sysPosService.getSysPosMapper().paramToDto(sysPosParam);
-        final PageVo<SysPosDto> posDtoPage = sysPosService.pageByCondition(sysPosDto);
+        final Page<SysPosDto> posDtoPage = sysPosService.pageByCondition(sysPosDto);
         final PageVo<SysPosVo> result = sysPosService.getSysPosMapper().dtoPageToVoPage(posDtoPage);
         return DefaultResultFactory.success("分页查询系统岗位。", result);
     }

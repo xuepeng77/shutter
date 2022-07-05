@@ -1,6 +1,5 @@
 package cn.org.shutter.module.system.pos.service;
 
-import cn.org.shutter.core.common.bean.vo.PageVo;
 import cn.org.shutter.module.system.pos.dao.SysPosDao;
 import cn.org.shutter.module.system.pos.dto.SysPosDto;
 import cn.org.shutter.module.system.pos.entity.SysPos;
@@ -129,7 +128,7 @@ public class SysPosServiceImpl extends ServiceImpl<SysPosDao, SysPos> implements
      * @return 系统岗位的分页对象。
      */
     @Override
-    public PageVo<SysPosDto> pageByCondition(final SysPosDto sysPosDto) {
+    public Page<SysPosDto> pageByCondition(final SysPosDto sysPosDto) {
         final QueryWrapper<SysPos> wrapper = createQueryWrapper(sysPosDto);
         final Page<SysPos> page = PageUtil.createPage(sysPosDto);
         final Page<SysPos> positions = super.page(page, wrapper);

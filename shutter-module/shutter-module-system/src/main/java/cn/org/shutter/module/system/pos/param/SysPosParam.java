@@ -42,7 +42,7 @@ public class SysPosParam extends BaseParam {
     /**
      * 状态：0=禁用；1=启用。
      */
-    @ApiModelProperty(value = "状态", required = true)
+    @ApiModelProperty(value = "状态：0=禁用；1=启用", required = true)
     @NotNull(message = "状态不能为空", groups = {create.class, update.class})
     private SysPosStatus status;
 

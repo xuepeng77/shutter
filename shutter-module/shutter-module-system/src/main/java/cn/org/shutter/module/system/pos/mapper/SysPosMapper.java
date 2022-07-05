@@ -72,7 +72,7 @@ public interface SysPosMapper {
      * @param sysPosPage 系统岗位的实体分页对象。
      * @return 系统岗位的数据传输分页对象。
      */
-    PageVo<SysPosDto> entityPageToDtoPage(final Page<SysPos> sysPosPage);
+    Page<SysPosDto> entityPageToDtoPage(final Page<SysPos> sysPosPage);
 
     /**
      * Dto分页转换成Vo分页。
@@ -80,6 +80,6 @@ public interface SysPosMapper {
      * @param sysPosDtoPage 系统岗位的数据传输分页对象。
      * @return 系统岗位的响应分页对象。
      */
-    PageVo<SysPosVo> dtoPageToVoPage(final PageVo<SysPosDto> sysPosDtoPage);
+    PageVo<SysPosVo> dtoPageToVoPage(final Page<SysPosDto> sysPosDtoPage);
 
 }

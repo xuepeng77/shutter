@@ -1,8 +1,8 @@
 package cn.org.shutter.module.system.pos.service;
 
-import cn.org.shutter.core.common.bean.vo.PageVo;
 import cn.org.shutter.module.system.pos.dto.SysPosDto;
 import cn.org.shutter.module.system.pos.mapper.SysPosMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import java.util.List;
 
@@ -76,7 +76,7 @@ public interface SysPosService {
      * @param sysPosDto 系统岗位的数据传输对象。
      * @return 系统岗位的分页对象。
      */
-    PageVo<SysPosDto> pageByCondition(final SysPosDto sysPosDto);
+    Page<SysPosDto> pageByCondition(final SysPosDto sysPosDto);
 
     /**
      * @return 获取系统岗位对象转换接口。
